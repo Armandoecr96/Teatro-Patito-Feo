@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package controlador;
 
 /**
  *
  * @author arman
  */
-public class funcionDeCine {
-    
-    private String nombreFuncionDeCine;
-    private String horarioFuncionDeCine;
-    private asientos asientosDispobibles;
+public class crearReporteDeVentas {
     
 }
