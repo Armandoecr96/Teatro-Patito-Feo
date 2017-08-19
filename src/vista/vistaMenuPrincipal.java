@@ -27,34 +27,34 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jBVenderBoletos = new javax.swing.JButton();
+        jBFunciones = new javax.swing.JButton();
+        jBCrear_Funcion = new javax.swing.JButton();
+        jBCancelarBoletos = new javax.swing.JButton();
+        jBCancelar_Funcion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Vender Boletos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBVenderBoletos.setText("Vender Boletos");
+        jBVenderBoletos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBVenderBoletosActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Funciones");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBFunciones.setText("Funciones");
+        jBFunciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBFuncionesActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Crear Función");
+        jBCrear_Funcion.setText("Crear Función");
 
-        jButton4.setText("Cancelar Boletos");
+        jBCancelarBoletos.setText("Cancelar Boletos");
 
-        jButton5.setText("Cancelar Funcion");
+        jBCancelar_Funcion.setText("Cancelar Funcion");
 
         jLabel1.setText("Teatro Patito Feo");
 
@@ -67,15 +67,15 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5))
+                        .addComponent(jBCancelar_Funcion))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(jBCancelarBoletos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addComponent(jBCrear_Funcion))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jBVenderBoletos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(jBFunciones)))
                 .addGap(49, 49, 49))
             .addGroup(layout.createSequentialGroup()
                 .addGap(139, 139, 139)
@@ -89,27 +89,31 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBVenderBoletos)
+                    .addComponent(jBFunciones))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(jBCancelarBoletos)
+                    .addComponent(jBCrear_Funcion))
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(jBCancelar_Funcion)
                 .addContainerGap(118, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBVenderBoletosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVenderBoletosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        vistaVentaBoletos vistaBoletos = new vistaVentaBoletos();
+        
+        
+    }//GEN-LAST:event_jBVenderBoletosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFuncionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        vistaFuncionesDeCine vistaFunciones = new vistaFuncionesDeCine();
+    }//GEN-LAST:event_jBFuncionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,11 +152,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jBCancelarBoletos;
+    private javax.swing.JButton jBCancelar_Funcion;
+    private javax.swing.JButton jBCrear_Funcion;
+    private javax.swing.JButton jBFunciones;
+    private javax.swing.JButton jBVenderBoletos;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
