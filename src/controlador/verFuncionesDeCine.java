@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package controlador;
-import modelo.boletos;
-
+import modelo.funcionDeCine;
 /**
  *
  * @author arman
  */
-public class crearReporteDeVentas {
+public class verFuncionesDeCine {
     
-    private boletos boletosVendidos;
+    private funcionDeCine funcionDeCine;
 }

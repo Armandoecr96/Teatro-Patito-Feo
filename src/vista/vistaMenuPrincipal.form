@@ -315,19 +315,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="94" pref="94" max="-2" attributes="0"/>
-                  <Component id="jBVenderBoleto" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="154" pref="154" max="-2" attributes="0"/>
-                  <Component id="jBFunciones" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="94" pref="94" max="-2" attributes="0"/>
-                  <Component id="jBCancelarBoleto" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="116" pref="116" max="-2" attributes="0"/>
-                  <Component id="jBCrearFuncion" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="337" pref="337" max="-2" attributes="0"/>
-                  <Component id="jBCancelarFuncion" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jBVenderBoleto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="154" pref="154" max="-2" attributes="0"/>
+                          <Component id="jBFunciones" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jBReporteDeVentas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jBCancelarFuncion" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jBCancelarBoleto" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="116" pref="116" max="-2" attributes="0"/>
+                              <Component id="jBCrearFuncion" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -345,7 +352,11 @@
                       <Component id="jBCrearFuncion" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                  <Component id="jBCancelarFuncion" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jBCancelarFuncion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBReporteDeVentas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -389,6 +400,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCancelarFuncionActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBReporteDeVentas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ver Reporte de Ventas"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBReporteDeVentasActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -720,15 +739,71 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBAtrasAsientosDisponibles_Main" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="458" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="640" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="jBAtrasAsientosDisponibles_Main" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="583" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="jBAtrasAsientosDisponibles_Main">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Atras"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPReporteDeVentas">
+      <BindingProperties>
+        <BindingProperty name="background" source="jBReporteDeVentas" sourcePath="${action}" target="jPReporteDeVentas" targetPath="background" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPReporteDeVentas.setVisible(false);"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBAtrasReporte_Main" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="458" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="jBAtrasReporte_Main" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="610" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="jBAtrasReporte_Main">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Atras"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>

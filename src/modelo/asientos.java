@@ -12,5 +12,18 @@ package modelo;
 public class asientos {
     
     private String numeroDeAsiento;
+
+    public asientos(String numeroDeAsiento) {
+        this.numeroDeAsiento = numeroDeAsiento;
+    }
+
+    public String getNumeroDeAsiento() {
+        return numeroDeAsiento;
+    }
+
+    public void setNumeroDeAsiento(String numeroDeAsiento) {
+        this.numeroDeAsiento = numeroDeAsiento;
+    }
+    
     
 }

@@ -14,5 +14,36 @@ public class funcionDeCine {
     private String nombreFuncionDeCine;
     private String horarioFuncionDeCine;
     private asientos asientosDispobibles;
+
+    public funcionDeCine(String nombreFuncionDeCine, String horarioFuncionDeCine, asientos asientosDispobibles) {
+        this.nombreFuncionDeCine = nombreFuncionDeCine;
+        this.horarioFuncionDeCine = horarioFuncionDeCine;
+        this.asientosDispobibles = asientosDispobibles;
+    }
+
+    public String getNombreFuncionDeCine() {
+        return nombreFuncionDeCine;
+    }
+
+    public void setNombreFuncionDeCine(String nombreFuncionDeCine) {
+        this.nombreFuncionDeCine = nombreFuncionDeCine;
+    }
+
+    public String getHorarioFuncionDeCine() {
+        return horarioFuncionDeCine;
+    }
+
+    public void setHorarioFuncionDeCine(String horarioFuncionDeCine) {
+        this.horarioFuncionDeCine = horarioFuncionDeCine;
+    }
+
+    public asientos getAsientosDispobibles() {
+        return asientosDispobibles;
+    }
+
+    public void setAsientosDispobibles(asientos asientosDispobibles) {
+        this.asientosDispobibles = asientosDispobibles;
+    }
+ 
     
 }

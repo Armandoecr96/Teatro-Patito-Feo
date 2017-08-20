@@ -56,6 +56,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jBFunciones = new javax.swing.JButton();
         jBCrearFuncion = new javax.swing.JButton();
         jBCancelarFuncion = new javax.swing.JButton();
+        jBReporteDeVentas = new javax.swing.JButton();
         jPFunciones = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -79,6 +80,9 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         jBAneadirFuncion = new javax.swing.JButton();
         jBAsientosDisponibles = new javax.swing.JPanel();
+        jBAtrasAsientosDisponibles_Main = new javax.swing.JButton();
+        jPReporteDeVentas = new javax.swing.JPanel();
+        jBAtrasReporte_Main = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -285,23 +289,34 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jBReporteDeVentas.setText("Ver Reporte de Ventas");
+        jBReporteDeVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBReporteDeVentasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPMenuPrincipalLayout = new javax.swing.GroupLayout(jPMenuPrincipal);
         jPMenuPrincipal.setLayout(jPMenuPrincipalLayout);
         jPMenuPrincipalLayout.setHorizontalGroup(
             jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addComponent(jBVenderBoleto)
-                .addGap(154, 154, 154)
-                .addComponent(jBFunciones))
-            .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jBCancelarBoleto)
-                .addGap(116, 116, 116)
-                .addComponent(jBCrearFuncion))
-            .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                .addGap(337, 337, 337)
-                .addComponent(jBCancelarFuncion))
+                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
+                        .addComponent(jBVenderBoleto)
+                        .addGap(154, 154, 154)
+                        .addComponent(jBFunciones))
+                    .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
+                            .addComponent(jBReporteDeVentas)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBCancelarFuncion))
+                        .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
+                            .addComponent(jBCancelarBoleto)
+                            .addGap(116, 116, 116)
+                            .addComponent(jBCrearFuncion))))
+                .addGap(120, 120, 120))
         );
         jPMenuPrincipalLayout.setVerticalGroup(
             jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +330,10 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jBCancelarBoleto)
                     .addComponent(jBCrearFuncion))
                 .addGap(31, 31, 31)
-                .addComponent(jBCancelarFuncion))
+                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBCancelarFuncion)
+                    .addComponent(jBReporteDeVentas))
+                .addGap(316, 316, 316))
         );
 
         getContentPane().add(jPMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 590));
@@ -513,18 +531,52 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBSeleccionarAsientosDeCompra, org.jdesktop.beansbinding.ELProperty.create("${action}"), jBAsientosDisponibles, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
+        jBAtrasAsientosDisponibles_Main.setText("Atras");
+
         javax.swing.GroupLayout jBAsientosDisponiblesLayout = new javax.swing.GroupLayout(jBAsientosDisponibles);
         jBAsientosDisponibles.setLayout(jBAsientosDisponiblesLayout);
         jBAsientosDisponiblesLayout.setHorizontalGroup(
             jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBAtrasAsientosDisponibles_Main)
+                .addContainerGap(458, Short.MAX_VALUE))
         );
         jBAsientosDisponiblesLayout.setVerticalGroup(
             jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jBAtrasAsientosDisponibles_Main)
+                .addContainerGap(583, Short.MAX_VALUE))
         );
 
         getContentPane().add(jBAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 610, 640));
+
+        jPReporteDeVentas.setVisible(false);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBReporteDeVentas, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPReporteDeVentas, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jBAtrasReporte_Main.setText("Atras");
+
+        javax.swing.GroupLayout jPReporteDeVentasLayout = new javax.swing.GroupLayout(jPReporteDeVentas);
+        jPReporteDeVentas.setLayout(jPReporteDeVentasLayout);
+        jPReporteDeVentasLayout.setHorizontalGroup(
+            jPReporteDeVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPReporteDeVentasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBAtrasReporte_Main)
+                .addContainerGap(458, Short.MAX_VALUE))
+        );
+        jPReporteDeVentasLayout.setVerticalGroup(
+            jPReporteDeVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPReporteDeVentasLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jBAtrasReporte_Main)
+                .addContainerGap(610, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPReporteDeVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         bindingGroup.bind();
 
@@ -571,6 +623,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
 
+    private void jBReporteDeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReporteDeVentasActionPerformed
+        // TODO add your handling code here:
+        jPMenuPrincipal.setVisible(false);
+        jPReporteDeVentas.setVisible(true);
+    }//GEN-LAST:event_jBReporteDeVentasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -610,10 +668,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAneadirFuncion;
     private javax.swing.JPanel jBAsientosDisponibles;
+    private javax.swing.JButton jBAtrasAsientosDisponibles_Main;
     private javax.swing.JButton jBAtrasBoletos_Main;
     private javax.swing.JButton jBAtrasCancelarB_Main;
     private javax.swing.JButton jBAtrasCancelarF_Main;
     private javax.swing.JButton jBAtrasFunciones_Main;
+    private javax.swing.JButton jBAtrasReporte_Main;
     private javax.swing.JButton jBCancelarBoleto;
     private javax.swing.JButton jBCancelarBoletoAsiento;
     private javax.swing.JButton jBCancelarFuncion;
@@ -622,6 +682,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBCrearFuncion;
     private javax.swing.JButton jBCrearFuncion_Main;
     private javax.swing.JButton jBFunciones;
+    private javax.swing.JButton jBReporteDeVentas;
     private javax.swing.JButton jBSeleccionarAsientosDeCompra;
     private javax.swing.JButton jBVenderBoleto;
     private javax.swing.JButton jButton1;
@@ -641,6 +702,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPCrearFuncion;
     private javax.swing.JPanel jPFunciones;
     private javax.swing.JPanel jPMenuPrincipal;
+    private javax.swing.JPanel jPReporteDeVentas;
     private javax.swing.JPanel jPVentaBoletos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

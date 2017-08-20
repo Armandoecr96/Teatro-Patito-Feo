@@ -5,10 +5,22 @@
  */
 package controlador;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+
 /**
  *
  * @author arman
  */
-public class ventaBoletos {
-    
+public class ventaBoletos implements Observable{
+
+    @Override
+    public void addListener(InvalidationListener il) {
+
+    }
+
+    @Override
+    public void removeListener(InvalidationListener il) {
+        
+    }   
 }
