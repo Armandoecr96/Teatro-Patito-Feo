@@ -768,7 +768,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H1.addMouseListener(adapter(H1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H1.addMouseListener(adapter(butacaH1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH1 = new Asiento(H1);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H2">
@@ -778,7 +779,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H2.addMouseListener(adapter(H2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H2.addMouseListener(adapter(butacaH2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH2 = new Asiento(H2);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H3">
@@ -788,7 +790,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H3.addMouseListener(adapter(H3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H3.addMouseListener(adapter(butacaH3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH3 = new Asiento(H3);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H4">
@@ -798,7 +801,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H4.addMouseListener(adapter(H4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H4.addMouseListener(adapter(butacaH4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH4 = new Asiento(H4);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H5">
@@ -808,7 +812,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H5.addMouseListener(adapter(H5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H5.addMouseListener(adapter(butacaH5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH5 = new Asiento(H5);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H6">
@@ -818,7 +823,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H6.addMouseListener(adapter(H6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H6.addMouseListener(adapter(butacaH6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH6 = new Asiento(H6);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H7">
@@ -828,7 +834,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H7.addMouseListener(adapter(H7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H7.addMouseListener(adapter(butacaH7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH7 = new Asiento(H7);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H8">
@@ -838,7 +845,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H8.addMouseListener(adapter(H8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H8.addMouseListener(adapter(butacaH8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH8 = new Asiento(H8);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H9">
@@ -848,7 +856,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H9.addMouseListener(adapter(H9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H9.addMouseListener(adapter(butacaH9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH9 = new Asiento(H9);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H10">
@@ -858,7 +867,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H10.addMouseListener(adapter(H10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H10.addMouseListener(adapter(butacaH10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH10 = new Asiento(H10);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H11">
@@ -868,7 +878,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H11.addMouseListener(adapter(H11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H11.addMouseListener(adapter(butacaH11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH11 = new Asiento(H11);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H12">
@@ -878,7 +889,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H12.addMouseListener(adapter(H12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H12.addMouseListener(adapter(butacaH12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH12 = new Asiento(H12);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H13">
@@ -888,7 +900,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H13.addMouseListener(adapter(H13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H13.addMouseListener(adapter(butacaH13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH13 = new Asiento(H13);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H14">
@@ -898,7 +911,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H14.addMouseListener(adapter(H14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H14.addMouseListener(adapter(butacaH14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH14 = new Asiento(H14);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H15">
@@ -908,7 +922,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H15.addMouseListener(adapter(H15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H15.addMouseListener(adapter(butacaH15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH15 = new Asiento(H15);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H16">
@@ -918,7 +933,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H16.addMouseListener(adapter(H16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H16.addMouseListener(adapter(butacaH16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH16 = new Asiento(H16);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H17">
@@ -928,7 +944,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H17.addMouseListener(adapter(H17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H17.addMouseListener(adapter(butacaH17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH17 = new Asiento(H17);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H18">
@@ -938,7 +955,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H18.addMouseListener(adapter(H18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H18.addMouseListener(adapter(butacaH18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH18 = new Asiento(H18);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H19">
@@ -948,7 +966,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H19.addMouseListener(adapter(H19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H19.addMouseListener(adapter(butacaH19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH19 = new Asiento(H19);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="H20">
@@ -958,7 +977,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H20.addMouseListener(adapter(H20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="H20.addMouseListener(adapter(butacaH20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaH20 = new Asiento(H20);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G1">
@@ -968,7 +988,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G1.addMouseListener(adapter(G1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G1.addMouseListener(adapter(butacaG1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG1 = new Asiento(G1);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G2">
@@ -978,7 +999,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G2.addMouseListener(adapter(G2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G2.addMouseListener(adapter(butacaG2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG2 = new Asiento(G2);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G3">
@@ -988,7 +1010,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G3.addMouseListener(adapter(G3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G3.addMouseListener(adapter(butacaG3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG3 = new Asiento(G3);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G4">
@@ -998,7 +1021,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G4.addMouseListener(adapter(G4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G4.addMouseListener(adapter(butacaG4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG4 = new Asiento(G4);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G5">
@@ -1008,7 +1032,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G5.addMouseListener(adapter(G5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G5.addMouseListener(adapter(butacaG5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG5 = new Asiento(G5);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G6">
@@ -1018,7 +1043,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G6.addMouseListener(adapter(G6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G6.addMouseListener(adapter(butacaG6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG6 = new Asiento(G6);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G7">
@@ -1028,7 +1054,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G7.addMouseListener(adapter(G7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G7.addMouseListener(adapter(butacaG7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG7 = new Asiento(G7);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G8">
@@ -1038,7 +1065,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G8.addMouseListener(adapter(G8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G8.addMouseListener(adapter(butacaG8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG8 = new Asiento(G8);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G9">
@@ -1048,7 +1076,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G9.addMouseListener(adapter(G9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G9.addMouseListener(adapter(butacaG9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG9 = new Asiento(G9);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G10">
@@ -1058,7 +1087,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G10.addMouseListener(adapter(G10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G10.addMouseListener(adapter(butacaG10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG10 = new Asiento(G10);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G11">
@@ -1068,7 +1098,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G11.addMouseListener(adapter(G11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G11.addMouseListener(adapter(butacaG11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG11 = new Asiento(G11);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G12">
@@ -1078,7 +1109,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G12.addMouseListener(adapter(G12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G12.addMouseListener(adapter(butacaG12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG12 = new Asiento(G12);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G13">
@@ -1088,7 +1120,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G13.addMouseListener(adapter(G13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G13.addMouseListener(adapter(butacaG13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG13 = new Asiento(G13);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G14">
@@ -1098,7 +1131,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G14.addMouseListener(adapter(G14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G14.addMouseListener(adapter(butacaG14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG14 = new Asiento(G14);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G15">
@@ -1108,7 +1142,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G15.addMouseListener(adapter(G15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G15.addMouseListener(adapter(butacaG15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG15 = new Asiento(G15);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G16">
@@ -1118,7 +1153,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G16.addMouseListener(adapter(G16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G16.addMouseListener(adapter(butacaG16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG16 = new Asiento(G16);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G17">
@@ -1128,7 +1164,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G17.addMouseListener(adapter(G17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G17.addMouseListener(adapter(butacaG17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG17 = new Asiento(G17);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G18">
@@ -1138,7 +1175,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G18.addMouseListener(adapter(G18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G18.addMouseListener(adapter(butacaG18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG18 = new Asiento(G18);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G19">
@@ -1148,7 +1186,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G19.addMouseListener(adapter(G19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G19.addMouseListener(adapter(butacaG19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG19 = new Asiento(G19);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="G20">
@@ -1158,7 +1197,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G20.addMouseListener(adapter(G20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="G20.addMouseListener(adapter(butacaG20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaG20 = new Asiento(G20);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F1">
@@ -1168,7 +1208,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F1.addMouseListener(adapter(F1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F1.addMouseListener(adapter(butacaF1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF1 = new Asiento(F1);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F2">
@@ -1178,7 +1219,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F2.addMouseListener(adapter(F2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F2.addMouseListener(adapter(butacaF2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF2 = new Asiento(F2);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F3">
@@ -1188,7 +1230,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F3.addMouseListener(adapter(F3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F3.addMouseListener(adapter(butacaF3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF3 = new Asiento(F3);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F4">
@@ -1198,7 +1241,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F4.addMouseListener(adapter(F4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F4.addMouseListener(adapter(butacaF4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF4 = new Asiento(F4);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F5">
@@ -1208,7 +1252,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F5.addMouseListener(adapter(F5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F5.addMouseListener(adapter(butacaF5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF5 = new Asiento(F5);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F6">
@@ -1218,7 +1263,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F6.addMouseListener(adapter(F6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F6.addMouseListener(adapter(butacaF6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF6 = new Asiento(F6);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F7">
@@ -1228,7 +1274,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F7.addMouseListener(adapter(F7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F7.addMouseListener(adapter(butacaF7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF7 = new Asiento(F7);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F8">
@@ -1238,7 +1285,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F8.addMouseListener(adapter(F8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F8.addMouseListener(adapter(butacaF8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF8 = new Asiento(F8);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F9">
@@ -1248,7 +1296,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F9.addMouseListener(adapter(F9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F9.addMouseListener(adapter(butacaF9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF9 = new Asiento(F9);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F10">
@@ -1258,7 +1307,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F10.addMouseListener(adapter(F10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F10.addMouseListener(adapter(butacaF10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF10 = new Asiento(F10);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F11">
@@ -1268,7 +1318,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F11.addMouseListener(adapter(F11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F11.addMouseListener(adapter(butacaF11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF11 = new Asiento(F11);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F12">
@@ -1278,7 +1329,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F12.addMouseListener(adapter(F12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F12.addMouseListener(adapter(butacaF12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF12 = new Asiento(F12);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F13">
@@ -1288,7 +1340,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F13.addMouseListener(adapter(F13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F13.addMouseListener(adapter(butacaF13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF13 = new Asiento(F13);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F14">
@@ -1298,7 +1351,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F14.addMouseListener(adapter(F14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F14.addMouseListener(adapter(butacaF14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF14 = new Asiento(F14);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F15">
@@ -1308,7 +1362,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F15.addMouseListener(adapter(F15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F15.addMouseListener(adapter(butacaF15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF15 = new Asiento(F15);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F16">
@@ -1318,7 +1373,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F16.addMouseListener(adapter(F16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F16.addMouseListener(adapter(butacaF16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF16 = new Asiento(F16);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F17">
@@ -1328,7 +1384,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F17.addMouseListener(adapter(F17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F17.addMouseListener(adapter(butacaF17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF17 = new Asiento(F17);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F18">
@@ -1338,7 +1395,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F18.addMouseListener(adapter(F18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F18.addMouseListener(adapter(butacaF18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF18 = new Asiento(F18);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F19">
@@ -1348,7 +1406,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F19.addMouseListener(adapter(F19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F19.addMouseListener(adapter(butacaF19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF19 = new Asiento(F19);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="F20">
@@ -1358,7 +1417,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F20.addMouseListener(adapter(F20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="F20.addMouseListener(adapter(butacaF20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaF20 = new Asiento(F20);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E1">
@@ -1368,7 +1428,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E1.addMouseListener(adapter(E1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E1.addMouseListener(adapter(butacaE1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE1 = new Asiento(E1);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E2">
@@ -1378,7 +1439,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E2.addMouseListener(adapter(E2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E2.addMouseListener(adapter(butacaE2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE2 = new Asiento(E2);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E3">
@@ -1388,7 +1450,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E3.addMouseListener(adapter(E3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E3.addMouseListener(adapter(butacaE3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE3 = new Asiento(E3);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E4">
@@ -1398,7 +1461,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E4.addMouseListener(adapter(E4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E4.addMouseListener(adapter(butacaE4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE4 = new Asiento(E4);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E5">
@@ -1408,7 +1472,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E5.addMouseListener(adapter(E5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E5.addMouseListener(adapter(butacaE5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE5 = new Asiento(E5);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E6">
@@ -1418,7 +1483,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E6.addMouseListener(adapter(E6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E6.addMouseListener(adapter(butacaE6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE6 = new Asiento(E6);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E7">
@@ -1428,7 +1494,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E7.addMouseListener(adapter(E7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E7.addMouseListener(adapter(butacaE7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE7 = new Asiento(E7);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E8">
@@ -1438,7 +1505,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E8.addMouseListener(adapter(E8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E8.addMouseListener(adapter(butacaE8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE8 = new Asiento(E8);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E9">
@@ -1448,7 +1516,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E9.addMouseListener(adapter(E9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E9.addMouseListener(adapter(butacaE9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE9 = new Asiento(E9);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E10">
@@ -1458,7 +1527,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E10.addMouseListener(adapter(E10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E10.addMouseListener(adapter(butacaE10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE10 = new Asiento(E10);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E11">
@@ -1468,7 +1538,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E11.addMouseListener(adapter(E11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E11.addMouseListener(adapter(butacaE11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE11 = new Asiento(E11);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E12">
@@ -1478,7 +1549,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E12.addMouseListener(adapter(E12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E12.addMouseListener(adapter(butacaE12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE12 = new Asiento(E12);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E13">
@@ -1488,7 +1560,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E13.addMouseListener(adapter(E13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E13.addMouseListener(adapter(butacaE13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE13 = new Asiento(E13);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E14">
@@ -1498,7 +1571,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E14.addMouseListener(adapter(E14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E14.addMouseListener(adapter(butacaE14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE14 = new Asiento(E14);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E15">
@@ -1508,7 +1582,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E15.addMouseListener(adapter(E15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E15.addMouseListener(adapter(butacaE15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE15 = new Asiento(E15);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E16">
@@ -1518,7 +1593,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E16.addMouseListener(adapter(E16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E16.addMouseListener(adapter(butacaE16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE16 = new Asiento(E16);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E17">
@@ -1528,7 +1604,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E17.addMouseListener(adapter(E17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E17.addMouseListener(adapter(butacaE17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE17 = new Asiento(E17);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E18">
@@ -1538,7 +1615,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E18.addMouseListener(adapter(E18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E18.addMouseListener(adapter(butacaE18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE18 = new Asiento(E18);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E19">
@@ -1548,7 +1626,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E19.addMouseListener(adapter(E19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E19.addMouseListener(adapter(butacaE19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE19 = new Asiento(E19);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="E20">
@@ -1558,7 +1637,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E20.addMouseListener(adapter(E20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="E20.addMouseListener(adapter(butacaE20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaE20 = new Asiento(E20);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D1">
@@ -1568,7 +1648,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D1.addMouseListener(adapter(D1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D1.addMouseListener(adapter(butacaD1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD1 = new Asiento(D1);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D2">
@@ -1578,7 +1659,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D2.addMouseListener(adapter(D2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D2.addMouseListener(adapter(butacaD2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD2 = new Asiento(D2);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D3">
@@ -1588,7 +1670,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D3.addMouseListener(adapter(D3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D3.addMouseListener(adapter(butacaD3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD3 = new Asiento(D3);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D4">
@@ -1598,7 +1681,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D4.addMouseListener(adapter(D4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D4.addMouseListener(adapter(butacaD4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD4 = new Asiento(D4);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D5">
@@ -1608,7 +1692,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D5.addMouseListener(adapter(D5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D5.addMouseListener(adapter(butacaD5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD5 = new Asiento(D5);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D6">
@@ -1618,7 +1703,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D6.addMouseListener(adapter(D6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D6.addMouseListener(adapter(butacaD6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD6 = new Asiento(D6);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D7">
@@ -1628,7 +1714,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D7.addMouseListener(adapter(D7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D7.addMouseListener(adapter(butacaD7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD7 = new Asiento(D7);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D8">
@@ -1638,7 +1725,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D8.addMouseListener(adapter(D8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D8.addMouseListener(adapter(butacaD8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD8 = new Asiento(D8);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D9">
@@ -1648,7 +1736,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D9.addMouseListener(adapter(D9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D9.addMouseListener(adapter(butacaD9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD9 = new Asiento(D9);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D10">
@@ -1658,7 +1747,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D10.addMouseListener(adapter(D10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D10.addMouseListener(adapter(butacaD10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD10 = new Asiento(D10);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D11">
@@ -1668,7 +1758,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D11.addMouseListener(adapter(D11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D11.addMouseListener(adapter(butacaD11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD11 = new Asiento(D11);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D12">
@@ -1678,7 +1769,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D12.addMouseListener(adapter(D12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D12.addMouseListener(adapter(butacaD12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD12 = new Asiento(D12);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D13">
@@ -1688,7 +1780,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D13.addMouseListener(adapter(D13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D13.addMouseListener(adapter(butacaD13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD13 = new Asiento(D13);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D14">
@@ -1698,7 +1791,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D14.addMouseListener(adapter(D14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D14.addMouseListener(adapter(butacaD14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD14 = new Asiento(D14);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D15">
@@ -1708,7 +1802,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D15.addMouseListener(adapter(D15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D15.addMouseListener(adapter(butacaD15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD15 = new Asiento(D15);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D16">
@@ -1718,7 +1813,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D16.addMouseListener(adapter(D16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D16.addMouseListener(adapter(butacaD16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD16 = new Asiento(D16);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D17">
@@ -1728,7 +1824,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D17.addMouseListener(adapter(D17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D17.addMouseListener(adapter(butacaD17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD17 = new Asiento(D17);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D18">
@@ -1738,7 +1835,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D18.addMouseListener(adapter(D18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D18.addMouseListener(adapter(butacaD18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD18 = new Asiento(D18);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D19">
@@ -1748,7 +1846,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D19.addMouseListener(adapter(D19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D19.addMouseListener(adapter(butacaD19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD19 = new Asiento(D19);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="D20">
@@ -1758,7 +1857,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D20.addMouseListener(adapter(D20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="D20.addMouseListener(adapter(butacaD20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaD20 = new Asiento(D20);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C1">
@@ -1768,7 +1868,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C1.addMouseListener(adapter(C1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C1.addMouseListener(adapter(butacaC1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC1 = new Asiento(C1);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C2">
@@ -1778,7 +1879,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C2.addMouseListener(adapter(C2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C2.addMouseListener(adapter(butacaC2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC2 = new Asiento(C2);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C3">
@@ -1788,7 +1890,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C3.addMouseListener(adapter(C3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C3.addMouseListener(adapter(butacaC3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC3 = new Asiento(C3);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C4">
@@ -1798,7 +1901,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C4.addMouseListener(adapter(C4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C4.addMouseListener(adapter(butacaC4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC4 = new Asiento(C4);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C5">
@@ -1808,7 +1912,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C5.addMouseListener(adapter(C5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C5.addMouseListener(adapter(butacaC5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC5 = new Asiento(C5);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C6">
@@ -1818,7 +1923,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C6.addMouseListener(adapter(C6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C6.addMouseListener(adapter(butacaC6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC6 = new Asiento(C6);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C7">
@@ -1828,7 +1934,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C7.addMouseListener(adapter(C7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C7.addMouseListener(adapter(butacaC7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC7 = new Asiento(C7);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C8">
@@ -1838,7 +1945,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C8.addMouseListener(adapter(C8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C8.addMouseListener(adapter(butacaC8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC8 = new Asiento(C8);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C9">
@@ -1848,7 +1956,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C9.addMouseListener(adapter(C9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C9.addMouseListener(adapter(butacaC9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC9 = new Asiento(C9);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C10">
@@ -1858,7 +1967,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C10.addMouseListener(adapter(C10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C10.addMouseListener(adapter(butacaC10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC10 = new Asiento(C10);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C11">
@@ -1868,7 +1978,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C11.addMouseListener(adapter(C11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C11.addMouseListener(adapter(butacaC11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC11 = new Asiento(C11);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C12">
@@ -1878,7 +1989,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C12.addMouseListener(adapter(C12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C12.addMouseListener(adapter(butacaC12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC12 = new Asiento(C12);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C13">
@@ -1888,7 +2000,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C13.addMouseListener(adapter(C13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C13.addMouseListener(adapter(butacaC13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC13 = new Asiento(C13);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C14">
@@ -1898,7 +2011,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C14.addMouseListener(adapter(C14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C14.addMouseListener(adapter(butacaC14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC14 = new Asiento(C14);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C15">
@@ -1908,7 +2022,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C15.addMouseListener(adapter(C15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C15.addMouseListener(adapter(butacaC15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC15 = new Asiento(C15);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C16">
@@ -1918,7 +2033,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C16.addMouseListener(adapter(C16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C16.addMouseListener(adapter(butacaC16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC16 = new Asiento(C16);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C17">
@@ -1928,7 +2044,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C17.addMouseListener(adapter(C17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C17.addMouseListener(adapter(butacaC17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC17 = new Asiento(C17);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C18">
@@ -1938,7 +2055,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C18.addMouseListener(adapter(C18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C18.addMouseListener(adapter(butacaC18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC18 = new Asiento(C18);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C19">
@@ -1948,7 +2066,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C19.addMouseListener(adapter(C19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C19.addMouseListener(adapter(butacaC19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC19 = new Asiento(C19);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="C20">
@@ -1958,7 +2077,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C20.addMouseListener(adapter(C20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="C20.addMouseListener(adapter(butacaC20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaC20 = new Asiento(C20);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B1">
@@ -1968,7 +2088,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B1.addMouseListener(adapter(B1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B1.addMouseListener(adapter(butacaB1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB1 = new Asiento(B1);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B2">
@@ -1978,7 +2099,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B2.addMouseListener(adapter(B2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B2.addMouseListener(adapter(butacaB2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB2 = new Asiento(B2);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B3">
@@ -1988,7 +2110,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B3.addMouseListener(adapter(B3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B3.addMouseListener(adapter(butacaB3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB3 = new Asiento(B3);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B4">
@@ -1998,7 +2121,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B4.addMouseListener(adapter(B4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B4.addMouseListener(adapter(butacaB4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB4 = new Asiento(B4);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B5">
@@ -2008,7 +2132,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B5.addMouseListener(adapter(B5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B5.addMouseListener(adapter(butacaB5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB5 = new Asiento(B5);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B6">
@@ -2018,7 +2143,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B6.addMouseListener(adapter(B6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B6.addMouseListener(adapter(butacaB6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB6 = new Asiento(B6);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B7">
@@ -2028,7 +2154,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B7.addMouseListener(adapter(B7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B7.addMouseListener(adapter(butacaB7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB7 = new Asiento(B7);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B8">
@@ -2038,7 +2165,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B8.addMouseListener(adapter(B8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B8.addMouseListener(adapter(butacaB8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB8 = new Asiento(B8);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B9">
@@ -2048,7 +2176,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B9.addMouseListener(adapter(B9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B9.addMouseListener(adapter(butacaB9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB9 = new Asiento(B9);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B10">
@@ -2058,7 +2187,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B10.addMouseListener(adapter(B10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B10.addMouseListener(adapter(butacaB10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB10 = new Asiento(B10);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B11">
@@ -2068,7 +2198,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B11.addMouseListener(adapter(B11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B11.addMouseListener(adapter(butacaB11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB11 = new Asiento(B11);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B12">
@@ -2078,7 +2209,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B12.addMouseListener(adapter(B12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B12.addMouseListener(adapter(butacaB12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB12 = new Asiento(B12);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B13">
@@ -2088,7 +2220,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B13.addMouseListener(adapter(B13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B13.addMouseListener(adapter(butacaB13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB13 = new Asiento(B13);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B14">
@@ -2098,7 +2231,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B14.addMouseListener(adapter(B14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B14.addMouseListener(adapter(butacaB14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB14 = new Asiento(B14);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B15">
@@ -2108,7 +2242,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B15.addMouseListener(adapter(B15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B15.addMouseListener(adapter(butacaB15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB15 = new Asiento(B15);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B16">
@@ -2118,7 +2253,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B16.addMouseListener(adapter(B16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B16.addMouseListener(adapter(butacaB16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB16 = new Asiento(B16);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B17">
@@ -2128,7 +2264,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B17.addMouseListener(adapter(B17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B17.addMouseListener(adapter(butacaB17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB17 = new Asiento(B17);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B18">
@@ -2138,7 +2275,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B18.addMouseListener(adapter(B18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B18.addMouseListener(adapter(butacaB18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB18 = new Asiento(B18);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B19">
@@ -2148,7 +2286,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B19.addMouseListener(adapter(B19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B19.addMouseListener(adapter(butacaB19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB19 = new Asiento(B19);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="B20">
@@ -2158,7 +2297,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B20.addMouseListener(adapter(B20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="B20.addMouseListener(adapter(butacaB20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaB20 = new Asiento(B20);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A1">
@@ -2168,7 +2308,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A1.addMouseListener(adapter(A1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A1.addMouseListener(adapter(butacaA1));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA1 = new Asiento(A1);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A2">
@@ -2178,7 +2319,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A2.addMouseListener(adapter(A2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A2.addMouseListener(adapter(butacaA2));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA2 = new Asiento(A2);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A3">
@@ -2188,7 +2330,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A3.addMouseListener(adapter(A3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A3.addMouseListener(adapter(butacaA3));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA3 = new Asiento(A3);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A4">
@@ -2198,7 +2341,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A4.addMouseListener(adapter(A4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A4.addMouseListener(adapter(butacaA4));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA4 = new Asiento(A4);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A5">
@@ -2208,7 +2352,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A5.addMouseListener(adapter(A5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A5.addMouseListener(adapter(butacaA5));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA5 = new Asiento(A5);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A6">
@@ -2218,7 +2363,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A6.addMouseListener(adapter(A6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A6.addMouseListener(adapter(butacaA6));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA6 = new Asiento(A6);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A7">
@@ -2228,7 +2374,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A7.addMouseListener(adapter(A7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A7.addMouseListener(adapter(butacaA7));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA7 = new Asiento(A7);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A8">
@@ -2238,7 +2385,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A8.addMouseListener(adapter(A8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A8.addMouseListener(adapter(butacaA8));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA8 = new Asiento(A8);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A9">
@@ -2248,7 +2396,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A9.addMouseListener(adapter(A9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A9.addMouseListener(adapter(butacaA9));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA9 = new Asiento(A9);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A10">
@@ -2258,7 +2407,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A10.addMouseListener(adapter(A10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A10.addMouseListener(adapter(butacaA10));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA10 = new Asiento(A10);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A11">
@@ -2268,7 +2418,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A11.addMouseListener(adapter(A11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A11.addMouseListener(adapter(butacaA11));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA11 = new Asiento(A11);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A12">
@@ -2278,7 +2429,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A12.addMouseListener(adapter(A12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A12.addMouseListener(adapter(butacaA12));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA12 = new Asiento(A12);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A13">
@@ -2288,7 +2440,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A13.addMouseListener(adapter(A13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A13.addMouseListener(adapter(butacaA13));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA13 = new Asiento(A13);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A14">
@@ -2298,7 +2451,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A14.addMouseListener(adapter(A14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A14.addMouseListener(adapter(butacaA14));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA14 = new Asiento(A14);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A15">
@@ -2308,7 +2462,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A15.addMouseListener(adapter(A15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A15.addMouseListener(adapter(butacaA15));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA15 = new Asiento(A15);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A16">
@@ -2318,7 +2473,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A16.addMouseListener(adapter(A16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A16.addMouseListener(adapter(butacaA16));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA16 = new Asiento(A16);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A17">
@@ -2328,7 +2484,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A17.addMouseListener(adapter(A17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A17.addMouseListener(adapter(butacaA17));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA17 = new Asiento(A17);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A18">
@@ -2338,7 +2495,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A18.addMouseListener(adapter(A18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A18.addMouseListener(adapter(butacaA18));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA18 = new Asiento(A18);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A19">
@@ -2348,7 +2506,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A19.addMouseListener(adapter(A19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A19.addMouseListener(adapter(butacaA19));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA19 = new Asiento(A19);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="A20">
@@ -2358,7 +2517,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A20.addMouseListener(adapter(A20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="A20.addMouseListener(adapter(butacaA20));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Asiento butacaA20 = new Asiento(A20);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="Escenario">
