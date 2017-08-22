@@ -13,9 +13,9 @@ public class funcionDeCine {
     
     private String nombreFuncionDeCine;
     private String horarioFuncionDeCine;
-    private asientos asientosDispobibles;
+    private Asiento asientosDispobibles;
 
-    public funcionDeCine(String nombreFuncionDeCine, String horarioFuncionDeCine, asientos asientosDispobibles) {
+    public funcionDeCine(String nombreFuncionDeCine, String horarioFuncionDeCine, Asiento asientosDispobibles) {
         this.nombreFuncionDeCine = nombreFuncionDeCine;
         this.horarioFuncionDeCine = horarioFuncionDeCine;
         this.asientosDispobibles = asientosDispobibles;
@@ -37,11 +37,11 @@ public class funcionDeCine {
         this.horarioFuncionDeCine = horarioFuncionDeCine;
     }
 
-    public asientos getAsientosDispobibles() {
+    public Asiento getAsientosDispobibles() {
         return asientosDispobibles;
     }
 
-    public void setAsientosDispobibles(asientos asientosDispobibles) {
+    public void setAsientosDispobibles(Asiento asientosDispobibles) {
         this.asientosDispobibles = asientosDispobibles;
     }
  

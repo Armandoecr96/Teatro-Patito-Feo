@@ -13,9 +13,9 @@ public class boletos {
     
     private double precioDeBoleto;
     private funcionDeCine funcionDelBoleto;
-    private asientos asientoDelBoleto;
+    private Asiento asientoDelBoleto;
 
-    public boletos(double precioDeBoleto, funcionDeCine funcionDelBoleto, asientos asientoDelBoleto) {
+    public boletos(double precioDeBoleto, funcionDeCine funcionDelBoleto, Asiento asientoDelBoleto) {
         this.precioDeBoleto = precioDeBoleto;
         this.funcionDelBoleto = funcionDelBoleto;
         this.asientoDelBoleto = asientoDelBoleto;
@@ -37,11 +37,11 @@ public class boletos {
         this.funcionDelBoleto = funcionDelBoleto;
     }
 
-    public asientos getAsientoDelBoleto() {
+    public Asiento getAsientoDelBoleto() {
         return asientoDelBoleto;
     }
 
-    public void setAsientoDelBoleto(asientos asientoDelBoleto) {
+    public void setAsientoDelBoleto(Asiento asientoDelBoleto) {
         this.asientoDelBoleto = asientoDelBoleto;
     }
     
