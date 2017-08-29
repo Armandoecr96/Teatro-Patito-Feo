@@ -1,2 +1,1 @@
-create database teatro_Patito_Feo
-
+SELECT * FROM teatro_patito_feo.funcion;
