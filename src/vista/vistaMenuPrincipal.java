@@ -5,10 +5,21 @@
  */
 package vista;
 
+import modelo.Conexion;
+import controlador.Controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 import modelo.Asiento;
 
 /**
@@ -20,8 +31,18 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form menuPrincipal
      */
+    private ArrayList<Asiento> listaButacas;
+    private int locationLabel;
+    private Conexion con;
+    private Connection cn;
+    public DefaultTableModel modelo = new DefaultTableModel();
+    
     public vistaMenuPrincipal() {
         initComponents();
+        listaButacas = new ArrayList<Asiento>();
+        locationLabel = 0;
+        con = new Conexion();
+        cn = con.getConnection();  
     }
 
     /**
@@ -35,6 +56,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel2 = new javax.swing.JLabel();
+        jPCrearFuncion = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        JTxtNombreFuncion = new javax.swing.JTextField();
+        JTxtHorarioFuncion = new javax.swing.JTextField();
+        jBAneadirFuncion = new javax.swing.JButton();
         jBAsientosDisponibles = new javax.swing.JPanel();
         H1 = new javax.swing.JLabel();
         H2 = new javax.swing.JLabel();
@@ -56,7 +83,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         H18 = new javax.swing.JLabel();
         H19 = new javax.swing.JLabel();
         H20 = new javax.swing.JLabel();
-        G1 = new javax.swing.JLabel();
         G2 = new javax.swing.JLabel();
         G3 = new javax.swing.JLabel();
         G4 = new javax.swing.JLabel();
@@ -225,6 +251,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         Num18 = new javax.swing.JLabel();
         Num19 = new javax.swing.JLabel();
         Num20 = new javax.swing.JLabel();
+        G1 = new javax.swing.JLabel();
         jPCancelarFuncion = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -249,25 +276,18 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jBCancelarFuncion = new javax.swing.JButton();
         jBReporteDeVentas = new javax.swing.JButton();
         jPFunciones = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jBAsientos = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPCancelarBoletos = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jBCancelarBoletoAsiento = new javax.swing.JButton();
-        jPCrearFuncion = new javax.swing.JPanel();
-        jBCrearFuncion_Main = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jBAneadirFuncion = new javax.swing.JButton();
         jPReporteDeVentas = new javax.swing.JPanel();
         jBRegresar = new javax.swing.JButton();
 
@@ -277,1381 +297,835 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Teatro Patito Feo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 16, -1, -1));
 
+        jPCrearFuncion.setVisible(false);
+        jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
+        jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBCrearFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCrearFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jLabel10.setText("Nombre de la Funcion");
+
+        jLabel11.setText("Horario de la Funcion");
+
+        JTxtHorarioFuncion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTxtHorarioFuncionActionPerformed(evt);
+            }
+        });
+
+        jBAneadirFuncion.setText("Crear Funcion");
+        jBAneadirFuncion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBAneadirFuncionMouseClicked(evt);
+            }
+        });
+        jBAneadirFuncion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAneadirFuncionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
+        jPCrearFuncion.setLayout(jPCrearFuncionLayout);
+        jPCrearFuncionLayout.setHorizontalGroup(
+            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGap(130, 130, 130)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBAneadirFuncion)
+                    .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(JTxtNombreFuncion)
+                        .addComponent(JTxtHorarioFuncion, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
+                .addContainerGap(211, Short.MAX_VALUE))
+        );
+        jPCrearFuncionLayout.setVerticalGroup(
+            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(JTxtHorarioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72)
+                .addComponent(jBAneadirFuncion)
+                .addContainerGap(380, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 670));
+
         jBAsientosDisponibles.setVisible(false);
-
-        Asiento butacaH1 = new Asiento(H1);
-        H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H1.addMouseListener(adapter(butacaH1));
-
-        Asiento butacaH2 = new Asiento(H2);
-        H2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H2.addMouseListener(adapter(butacaH2));
-
-        Asiento butacaH3 = new Asiento(H3);
-        H3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H3.addMouseListener(adapter(butacaH3));
-
-        Asiento butacaH4 = new Asiento(H4);
-        H4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H4.addMouseListener(adapter(butacaH4));
-
-        Asiento butacaH5 = new Asiento(H5);
-        H5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H5.addMouseListener(adapter(butacaH5));
-
-        Asiento butacaH6 = new Asiento(H6);
-        H6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H6.addMouseListener(adapter(butacaH6));
-
-        Asiento butacaH7 = new Asiento(H7);
-        H7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H7.addMouseListener(adapter(butacaH7));
-
-        Asiento butacaH8 = new Asiento(H8);
-        H8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H8.addMouseListener(adapter(butacaH8));
-
-        Asiento butacaH9 = new Asiento(H9);
-        H9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H9.addMouseListener(adapter(butacaH9));
-
-        Asiento butacaH10 = new Asiento(H10);
-        H10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H10.addMouseListener(adapter(butacaH10));
-
-        Asiento butacaH11 = new Asiento(H11);
-        H11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H11.addMouseListener(adapter(butacaH11));
-
-        Asiento butacaH12 = new Asiento(H12);
-        H12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H12.addMouseListener(adapter(butacaH12));
-
-        Asiento butacaH13 = new Asiento(H13);
-        H13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H13.addMouseListener(adapter(butacaH13));
-
-        Asiento butacaH14 = new Asiento(H14);
-        H14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H14.addMouseListener(adapter(butacaH14));
-
-        Asiento butacaH15 = new Asiento(H15);
-        H15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H15.addMouseListener(adapter(butacaH15));
-
-        Asiento butacaH16 = new Asiento(H16);
-        H16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H16.addMouseListener(adapter(butacaH16));
-
-        Asiento butacaH17 = new Asiento(H17);
-        H17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H17.addMouseListener(adapter(butacaH17));
-
-        Asiento butacaH18 = new Asiento(H18);
-        H18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H18.addMouseListener(adapter(butacaH18));
-
-        Asiento butacaH19 = new Asiento(H19);
-        H19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H19.addMouseListener(adapter(butacaH19));
-
-        Asiento butacaH20 = new Asiento(H20);
-        H20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        H20.addMouseListener(adapter(butacaH20));
-
-        Asiento butacaG1 = new Asiento(G1);
-        G1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G1.addMouseListener(adapter(butacaG1));
-
-        Asiento butacaG2 = new Asiento(G2);
-        G2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G2.addMouseListener(adapter(butacaG2));
-
-        Asiento butacaG3 = new Asiento(G3);
-        G3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G3.addMouseListener(adapter(butacaG3));
-
-        Asiento butacaG4 = new Asiento(G4);
-        G4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G4.addMouseListener(adapter(butacaG4));
-
-        Asiento butacaG5 = new Asiento(G5);
-        G5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G5.addMouseListener(adapter(butacaG5));
-
-        Asiento butacaG6 = new Asiento(G6);
-        G6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G6.addMouseListener(adapter(butacaG6));
-
-        Asiento butacaG7 = new Asiento(G7);
-        G7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G7.addMouseListener(adapter(butacaG7));
-
-        Asiento butacaG8 = new Asiento(G8);
-        G8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G8.addMouseListener(adapter(butacaG8));
-
-        Asiento butacaG9 = new Asiento(G9);
-        G9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G9.addMouseListener(adapter(butacaG9));
-
-        Asiento butacaG10 = new Asiento(G10);
-        G10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G10.addMouseListener(adapter(butacaG10));
-
-        Asiento butacaG11 = new Asiento(G11);
-        G11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G11.addMouseListener(adapter(butacaG11));
-
-        Asiento butacaG12 = new Asiento(G12);
-        G12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G12.addMouseListener(adapter(butacaG12));
-
-        Asiento butacaG13 = new Asiento(G13);
-        G13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G13.addMouseListener(adapter(butacaG13));
-
-        Asiento butacaG14 = new Asiento(G14);
-        G14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G14.addMouseListener(adapter(butacaG14));
-
-        Asiento butacaG15 = new Asiento(G15);
-        G15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G15.addMouseListener(adapter(butacaG15));
-
-        Asiento butacaG16 = new Asiento(G16);
-        G16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G16.addMouseListener(adapter(butacaG16));
-
-        Asiento butacaG17 = new Asiento(G17);
-        G17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G17.addMouseListener(adapter(butacaG17));
-
-        Asiento butacaG18 = new Asiento(G18);
-        G18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G18.addMouseListener(adapter(butacaG18));
-
-        Asiento butacaG19 = new Asiento(G19);
-        G19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G19.addMouseListener(adapter(butacaG19));
-
-        Asiento butacaG20 = new Asiento(G20);
-        G20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        G20.addMouseListener(adapter(butacaG20));
-
-        Asiento butacaF1 = new Asiento(F1);
-        F1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F1.addMouseListener(adapter(butacaF1));
-
-        Asiento butacaF2 = new Asiento(F2);
-        F2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F2.addMouseListener(adapter(butacaF2));
-
-        Asiento butacaF3 = new Asiento(F3);
-        F3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F3.addMouseListener(adapter(butacaF3));
-
-        Asiento butacaF4 = new Asiento(F4);
-        F4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F4.addMouseListener(adapter(butacaF4));
-
-        Asiento butacaF5 = new Asiento(F5);
-        F5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F5.addMouseListener(adapter(butacaF5));
-
-        Asiento butacaF6 = new Asiento(F6);
-        F6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F6.addMouseListener(adapter(butacaF6));
-
-        Asiento butacaF7 = new Asiento(F7);
-        F7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F7.addMouseListener(adapter(butacaF7));
-
-        Asiento butacaF8 = new Asiento(F8);
-        F8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F8.addMouseListener(adapter(butacaF8));
-
-        Asiento butacaF9 = new Asiento(F9);
-        F9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F9.addMouseListener(adapter(butacaF9));
-
-        Asiento butacaF10 = new Asiento(F10);
-        F10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F10.addMouseListener(adapter(butacaF10));
-
-        Asiento butacaF11 = new Asiento(F11);
-        F11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F11.addMouseListener(adapter(butacaF11));
-
-        Asiento butacaF12 = new Asiento(F12);
-        F12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F12.addMouseListener(adapter(butacaF12));
-
-        Asiento butacaF13 = new Asiento(F13);
-        F13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F13.addMouseListener(adapter(butacaF13));
-
-        Asiento butacaF14 = new Asiento(F14);
-        F14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F14.addMouseListener(adapter(butacaF14));
-
-        Asiento butacaF15 = new Asiento(F15);
-        F15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F15.addMouseListener(adapter(butacaF15));
-
-        Asiento butacaF16 = new Asiento(F16);
-        F16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F16.addMouseListener(adapter(butacaF16));
-
-        Asiento butacaF17 = new Asiento(F17);
-        F17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F17.addMouseListener(adapter(butacaF17));
-
-        Asiento butacaF18 = new Asiento(F18);
-        F18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F18.addMouseListener(adapter(butacaF18));
-
-        Asiento butacaF19 = new Asiento(F19);
-        F19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F19.addMouseListener(adapter(butacaF19));
-
-        Asiento butacaF20 = new Asiento(F20);
-        F20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        F20.addMouseListener(adapter(butacaF20));
-
-        Asiento butacaE1 = new Asiento(E1);
-        E1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E1.addMouseListener(adapter(butacaE1));
-
-        Asiento butacaE2 = new Asiento(E2);
-        E2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E2.addMouseListener(adapter(butacaE2));
-
-        Asiento butacaE3 = new Asiento(E3);
-        E3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E3.addMouseListener(adapter(butacaE3));
-
-        Asiento butacaE4 = new Asiento(E4);
-        E4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E4.addMouseListener(adapter(butacaE4));
-
-        Asiento butacaE5 = new Asiento(E5);
-        E5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E5.addMouseListener(adapter(butacaE5));
-
-        Asiento butacaE6 = new Asiento(E6);
-        E6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E6.addMouseListener(adapter(butacaE6));
-
-        Asiento butacaE7 = new Asiento(E7);
-        E7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E7.addMouseListener(adapter(butacaE7));
-
-        Asiento butacaE8 = new Asiento(E8);
-        E8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E8.addMouseListener(adapter(butacaE8));
-
-        Asiento butacaE9 = new Asiento(E9);
-        E9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E9.addMouseListener(adapter(butacaE9));
-
-        Asiento butacaE10 = new Asiento(E10);
-        E10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E10.addMouseListener(adapter(butacaE10));
-
-        Asiento butacaE11 = new Asiento(E11);
-        E11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E11.addMouseListener(adapter(butacaE11));
-
-        Asiento butacaE12 = new Asiento(E12);
-        E12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E12.addMouseListener(adapter(butacaE12));
-
-        Asiento butacaE13 = new Asiento(E13);
-        E13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E13.addMouseListener(adapter(butacaE13));
-
-        Asiento butacaE14 = new Asiento(E14);
-        E14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E14.addMouseListener(adapter(butacaE14));
-
-        Asiento butacaE15 = new Asiento(E15);
-        E15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E15.addMouseListener(adapter(butacaE15));
-
-        Asiento butacaE16 = new Asiento(E16);
-        E16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E16.addMouseListener(adapter(butacaE16));
-
-        Asiento butacaE17 = new Asiento(E17);
-        E17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E17.addMouseListener(adapter(butacaE17));
-
-        Asiento butacaE18 = new Asiento(E18);
-        E18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E18.addMouseListener(adapter(butacaE18));
-
-        Asiento butacaE19 = new Asiento(E19);
-        E19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E19.addMouseListener(adapter(butacaE19));
-
-        Asiento butacaE20 = new Asiento(E20);
-        E20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        E20.addMouseListener(adapter(butacaE20));
-
-        Asiento butacaD1 = new Asiento(D1);
-        D1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D1.addMouseListener(adapter(butacaD1));
-
-        Asiento butacaD2 = new Asiento(D2);
-        D2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D2.addMouseListener(adapter(butacaD2));
-
-        Asiento butacaD3 = new Asiento(D3);
-        D3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D3.addMouseListener(adapter(butacaD3));
-
-        Asiento butacaD4 = new Asiento(D4);
-        D4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D4.addMouseListener(adapter(butacaD4));
-
-        Asiento butacaD5 = new Asiento(D5);
-        D5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D5.addMouseListener(adapter(butacaD5));
-
-        Asiento butacaD6 = new Asiento(D6);
-        D6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D6.addMouseListener(adapter(butacaD6));
-
-        Asiento butacaD7 = new Asiento(D7);
-        D7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D7.addMouseListener(adapter(butacaD7));
-
-        Asiento butacaD8 = new Asiento(D8);
-        D8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D8.addMouseListener(adapter(butacaD8));
-
-        Asiento butacaD9 = new Asiento(D9);
-        D9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D9.addMouseListener(adapter(butacaD9));
-
-        Asiento butacaD10 = new Asiento(D10);
-        D10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D10.addMouseListener(adapter(butacaD10));
-
-        Asiento butacaD11 = new Asiento(D11);
-        D11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D11.addMouseListener(adapter(butacaD11));
-
-        Asiento butacaD12 = new Asiento(D12);
-        D12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D12.addMouseListener(adapter(butacaD12));
-
-        Asiento butacaD13 = new Asiento(D13);
-        D13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D13.addMouseListener(adapter(butacaD13));
-
-        Asiento butacaD14 = new Asiento(D14);
-        D14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D14.addMouseListener(adapter(butacaD14));
-
-        Asiento butacaD15 = new Asiento(D15);
-        D15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D15.addMouseListener(adapter(butacaD15));
-
-        Asiento butacaD16 = new Asiento(D16);
-        D16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D16.addMouseListener(adapter(butacaD16));
-
-        Asiento butacaD17 = new Asiento(D17);
-        D17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D17.addMouseListener(adapter(butacaD17));
-
-        Asiento butacaD18 = new Asiento(D18);
-        D18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D18.addMouseListener(adapter(butacaD18));
-
-        Asiento butacaD19 = new Asiento(D19);
-        D19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D19.addMouseListener(adapter(butacaD19));
-
-        Asiento butacaD20 = new Asiento(D20);
-        D20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        D20.addMouseListener(adapter(butacaD20));
-
-        Asiento butacaC1 = new Asiento(C1);
-        C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C1.addMouseListener(adapter(butacaC1));
-
-        Asiento butacaC2 = new Asiento(C2);
-        C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C2.addMouseListener(adapter(butacaC2));
-
-        Asiento butacaC3 = new Asiento(C3);
-        C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C3.addMouseListener(adapter(butacaC3));
-
-        Asiento butacaC4 = new Asiento(C4);
-        C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C4.addMouseListener(adapter(butacaC4));
-
-        Asiento butacaC5 = new Asiento(C5);
-        C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C5.addMouseListener(adapter(butacaC5));
-
-        Asiento butacaC6 = new Asiento(C6);
-        C6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C6.addMouseListener(adapter(butacaC6));
-
-        Asiento butacaC7 = new Asiento(C7);
-        C7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C7.addMouseListener(adapter(butacaC7));
-
-        Asiento butacaC8 = new Asiento(C8);
-        C8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C8.addMouseListener(adapter(butacaC8));
-
-        Asiento butacaC9 = new Asiento(C9);
-        C9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C9.addMouseListener(adapter(butacaC9));
-
-        Asiento butacaC10 = new Asiento(C10);
-        C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C10.addMouseListener(adapter(butacaC10));
-
-        Asiento butacaC11 = new Asiento(C11);
-        C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C11.addMouseListener(adapter(butacaC11));
-
-        Asiento butacaC12 = new Asiento(C12);
-        C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C12.addMouseListener(adapter(butacaC12));
-
-        Asiento butacaC13 = new Asiento(C13);
-        C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C13.addMouseListener(adapter(butacaC13));
-
-        Asiento butacaC14 = new Asiento(C14);
-        C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C14.addMouseListener(adapter(butacaC14));
-
-        Asiento butacaC15 = new Asiento(C15);
-        C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C15.addMouseListener(adapter(butacaC15));
-
-        Asiento butacaC16 = new Asiento(C16);
-        C16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C16.addMouseListener(adapter(butacaC16));
-
-        Asiento butacaC17 = new Asiento(C17);
-        C17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C17.addMouseListener(adapter(butacaC17));
-
-        Asiento butacaC18 = new Asiento(C18);
-        C18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C18.addMouseListener(adapter(butacaC18));
-
-        Asiento butacaC19 = new Asiento(C19);
-        C19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C19.addMouseListener(adapter(butacaC19));
-
-        Asiento butacaC20 = new Asiento(C20);
-        C20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        C20.addMouseListener(adapter(butacaC20));
-
-        Asiento butacaB1 = new Asiento(B1);
-        B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B1.addMouseListener(adapter(butacaB1));
-
-        Asiento butacaB2 = new Asiento(B2);
-        B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B2.addMouseListener(adapter(butacaB2));
-
-        Asiento butacaB3 = new Asiento(B3);
-        B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B3.addMouseListener(adapter(butacaB3));
-
-        Asiento butacaB4 = new Asiento(B4);
-        B4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B4.addMouseListener(adapter(butacaB4));
-
-        Asiento butacaB5 = new Asiento(B5);
-        B5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B5.addMouseListener(adapter(butacaB5));
-
-        Asiento butacaB6 = new Asiento(B6);
-        B6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B6.addMouseListener(adapter(butacaB6));
-
-        Asiento butacaB7 = new Asiento(B7);
-        B7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B7.addMouseListener(adapter(butacaB7));
-
-        Asiento butacaB8 = new Asiento(B8);
-        B8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B8.addMouseListener(adapter(butacaB8));
-
-        Asiento butacaB9 = new Asiento(B9);
-        B9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B9.addMouseListener(adapter(butacaB9));
-
-        Asiento butacaB10 = new Asiento(B10);
-        B10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B10.addMouseListener(adapter(butacaB10));
-
-        Asiento butacaB11 = new Asiento(B11);
-        B11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B11.addMouseListener(adapter(butacaB11));
-
-        Asiento butacaB12 = new Asiento(B12);
-        B12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B12.addMouseListener(adapter(butacaB12));
-
-        Asiento butacaB13 = new Asiento(B13);
-        B13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B13.addMouseListener(adapter(butacaB13));
-
-        Asiento butacaB14 = new Asiento(B14);
-        B14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B14.addMouseListener(adapter(butacaB14));
-
-        Asiento butacaB15 = new Asiento(B15);
-        B15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B15.addMouseListener(adapter(butacaB15));
-
-        Asiento butacaB16 = new Asiento(B16);
-        B16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B16.addMouseListener(adapter(butacaB16));
-
-        Asiento butacaB17 = new Asiento(B17);
-        B17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B17.addMouseListener(adapter(butacaB17));
-
-        Asiento butacaB18 = new Asiento(B18);
-        B18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B18.addMouseListener(adapter(butacaB18));
-
-        Asiento butacaB19 = new Asiento(B19);
-        B19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B19.addMouseListener(adapter(butacaB19));
-
-        Asiento butacaB20 = new Asiento(B20);
-        B20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        B20.addMouseListener(adapter(butacaB20));
-
-        Asiento butacaA1 = new Asiento(A1);
-        A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A1.addMouseListener(adapter(butacaA1));
-
-        Asiento butacaA2 = new Asiento(A2);
-        A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A2.addMouseListener(adapter(butacaA2));
-
-        Asiento butacaA3 = new Asiento(A3);
-        A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A3.addMouseListener(adapter(butacaA3));
-
-        Asiento butacaA4 = new Asiento(A4);
-        A4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A4.addMouseListener(adapter(butacaA4));
-
-        Asiento butacaA5 = new Asiento(A5);
-        A5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A5.addMouseListener(adapter(butacaA5));
-
-        Asiento butacaA6 = new Asiento(A6);
-        A6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A6.addMouseListener(adapter(butacaA6));
-
-        Asiento butacaA7 = new Asiento(A7);
-        A7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A7.addMouseListener(adapter(butacaA7));
-
-        Asiento butacaA8 = new Asiento(A8);
-        A8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A8.addMouseListener(adapter(butacaA8));
-
-        Asiento butacaA9 = new Asiento(A9);
-        A9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A9.addMouseListener(adapter(butacaA9));
-
-        Asiento butacaA10 = new Asiento(A10);
-        A10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A10.addMouseListener(adapter(butacaA10));
-
-        Asiento butacaA11 = new Asiento(A11);
-        A11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A11.addMouseListener(adapter(butacaA11));
-
-        Asiento butacaA12 = new Asiento(A12);
-        A12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A12.addMouseListener(adapter(butacaA12));
-
-        Asiento butacaA13 = new Asiento(A13);
-        A13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A13.addMouseListener(adapter(butacaA13));
-
-        Asiento butacaA14 = new Asiento(A14);
-        A14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A14.addMouseListener(adapter(butacaA14));
-
-        Asiento butacaA15 = new Asiento(A15);
-        A15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A15.addMouseListener(adapter(butacaA15));
-
-        Asiento butacaA16 = new Asiento(A16);
-        A16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A16.addMouseListener(adapter(butacaA16));
-
-        Asiento butacaA17 = new Asiento(A17);
-        A17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A17.addMouseListener(adapter(butacaA17));
-
-        Asiento butacaA18 = new Asiento(A18);
-        A18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A18.addMouseListener(adapter(butacaA18));
-
-        Asiento butacaA19 = new Asiento(A19);
-        A19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A19.addMouseListener(adapter(butacaA19));
-
-        Asiento butacaA20 = new Asiento(A20);
-        A20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png"))); // NOI18N
-        A20.addMouseListener(adapter(butacaA20));
+        jBAsientosDisponibles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H1.addMouseListener(adapter(H1));
+        jBAsientosDisponibles.add(H1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+
+        H2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H2.addMouseListener(adapter(H2));
+        jBAsientosDisponibles.add(H2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 30));
+
+        H3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H3.addMouseListener(adapter(H3));
+        jBAsientosDisponibles.add(H3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+
+        H4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H4.addMouseListener(adapter(H4));
+        jBAsientosDisponibles.add(H4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+
+        H5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H5.addMouseListener(adapter(H5));
+        jBAsientosDisponibles.add(H5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
+
+        H6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H6.addMouseListener(adapter(H6));
+        jBAsientosDisponibles.add(H6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+
+        H7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        H7.addMouseListener(adapter(H7));
+        jBAsientosDisponibles.add(H7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+
+        H8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        H8.addMouseListener(adapter(H8));
+        jBAsientosDisponibles.add(H8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
+
+        H9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        H9.addMouseListener(adapter(H9));
+        jBAsientosDisponibles.add(H9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+
+        H10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        H10.addMouseListener(adapter(H10));
+        jBAsientosDisponibles.add(H10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
+
+        H11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        H11.addMouseListener(adapter(H11));
+        jBAsientosDisponibles.add(H11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
+
+        H12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        H12.addMouseListener(adapter(H12));
+        jBAsientosDisponibles.add(H12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
+
+        H13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        H13.addMouseListener(adapter(H13));
+        jBAsientosDisponibles.add(H13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
+
+        H14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        H14.addMouseListener(adapter(H14));
+        jBAsientosDisponibles.add(H14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
+
+        H15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H15.addMouseListener(adapter(H15));
+        jBAsientosDisponibles.add(H15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
+
+        H16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H16.addMouseListener(adapter(H16));
+        jBAsientosDisponibles.add(H16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, -1, -1));
+
+        H17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H17.addMouseListener(adapter(H17));
+        jBAsientosDisponibles.add(H17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, -1, -1));
+
+        H18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H18.addMouseListener(adapter(H18));
+        jBAsientosDisponibles.add(H18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 110, -1, -1));
+
+        H19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H19.addMouseListener(adapter(H19));
+        jBAsientosDisponibles.add(H19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, -1, -1));
+
+        H20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        H20.addMouseListener(adapter(H20));
+        jBAsientosDisponibles.add(H20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 110, -1, -1));
+
+        G2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G2.addMouseListener(adapter(G2));
+        jBAsientosDisponibles.add(G2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+
+        G3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G3.addMouseListener(adapter(G3));
+        jBAsientosDisponibles.add(G3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
+
+        G4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G4.addMouseListener(adapter(G4));
+        jBAsientosDisponibles.add(G4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+
+        G5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G5.addMouseListener(adapter(G5));
+        jBAsientosDisponibles.add(G5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
+
+        G6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G6.addMouseListener(adapter(G6));
+        jBAsientosDisponibles.add(G6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
+
+        G7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        G7.addMouseListener(adapter(G7));
+        jBAsientosDisponibles.add(G7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+
+        G8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        G8.addMouseListener(adapter(G8));
+        jBAsientosDisponibles.add(G8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
+
+        G9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        G9.addMouseListener(adapter(G9));
+        jBAsientosDisponibles.add(G9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
+
+        G10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        G10.addMouseListener(adapter(G10));
+        jBAsientosDisponibles.add(G10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
+
+        G11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        G11.addMouseListener(adapter(G11));
+        jBAsientosDisponibles.add(G11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
+
+        G12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        G12.addMouseListener(adapter(G12));
+        jBAsientosDisponibles.add(G12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
+
+        G13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        G13.addMouseListener(adapter(G13));
+        jBAsientosDisponibles.add(G13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, -1, -1));
+
+        G14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        G14.addMouseListener(adapter(G14));
+        jBAsientosDisponibles.add(G14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
+
+        G15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G15.addMouseListener(adapter(G15));
+        jBAsientosDisponibles.add(G15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
+
+        G16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G16.addMouseListener(adapter(G16));
+        jBAsientosDisponibles.add(G16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, -1, -1));
+
+        G17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G17.addMouseListener(adapter(G17));
+        jBAsientosDisponibles.add(G17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
+
+        G18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G18.addMouseListener(adapter(G18));
+        jBAsientosDisponibles.add(G18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, -1, -1));
+
+        G19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G19.addMouseListener(adapter(G19));
+        jBAsientosDisponibles.add(G19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
+
+        G20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G20.addMouseListener(adapter(G20));
+        jBAsientosDisponibles.add(G20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 140, -1, -1));
+
+        F1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F1.addMouseListener(adapter(F1));
+        jBAsientosDisponibles.add(F1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+
+        F2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F2.addMouseListener(adapter(F2));
+        jBAsientosDisponibles.add(F2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+
+        F3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F3.addMouseListener(adapter(F3));
+        jBAsientosDisponibles.add(F3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+
+        F4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F4.addMouseListener(adapter(F4));
+        jBAsientosDisponibles.add(F4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
+
+        F5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F5.addMouseListener(adapter(F5));
+        jBAsientosDisponibles.add(F5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+
+        F6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F6.addMouseListener(adapter(F6));
+        jBAsientosDisponibles.add(F6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
+
+        F7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        F7.addMouseListener(adapter(F7));
+        jBAsientosDisponibles.add(F7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
+
+        F8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        F8.addMouseListener(adapter(F8));
+        jBAsientosDisponibles.add(F8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+
+        F9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        F9.addMouseListener(adapter(F9));
+        jBAsientosDisponibles.add(F9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
+
+        F10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        F10.addMouseListener(adapter(F10));
+        jBAsientosDisponibles.add(F10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
+
+        F11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        F11.addMouseListener(adapter(F11));
+        jBAsientosDisponibles.add(F11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
+
+        F12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        F12.addMouseListener(adapter(F12));
+        jBAsientosDisponibles.add(F12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
+
+        F13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        F13.addMouseListener(adapter(F13));
+        jBAsientosDisponibles.add(F13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+
+        F14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        F14.addMouseListener(adapter(F14));
+        jBAsientosDisponibles.add(F14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
+
+        F15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F15.addMouseListener(adapter(F15));
+        jBAsientosDisponibles.add(F15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, -1, -1));
+
+        F16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F16.addMouseListener(adapter(F16));
+        jBAsientosDisponibles.add(F16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+
+        F17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F17.addMouseListener(adapter(F17));
+        jBAsientosDisponibles.add(F17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, -1, -1));
+
+        F18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F18.addMouseListener(adapter(F18));
+        jBAsientosDisponibles.add(F18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, -1, -1));
+
+        F19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F19.addMouseListener(adapter(F19));
+        jBAsientosDisponibles.add(F19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
+
+        F20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        F20.addMouseListener(adapter(F20));
+        jBAsientosDisponibles.add(F20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 170, -1, -1));
+
+        E1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E1.addMouseListener(adapter(E1));
+        jBAsientosDisponibles.add(E1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
+
+        E2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E2.addMouseListener(adapter(E2));
+        jBAsientosDisponibles.add(E2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+
+        E3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E3.addMouseListener(adapter(E3));
+        jBAsientosDisponibles.add(E3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+
+        E4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E4.addMouseListener(adapter(E4));
+        jBAsientosDisponibles.add(E4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+
+        E5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E5.addMouseListener(adapter(E5));
+        jBAsientosDisponibles.add(E5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+
+        E6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E6.addMouseListener(adapter(E6));
+        jBAsientosDisponibles.add(E6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
+
+        E7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        E7.addMouseListener(adapter(E7));
+        jBAsientosDisponibles.add(E7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
+
+        E8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        E8.addMouseListener(adapter(E8));
+        jBAsientosDisponibles.add(E8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
+
+        E9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        E9.addMouseListener(adapter(E9));
+        jBAsientosDisponibles.add(E9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
+
+        E10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        E10.addMouseListener(adapter(E10));
+        jBAsientosDisponibles.add(E10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
+
+        E11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        E11.addMouseListener(adapter(E11));
+        jBAsientosDisponibles.add(E11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
+
+        E12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        E12.addMouseListener(adapter(E12));
+        jBAsientosDisponibles.add(E12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
+
+        E13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        E13.addMouseListener(adapter(E13));
+        jBAsientosDisponibles.add(E13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
+
+        E14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        E14.addMouseListener(adapter(E14));
+        jBAsientosDisponibles.add(E14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, -1, -1));
+
+        E15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E15.addMouseListener(adapter(E15));
+        jBAsientosDisponibles.add(E15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, -1, -1));
+
+        E16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E16.addMouseListener(adapter(E16));
+        jBAsientosDisponibles.add(E16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, -1));
+
+        E17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E17.addMouseListener(adapter(E17));
+        jBAsientosDisponibles.add(E17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, -1, -1));
+
+        E18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E18.addMouseListener(adapter(E18));
+        jBAsientosDisponibles.add(E18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
+
+        E19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E19.addMouseListener(adapter(E19));
+        jBAsientosDisponibles.add(E19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, -1, -1));
+
+        E20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        E20.addMouseListener(adapter(E20));
+        jBAsientosDisponibles.add(E20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, -1, -1));
+
+        D1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D1.addMouseListener(adapter(D1));
+        jBAsientosDisponibles.add(D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+
+        D2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D2.addMouseListener(adapter(D2));
+        jBAsientosDisponibles.add(D2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+
+        D3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D3.addMouseListener(adapter(D3));
+        jBAsientosDisponibles.add(D3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        D4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D4.addMouseListener(adapter(D4));
+        jBAsientosDisponibles.add(D4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+
+        D5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D5.addMouseListener(adapter(D5));
+        jBAsientosDisponibles.add(D5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        D6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D6.addMouseListener(adapter(D6));
+        jBAsientosDisponibles.add(D6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+
+        D7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        D7.addMouseListener(adapter(D7));
+        jBAsientosDisponibles.add(D7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+
+        D8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        D8.addMouseListener(adapter(D8));
+        jBAsientosDisponibles.add(D8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
+
+        D9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        D9.addMouseListener(adapter(D9));
+        jBAsientosDisponibles.add(D9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
+
+        D10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        D10.addMouseListener(adapter(D10));
+        jBAsientosDisponibles.add(D10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+
+        D11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        D11.addMouseListener(adapter(D11));
+        jBAsientosDisponibles.add(D11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+
+        D12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        D12.addMouseListener(adapter(D12));
+        jBAsientosDisponibles.add(D12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
+
+        D13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        D13.addMouseListener(adapter(D13));
+        jBAsientosDisponibles.add(D13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
+
+        D14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        D14.addMouseListener(adapter(D14));
+        jBAsientosDisponibles.add(D14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, -1));
+
+        D15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D15.addMouseListener(adapter(D15));
+        jBAsientosDisponibles.add(D15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
+
+        D16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D16.addMouseListener(adapter(D16));
+        jBAsientosDisponibles.add(D16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, -1, -1));
+
+        D17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D17.addMouseListener(adapter(D17));
+        jBAsientosDisponibles.add(D17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, -1, -1));
+
+        D18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D18.addMouseListener(adapter(D18));
+        jBAsientosDisponibles.add(D18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
+
+        D19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D19.addMouseListener(adapter(D19));
+        jBAsientosDisponibles.add(D19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
+
+        D20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        D20.addMouseListener(adapter(D20));
+        jBAsientosDisponibles.add(D20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, -1, -1));
+
+        C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C1.addMouseListener(adapter(C1));
+        jBAsientosDisponibles.add(C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+
+        C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C2.addMouseListener(adapter(C2));
+        jBAsientosDisponibles.add(C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+
+        C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C3.addMouseListener(adapter(C3));
+        jBAsientosDisponibles.add(C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+
+        C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C4.addMouseListener(adapter(C4));
+        jBAsientosDisponibles.add(C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
+
+        C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C5.addMouseListener(adapter(C5));
+        jBAsientosDisponibles.add(C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+
+        C6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C6.addMouseListener(adapter(C6));
+        jBAsientosDisponibles.add(C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
+
+        C7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        C7.addMouseListener(adapter(C7));
+        jBAsientosDisponibles.add(C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+
+        C8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        C8.addMouseListener(adapter(C8));
+        jBAsientosDisponibles.add(C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+
+        C9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        C9.addMouseListener(adapter(C9));
+        jBAsientosDisponibles.add(C9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
+
+        C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        C10.addMouseListener(adapter(C10));
+        jBAsientosDisponibles.add(C10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
+
+        C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        C11.addMouseListener(adapter(C11));
+        jBAsientosDisponibles.add(C11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+
+        C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        C12.addMouseListener(adapter(C12));
+        jBAsientosDisponibles.add(C12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
+
+        C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        C13.addMouseListener(adapter(C13));
+        jBAsientosDisponibles.add(C13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, -1, -1));
+
+        C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        C14.addMouseListener(adapter(C14));
+        jBAsientosDisponibles.add(C14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
+
+        C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C15.addMouseListener(adapter(C15));
+        jBAsientosDisponibles.add(C15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, -1));
+
+        C16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C16.addMouseListener(adapter(C16));
+        jBAsientosDisponibles.add(C16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, -1, -1));
+
+        C17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C17.addMouseListener(adapter(C17));
+        jBAsientosDisponibles.add(C17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
+
+        C18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C18.addMouseListener(adapter(C18));
+        jBAsientosDisponibles.add(C18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
+
+        C19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C19.addMouseListener(adapter(C19));
+        jBAsientosDisponibles.add(C19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, -1));
+
+        C20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        C20.addMouseListener(adapter(C20));
+        jBAsientosDisponibles.add(C20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 260, -1, -1));
+
+        B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B1.addMouseListener(adapter(B1));
+        jBAsientosDisponibles.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+
+        B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B2.addMouseListener(adapter(B2));
+        jBAsientosDisponibles.add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+
+        B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B3.addMouseListener(adapter(B3));
+        jBAsientosDisponibles.add(B3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
+
+        B4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B4.addMouseListener(adapter(B4));
+        jBAsientosDisponibles.add(B4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
+
+        B5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B5.addMouseListener(adapter(B5));
+        jBAsientosDisponibles.add(B5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
+
+        B6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B6.addMouseListener(adapter(B6));
+        jBAsientosDisponibles.add(B6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, -1));
+
+        B7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        B7.addMouseListener(adapter(B7));
+        jBAsientosDisponibles.add(B7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, -1, -1));
+
+        B8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        B8.addMouseListener(adapter(B8));
+        jBAsientosDisponibles.add(B8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+
+        B9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        B9.addMouseListener(adapter(B9));
+        jBAsientosDisponibles.add(B9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, -1));
+
+        B10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        B10.addMouseListener(adapter(B10));
+        jBAsientosDisponibles.add(B10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
+
+        B11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        B11.addMouseListener(adapter(B11));
+        jBAsientosDisponibles.add(B11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
+
+        B12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        B12.addMouseListener(adapter(B12));
+        jBAsientosDisponibles.add(B12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
+
+        B13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        B13.addMouseListener(adapter(B13));
+        jBAsientosDisponibles.add(B13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, -1, -1));
+
+        B14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        B14.addMouseListener(adapter(B14));
+        jBAsientosDisponibles.add(B14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
+
+        B15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B15.addMouseListener(adapter(B15));
+        jBAsientosDisponibles.add(B15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, -1, -1));
+
+        B16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B16.addMouseListener(adapter(B16));
+        jBAsientosDisponibles.add(B16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
+
+        B17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B17.addMouseListener(adapter(B17));
+        jBAsientosDisponibles.add(B17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
+
+        B18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B18.addMouseListener(adapter(B18));
+        jBAsientosDisponibles.add(B18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
+
+        B19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B19.addMouseListener(adapter(B19));
+        jBAsientosDisponibles.add(B19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, -1, -1));
+
+        B20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        B20.addMouseListener(adapter(B20));
+        jBAsientosDisponibles.add(B20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, -1, -1));
+
+        A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A1.addMouseListener(adapter(A1));
+        jBAsientosDisponibles.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+
+        A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A2.addMouseListener(adapter(A2));
+        jBAsientosDisponibles.add(A2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
+
+        A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A3.addMouseListener(adapter(A3));
+        jBAsientosDisponibles.add(A3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
+
+        A4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A4.addMouseListener(adapter(A4));
+        jBAsientosDisponibles.add(A4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
+
+        A5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A5.addMouseListener(adapter(A5));
+        jBAsientosDisponibles.add(A5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+
+        A6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A6.addMouseListener(adapter(A6));
+        jBAsientosDisponibles.add(A6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
+
+        A7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        A7.addMouseListener(adapter(A7));
+        jBAsientosDisponibles.add(A7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
+
+        A8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        A8.addMouseListener(adapter(A8));
+        jBAsientosDisponibles.add(A8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
+
+        A9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        A9.addMouseListener(adapter(A9));
+        jBAsientosDisponibles.add(A9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, -1));
+
+        A10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        A10.addMouseListener(adapter(A10));
+        jBAsientosDisponibles.add(A10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
+
+        A11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        A11.addMouseListener(adapter(A11));
+        jBAsientosDisponibles.add(A11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
+
+        A12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        A12.addMouseListener(adapter(A12));
+        jBAsientosDisponibles.add(A12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
+
+        A13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        A13.addMouseListener(adapter(A13));
+        jBAsientosDisponibles.add(A13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
+
+        A14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        A14.addMouseListener(adapter(A14));
+        jBAsientosDisponibles.add(A14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, -1, -1));
+
+        A15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A15.addMouseListener(adapter(A15));
+        jBAsientosDisponibles.add(A15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
+
+        A16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A16.addMouseListener(adapter(A16));
+        jBAsientosDisponibles.add(A16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, -1, -1));
+
+        A17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A17.addMouseListener(adapter(A17));
+        jBAsientosDisponibles.add(A17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, -1, -1));
+
+        A18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A18.addMouseListener(adapter(A18));
+        jBAsientosDisponibles.add(A18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, -1, -1));
+
+        A19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A19.addMouseListener(adapter(A19));
+        jBAsientosDisponibles.add(A19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, -1, -1));
+
+        A20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        A20.addMouseListener(adapter(A20));
+        jBAsientosDisponibles.add(A20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 320, -1, -1));
 
         Escenario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/escenario.png"))); // NOI18N
+        jBAsientosDisponibles.add(Escenario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
 
         H.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         H.setText("H");
+        jBAsientosDisponibles.add(H, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         G.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         G.setText("G");
+        jBAsientosDisponibles.add(G, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         F.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         F.setText("F");
+        jBAsientosDisponibles.add(F, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         E.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         E.setText("E");
+        jBAsientosDisponibles.add(E, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
         D.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         D.setText("D");
+        jBAsientosDisponibles.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         C.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         C.setText("C");
+        jBAsientosDisponibles.add(C, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
         B.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         B.setText("B");
+        jBAsientosDisponibles.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
         A.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         A.setText("A");
+        jBAsientosDisponibles.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         Num1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num1.setText("1");
+        jBAsientosDisponibles.add(Num1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         Num2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num2.setText("2");
+        jBAsientosDisponibles.add(Num2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         Num3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num3.setText("3");
+        jBAsientosDisponibles.add(Num3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
         Num4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num4.setText("4");
+        jBAsientosDisponibles.add(Num4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
         Num5.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num5.setText("5");
+        jBAsientosDisponibles.add(Num5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
 
         Num6.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num6.setText("6");
+        jBAsientosDisponibles.add(Num6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
 
         Num7.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num7.setText("7");
+        jBAsientosDisponibles.add(Num7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
 
         Num8.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num8.setText("8");
+        jBAsientosDisponibles.add(Num8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
 
         Num9.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num9.setText("9");
+        jBAsientosDisponibles.add(Num9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
         Num10.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num10.setText("10");
+        jBAsientosDisponibles.add(Num10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
         Num11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num11.setText("11");
+        jBAsientosDisponibles.add(Num11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, -1));
 
         Num12.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num12.setText("12");
+        jBAsientosDisponibles.add(Num12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         Num13.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num13.setText("13");
+        jBAsientosDisponibles.add(Num13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
         Num14.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num14.setText("14");
+        jBAsientosDisponibles.add(Num14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
 
         Num15.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num15.setText("15");
+        jBAsientosDisponibles.add(Num15, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
 
         Num16.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num16.setText("16");
+        jBAsientosDisponibles.add(Num16, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, -1, -1));
 
         Num17.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num17.setText("17");
+        jBAsientosDisponibles.add(Num17, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, -1, -1));
 
         Num18.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num18.setText("18");
+        jBAsientosDisponibles.add(Num18, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, -1, -1));
 
         Num19.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num19.setText("19");
+        jBAsientosDisponibles.add(Num19, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
 
         Num20.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         Num20.setText("20");
+        jBAsientosDisponibles.add(Num20, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, -1));
 
-        javax.swing.GroupLayout jBAsientosDisponiblesLayout = new javax.swing.GroupLayout(jBAsientosDisponibles);
-        jBAsientosDisponibles.setLayout(jBAsientosDisponiblesLayout);
-        jBAsientosDisponiblesLayout.setHorizontalGroup(
-            jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(Escenario))
-                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(H)
-                                    .addComponent(G)
-                                    .addComponent(F)
-                                    .addComponent(E))
-                                .addComponent(C, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(D, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(B, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(A, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                .addComponent(C1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                .addComponent(F1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(F20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(H1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(G1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addComponent(Num1)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                        .addComponent(G2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(G20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addComponent(H2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addGap(11, 11, 11)
-                                                .addComponent(Num2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(Num3)
-                                                .addGap(17, 17, 17)))
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addComponent(H4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(Num4)
-                                                .addGap(27, 27, 27)
-                                                .addComponent(Num5)
-                                                .addGap(28, 28, 28)
-                                                .addComponent(Num6)))
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addGap(16, 16, 16)
-                                                .addComponent(Num7)
-                                                .addGap(27, 27, 27)
-                                                .addComponent(Num8)
-                                                .addGap(27, 27, 27)
-                                                .addComponent(Num9)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(Num10)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(H11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Num11))
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(H13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addGap(24, 24, 24)
-                                                .addComponent(Num12)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(Num13)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(H14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Num14))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(H15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Num15))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(H16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Num16))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(H17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Num17))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(H18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Num18))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(H19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Num19))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(H20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Num20)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBAsientosDisponiblesLayout.createSequentialGroup()
-                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                        .addComponent(E1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                        .addComponent(D1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                        .addComponent(D17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(D20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                        .addComponent(E17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(E20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                .addComponent(A1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(A17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
-        jBAsientosDisponiblesLayout.setVerticalGroup(
-            jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Num3)
-                            .addComponent(Num4)
-                            .addComponent(Num5)
-                            .addComponent(Num6)
-                            .addComponent(Num7)
-                            .addComponent(Num8)
-                            .addComponent(Num9)
-                            .addComponent(Num10)
-                            .addComponent(Num11)
-                            .addComponent(Num12)
-                            .addComponent(Num13)
-                            .addComponent(Num14)
-                            .addComponent(Num15)
-                            .addComponent(Num16)
-                            .addComponent(Num17)
-                            .addComponent(Num18)
-                            .addComponent(Num19)
-                            .addComponent(Num20)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBAsientosDisponiblesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Num1)
-                            .addComponent(Num2))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(jBAsientosDisponiblesLayout.createSequentialGroup()
-                                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                            .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(H20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(H5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addComponent(H))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(G1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(G6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addComponent(G))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(F1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(F16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(F))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(E1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(E16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(E))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(D1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(D))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(C1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(C, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(C3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(B11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(B))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBAsientosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(A1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(A6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(A, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(A9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(A10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(A11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(A12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(A13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(A14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(A15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(A16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(Escenario)
-                .addContainerGap(154, Short.MAX_VALUE))
-        );
+        G1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        G1.addMouseListener(adapter(G1));
+        jBAsientosDisponibles.add(G1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
 
-        getContentPane().add(jBAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 870, 640));
+        getContentPane().add(jBAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 540));
 
         jPCancelarFuncion.setVisible(false);
         jPCancelarFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
         jPCancelarFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBCancelarFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBCancelarFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -1686,23 +1160,23 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                         .addGap(68, 68, 68)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                        .addGap(241, 241, 241)
+                        .addGap(225, 225, 225)
                         .addComponent(jLabel3))
                     .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                        .addGap(252, 252, 252)
+                        .addGap(222, 222, 222)
                         .addComponent(jBCancelarFuncionSeleccionada)))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         jPCancelarFuncionLayout.setVerticalGroup(
             jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                .addGap(683, 683, 683)
+                .addGap(194, 194, 194)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(59, 59, 59)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(79, 79, 79)
                 .addComponent(jBCancelarFuncionSeleccionada)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(439, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPCancelarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 620));
@@ -1887,6 +1361,23 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBFunciones, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPFunciones, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Funcion");
+
+        jBAsientos.setText("Asientos Disponibles");
+        jBAsientos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBAsientosMouseClicked(evt);
+            }
+        });
+
+        jLabel7.setText("Lista de Funciones");
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1900,55 +1391,42 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jTextField1.setText("jTextField1");
-
-        jLabel1.setText("Funcion");
-
-        jBAsientos.setText("Asientos Disponibles");
-        jBAsientos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBAsientosMouseClicked(evt);
-            }
-        });
-
-        jLabel7.setText("Lista de Funciones");
-
         javax.swing.GroupLayout jPFuncionesLayout = new javax.swing.GroupLayout(jPFunciones);
         jPFunciones.setLayout(jPFuncionesLayout);
         jPFuncionesLayout.setHorizontalGroup(
             jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPFuncionesLayout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPFuncionesLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1)
-                        .addGap(112, 112, 112)
-                        .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBAsientos)))
-                    .addGroup(jPFuncionesLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 127, Short.MAX_VALUE))
-            .addGroup(jPFuncionesLayout.createSequentialGroup()
-                .addGap(251, 251, 251)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(216, 216, 216))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
+                        .addComponent(jBAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
+                        .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPFuncionesLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(96, 96, 96))))
         );
         jPFuncionesLayout.setVerticalGroup(
             jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPFuncionesLayout.createSequentialGroup()
-                .addGap(166, 166, 166)
+                .addGap(157, 157, 157)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(49, 49, 49)
                 .addComponent(jBAsientos)
-                .addGap(161, 161, 161))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPFunciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 620, 630));
@@ -2001,67 +1479,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPCancelarBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 640));
 
-        jPCrearFuncion.setVisible(false);
-        jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
-        jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBCrearFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCrearFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
-
-        jBCrearFuncion_Main.setText("Atras");
-
-        jLabel10.setText("Nombre de la Funcion");
-
-        jLabel11.setText("Horario de la Funcion");
-
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-
-        jBAneadirFuncion.setText("Crear Funcion");
-
-        javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
-        jPCrearFuncion.setLayout(jPCrearFuncionLayout);
-        jPCrearFuncionLayout.setHorizontalGroup(
-            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jBCrearFuncion_Main)))
-                .addGap(130, 130, 130)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBAneadirFuncion)
-                    .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField7)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
-                .addContainerGap(211, Short.MAX_VALUE))
-        );
-        jPCrearFuncionLayout.setVerticalGroup(
-            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jBCrearFuncion_Main)
-                .addGap(61, 61, 61)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
-                .addComponent(jBAneadirFuncion)
-                .addContainerGap(356, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 670));
-
         jPReporteDeVentas.setVisible(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBReporteDeVentas, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPReporteDeVentas, org.jdesktop.beansbinding.BeanProperty.create("background"));
@@ -2096,9 +1513,9 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
     private void jBCrearFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearFuncionActionPerformed
         // TODO add your handling code here:
-         jPMenuPrincipal.setVisible(false);
-         jPCrearFuncion.setVisible(true);
-         jBRegresar.setVisible(true);
+        jPMenuPrincipal.setVisible(false);
+        jPCrearFuncion.setVisible(true);
+        jBRegresar.setVisible(true);
     }//GEN-LAST:event_jBCrearFuncionActionPerformed
 
     private void jBVenderBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVenderBoletoActionPerformed
@@ -2117,25 +1534,27 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
     private void jBFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFuncionesActionPerformed
         // TODO add your handling code here:
-         jPMenuPrincipal.setVisible(false);
-         jPFunciones.setVisible(true);
-         jBRegresar.setVisible(true);
+
+        jPMenuPrincipal.setVisible(false);
+        jPFunciones.setVisible(true);
+        jBRegresar.setVisible(true);
+
     }//GEN-LAST:event_jBFuncionesActionPerformed
 
     private void jBCancelarFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarFuncionActionPerformed
         // TODO add your handling code here:
-         jPMenuPrincipal.setVisible(false);
-         jPCancelarFuncion.setVisible(true);
-         jBRegresar.setVisible(true);
+        jPMenuPrincipal.setVisible(false);
+        jPCancelarFuncion.setVisible(true);
+        jBRegresar.setVisible(true);
     }//GEN-LAST:event_jBCancelarFuncionActionPerformed
 
     private void jBCancelarFuncionSeleccionadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarFuncionSeleccionadaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBCancelarFuncionSeleccionadaActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void JTxtHorarioFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTxtHorarioFuncionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_JTxtHorarioFuncionActionPerformed
 
     private void jBReporteDeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReporteDeVentasActionPerformed
         // TODO add your handling code here:
@@ -2162,30 +1581,103 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPFunciones.setVisible(false);
         jBAsientosDisponibles.setVisible(true);
     }//GEN-LAST:event_jBAsientosMouseClicked
-    
-    private void MouseEntered(MouseEvent evt, JLabel jl) {                                
-        // TODO add your handling code here:
-        jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde.png")));
+
+    public void conectController(Controller c){
+        
+        
+        jBAneadirFuncion.addActionListener(c);
+        jBAneadirFuncion.setActionCommand("INSERT");
+        
+        jTable1.addMouseListener(c);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-    private void MouseExited(MouseEvent evt, Asiento butaca) {                               
+    private void jBAneadirFuncionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAneadirFuncionMouseClicked
         // TODO add your handling code here:
-        if(butaca.isLock() != true) {
-            butaca.getJl().setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul.png")));
+        String nombreFuncion = JTxtNombreFuncion.getText(),
+                horarioFuncion = JTxtHorarioFuncion.getText(),
+                sql = "";
+        sql = "INSERT funcion(idFuncion,NombreFuncion,InicioFuncion, Duracion, FinalFuncion) VALUES (?,?,?,?,?)";
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, 0);
+            pst.setString(2, nombreFuncion);
+            pst.setString(3, horarioFuncion);
+            pst.setString(4, "8");
+            pst.setString(5, "8");
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(vistaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBAneadirFuncionMouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jBAneadirFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAneadirFuncionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAneadirFuncionActionPerformed
+
+    private void MouseEntered(MouseEvent evt, JLabel jl) {
+        // TODO add your handling code here:
+        String direccion[] = jl.getIcon().toString().split("classes");
+        switch (direccion[1]) {
+            case "/Images/asiento_azul_lata.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_lata.jpg")));
+                break;
+            case "/Images/asiento_azul_bronce.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_bronce.jpg")));
+                break;
+            case "/Images/asiento_azul_plata.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_plata.jpg")));
+                break;
+            case "/Images/asiento_azul_oro.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_oro.jpg")));
+                break;
+            case "/Images/asiento_azul_diamante.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_diamante.jpg")));
+                break;
         }
     }
-    private void MouseClicked(MouseEvent evt, Asiento butaca) {
-        butaca.setLock(true);
+
+    private void MouseExited(MouseEvent evt, JLabel jl) {
+        // TODO add your handling code here:
+        String direccion[] = jl.getIcon().toString().split("classes");
+        switch (direccion[1]) {
+            case "/Images/asiento_verde_lata.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg")));
+                break;
+            case "/Images/asiento_verde_bronce.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg")));
+                break;
+            case "/Images/asiento_verde_plata.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg")));
+                break;
+            case "/Images/asiento_verde_oro.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg")));
+                break;
+            case "/Images/asiento_verde_diamante.jpg":
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg")));
+                break;
+        }
     }
-    private MouseAdapter adapter(Asiento butaca) {
-        MouseAdapter mouseAdapter = new MouseAdapter(){
+
+    private void MouseClicked(MouseEvent evt, JLabel jl) {
+
+    }
+
+    private MouseAdapter adapter(JLabel jl) {
+        MouseAdapter mouseAdapter = new MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                MouseEntered(evt,butaca.getJl());
+                MouseEntered(evt, jl);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                MouseExited(evt,butaca);
+                MouseExited(evt, jl);
             }
+
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MouseClicked(evt,butaca);
+                MouseClicked(evt, jl);
             }
         };
         return mouseAdapter;
@@ -2227,6 +1719,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Generador de visor en forma de tabla extraida de la base de datos del
+     * sistema
+     */
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel A;
     private javax.swing.JLabel A1;
@@ -2397,6 +1894,8 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel H7;
     private javax.swing.JLabel H8;
     private javax.swing.JLabel H9;
+    public javax.swing.JTextField JTxtHorarioFuncion;
+    public javax.swing.JTextField JTxtNombreFuncion;
     private javax.swing.JLabel Num1;
     private javax.swing.JLabel Num10;
     private javax.swing.JLabel Num11;
@@ -2426,7 +1925,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBCancelarFuncionSeleccionada;
     private javax.swing.JButton jBComprarBoletos;
     private javax.swing.JButton jBCrearFuncion;
-    private javax.swing.JButton jBCrearFuncion_Main;
     private javax.swing.JButton jBFunciones;
     private javax.swing.JButton jBRegresar;
     private javax.swing.JButton jBReporteDeVentas;
@@ -2453,17 +1951,16 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    public javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable2;
+    public javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -12,25 +12,9 @@ import javax.swing.JLabel;
  * @author b1796
  */
 public class Asiento {
-    private boolean lock;
     private JLabel jl;
     public Asiento (JLabel jl) {
-        this.lock = false;
         this.jl= jl;
-    }
-
-    /**
-     * @return the lock
-     */
-    public boolean isLock() {
-        return lock;
-    }
-
-    /**
-     * @param lock the lock to set
-     */
-    public void setLock(boolean lock) {
-        this.lock = lock;
     }
 
     /**
