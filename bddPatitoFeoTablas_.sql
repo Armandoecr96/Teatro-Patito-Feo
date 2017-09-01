@@ -1,1 +1,0 @@
-SELECT * FROM teatro_patito_feo.funcion;
