@@ -12,28 +12,28 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
 import vista.vistaMenuPrincipal;
 
 /**
  *
  * @author arman
  */
-public class Controller implements ActionListener, MouseListener{
-    
+public class Controller implements ActionListener, MouseListener {
+
     private vistaMenuPrincipal view;
     private Conexion conect;
     private Connection cn;
 
-     /**
+    /**
      * Constructor
+     *
+     * @param view
      */
     public Controller(vistaMenuPrincipal view) {
         this.view = view;
@@ -41,12 +41,10 @@ public class Controller implements ActionListener, MouseListener{
     }
 
     private void cargarTabla() {
-        
-        
+
         this.view.modelo.addColumn("Funcion");
         this.view.modelo.addColumn("Horario");
 
-        
         this.view.jTable1.setModel(this.view.modelo);
         this.view.jTable2.setModel(this.view.modelo);
         this.view.jTable3.setModel(this.view.modelo);
@@ -69,9 +67,11 @@ public class Controller implements ActionListener, MouseListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-       //Objeto para ejecutar los procedimientos almacenados
+        //Objeto para ejecutar los procedimientos almacenados
         //   en la base de datos
-        CallableStatement cs;
+        String nombreFuncion = this.view.JTxtNombreFuncion.getText(),
+                horarioFuncion = this.view.JTxtHorarioFuncion.getText();
+        String sql = "INSERT funcion(idFuncion,NombreFuncion,InicioFuncion, Duracion, FinalFuncion) VALUES (?,?,?,?,?)";
 
         //COMANDO EJECTUADO
         String comando = ae.getActionCommand();
@@ -80,54 +80,25 @@ public class Controller implements ActionListener, MouseListener{
         //  indicados en setActionCommand invocado en la
         //  clase View
         switch (comando) {
-            case "INSERTAR":
+            case "INSERT": {
                 try {
-                    //Preparar la llamada
-                    cs = Conexion.getConnection().prepareCall(
-                            "{CALL insertarCliente(?,?,?)}");
-                    //Indicar qué información se pasa al
-                    //  procedimiento
-                    cs.setString(1,
-                            this.view.JTxtNombreFuncion.getText());
-                    cs.setString(2,
-                            this.view.JTxtHorarioFuncion.getText());
-                    //Ejecutar el procedimiento
-                    cs.execute();
-                } catch (SQLException e) {
-                    System.err.println("Error en la INSERCIÓN");
+                    PreparedStatement pst = cn.prepareStatement(sql);
+                    
+                    pst.setInt(1, 0);
+                    pst.setString(2, nombreFuncion);
+                    pst.setString(3, horarioFuncion);
+                    pst.setString(4, "8");
+                    pst.setString(5, "8");
+                    pst.executeUpdate();
+                } catch (SQLException ex) {
+
                 }
-
-                break;
-
-            case "BORRAR":
-                //Recoger qué fila se ha pulsado
-                int filaPulsada = this.view.jTable1.getSelectedRow();
-                //Si se ha pulsado una fila
-                if (filaPulsada >= 0) {
-                    //Se recoge el id de la fila marcada
-                    int identificador = (int) this.view.modelo.getValueAt(filaPulsada, 0);
-                    try {
-                        //Preparar la llamada
-                        cs = Conexion.getConnection().prepareCall(
-                                "{CALL borrarCliente(?)}");
-                        //Indicar qué información se pasa al procedimiento
-                        cs.setInt(1, identificador);
-                        //Ejecutar el procedimiento
-                        cs.execute();
-                        //System.out.println(this.view.dtm.getValueAt(filaPulsada, 0));
-                    } catch (SQLException e) {
-                        System.err.println("Error en el BORRADO");
-                    }
-                }
-
-                break;
-            default:
-                System.err.println("Comando no definido");
-                break;
+            }
+            break;
         }
         //limpiar el formulario
         limpia();
-        
+
         //refrescar la tabla
         cargarTabla();
     }
@@ -167,13 +138,20 @@ public class Controller implements ActionListener, MouseListener{
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {
+    }
+
     @Override
-    public void mouseReleased(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {
+    }
+
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {
+    }
+
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+    }
 
     private void limpia() {
         this.view.JTxtNombreFuncion.setText("");

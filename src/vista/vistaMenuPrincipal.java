@@ -33,16 +33,13 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
      */
     private ArrayList<Asiento> listaButacas;
     private int locationLabel;
-    private Conexion con;
-    private Connection cn;
+
     public DefaultTableModel modelo = new DefaultTableModel();
     
     public vistaMenuPrincipal() {
         initComponents();
         listaButacas = new ArrayList<Asiento>();
-        locationLabel = 0;
-        con = new Conexion();
-        cn = con.getConnection();  
+        locationLabel = 0; 
     }
 
     /**
@@ -1588,26 +1585,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jBAneadirFuncion.addActionListener(c);
         jBAneadirFuncion.setActionCommand("INSERT");
         
-        jTable1.addMouseListener(c);
-        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
     }
+    
     private void jBAneadirFuncionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAneadirFuncionMouseClicked
         // TODO add your handling code here:
-        String nombreFuncion = JTxtNombreFuncion.getText(),
-                horarioFuncion = JTxtHorarioFuncion.getText(),
-                sql = "";
-        sql = "INSERT funcion(idFuncion,NombreFuncion,InicioFuncion, Duracion, FinalFuncion) VALUES (?,?,?,?,?)";
-        try {
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, 0);
-            pst.setString(2, nombreFuncion);
-            pst.setString(3, horarioFuncion);
-            pst.setString(4, "8");
-            pst.setString(5, "8");
-            pst.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(vistaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_jBAneadirFuncionMouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -1663,7 +1646,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     }
 
     private void MouseClicked(MouseEvent evt, JLabel jl) {
-
+        
     }
 
     private MouseAdapter adapter(JLabel jl) {
@@ -1686,38 +1669,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vistaMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vistaMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vistaMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vistaMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new vistaMenuPrincipal().setVisible(true);
-            }
-        });
-    }
 
     /**
      * Generador de visor en forma de tabla extraida de la base de datos del

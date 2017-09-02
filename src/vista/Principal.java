@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Controller;
+import java.sql.Connection;
 import modelo.Conexion;
 
 /**
@@ -15,9 +16,10 @@ import modelo.Conexion;
 public class Principal {
     
     public static void main(String[] args) {
+        
         vistaMenuPrincipal view = new vistaMenuPrincipal();
+        
         Controller controller = new Controller(view);
-//Conexion a la abse de datos
         Conexion.getConnection(); 
         view.conectController(controller);
     }
