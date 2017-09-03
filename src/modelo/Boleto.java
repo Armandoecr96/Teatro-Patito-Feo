@@ -13,12 +13,10 @@ public class Boleto {
     
     private double precioDeBoleto;
     private Funcion funcionDelBoleto;
-    private Asiento asientoDelBoleto;
 
-    public Boleto(double precioDeBoleto, Funcion funcionDelBoleto, Asiento asientoDelBoleto) {
+    public Boleto(double precioDeBoleto, Funcion funcionDelBoleto) {
         this.precioDeBoleto = precioDeBoleto;
         this.funcionDelBoleto = funcionDelBoleto;
-        this.asientoDelBoleto = asientoDelBoleto;
     }
 
     public double getPrecioDeBoleto() {
@@ -36,14 +34,4 @@ public class Boleto {
     public void setFuncionDelBoleto(Funcion funcionDelBoleto) {
         this.funcionDelBoleto = funcionDelBoleto;
     }
-
-    public Asiento getAsientoDelBoleto() {
-        return asientoDelBoleto;
-    }
-
-    public void setAsientoDelBoleto(Asiento asientoDelBoleto) {
-        this.asientoDelBoleto = asientoDelBoleto;
-    }
-    
-   
 }

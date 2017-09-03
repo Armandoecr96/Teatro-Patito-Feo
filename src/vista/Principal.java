@@ -16,11 +16,7 @@ import modelo.Conexion;
 public class Principal {
     
     public static void main(String[] args) {
-        
-        vistaMenuPrincipal view = new vistaMenuPrincipal();
-        
-        Controller controller = new Controller(view);
-        Conexion.getConnection(); 
-        view.conectController(controller);
+        vistaMenuPrincipal view = new vistaMenuPrincipal(new Controller());
+        view.setVisible(true);
     }
 }

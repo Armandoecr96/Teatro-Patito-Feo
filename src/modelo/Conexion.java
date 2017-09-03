@@ -34,7 +34,7 @@ public class Conexion {
         }
     }
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         return conn;
     }
 

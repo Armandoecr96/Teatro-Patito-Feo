@@ -5,22 +5,8 @@
  */
 package vista;
 
-import modelo.Conexion;
 import controlador.Controller;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import modelo.Asiento;
 
 /**
  *
@@ -31,15 +17,15 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form menuPrincipal
      */
-    private ArrayList<Asiento> listaButacas;
-    private int locationLabel;
+    private Controller controller;
 
-    public DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo;
     
-    public vistaMenuPrincipal() {
+    public vistaMenuPrincipal(Controller controller) {
+        this.controller = controller;
+        modelo = new DefaultTableModel();
         initComponents();
-        listaButacas = new ArrayList<Asiento>();
-        locationLabel = 0; 
+        eventos();
     }
 
     /**
@@ -53,12 +39,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel2 = new javax.swing.JLabel();
-        jPCrearFuncion = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        JTxtNombreFuncion = new javax.swing.JTextField();
-        JTxtHorarioFuncion = new javax.swing.JTextField();
-        jBAneadirFuncion = new javax.swing.JButton();
         jBAsientosDisponibles = new javax.swing.JPanel();
         H1 = new javax.swing.JLabel();
         H2 = new javax.swing.JLabel();
@@ -80,6 +60,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         H18 = new javax.swing.JLabel();
         H19 = new javax.swing.JLabel();
         H20 = new javax.swing.JLabel();
+        G1 = new javax.swing.JLabel();
         G2 = new javax.swing.JLabel();
         G3 = new javax.swing.JLabel();
         G4 = new javax.swing.JLabel();
@@ -248,7 +229,16 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         Num18 = new javax.swing.JLabel();
         Num19 = new javax.swing.JLabel();
         Num20 = new javax.swing.JLabel();
-        G1 = new javax.swing.JLabel();
+        jPCrearFuncion = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        JTxtNombreFuncion = new javax.swing.JTextField();
+        jBCrearFuncion = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jComHoraInicioFuncion = new javax.swing.JComboBox<>();
+        jComMinutoInicioFuncion = new javax.swing.JComboBox<>();
+        jComHoraDuracion = new javax.swing.JComboBox<>();
+        jComMinutoDuracion = new javax.swing.JComboBox<>();
         jPCancelarFuncion = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -266,12 +256,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jBSeleccionarAsientosDeCompra = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jPMenuPrincipal = new javax.swing.JPanel();
-        jBVenderBoleto = new javax.swing.JButton();
-        jBCancelarBoleto = new javax.swing.JButton();
-        jBFunciones = new javax.swing.JButton();
-        jBCrearFuncion = new javax.swing.JButton();
-        jBCancelarFuncion = new javax.swing.JButton();
-        jBReporteDeVentas = new javax.swing.JButton();
+        jBMenuVenderBoleto = new javax.swing.JButton();
+        jBMenuCancelarBoleto = new javax.swing.JButton();
+        jBMenuFunciones = new javax.swing.JButton();
+        jBMenuCrearFuncion = new javax.swing.JButton();
+        jBMenuCancelarFuncion = new javax.swing.JButton();
+        jBMenuReporteDeVentas = new javax.swing.JButton();
         jPFunciones = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -294,707 +284,487 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Teatro Patito Feo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 16, -1, -1));
 
-        jPCrearFuncion.setVisible(false);
-        jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
-        jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBCrearFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCrearFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
-
-        jLabel10.setText("Nombre de la Funcion");
-
-        jLabel11.setText("Horario de la Funcion");
-
-        JTxtHorarioFuncion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTxtHorarioFuncionActionPerformed(evt);
-            }
-        });
-
-        jBAneadirFuncion.setText("Crear Funcion");
-        jBAneadirFuncion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBAneadirFuncionMouseClicked(evt);
-            }
-        });
-        jBAneadirFuncion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAneadirFuncionActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
-        jPCrearFuncion.setLayout(jPCrearFuncionLayout);
-        jPCrearFuncionLayout.setHorizontalGroup(
-            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(130, 130, 130)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBAneadirFuncion)
-                    .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(JTxtNombreFuncion)
-                        .addComponent(JTxtHorarioFuncion, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
-                .addContainerGap(211, Short.MAX_VALUE))
-        );
-        jPCrearFuncionLayout.setVerticalGroup(
-            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(JTxtHorarioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
-                .addComponent(jBAneadirFuncion)
-                .addContainerGap(380, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 670));
-
         jBAsientosDisponibles.setVisible(false);
         jBAsientosDisponibles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H1.addMouseListener(adapter(H1));
         jBAsientosDisponibles.add(H1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         H2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H2.addMouseListener(adapter(H2));
         jBAsientosDisponibles.add(H2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 30));
 
         H3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H3.addMouseListener(adapter(H3));
         jBAsientosDisponibles.add(H3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
         H4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H4.addMouseListener(adapter(H4));
         jBAsientosDisponibles.add(H4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
 
         H5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H5.addMouseListener(adapter(H5));
         jBAsientosDisponibles.add(H5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
         H6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H6.addMouseListener(adapter(H6));
         jBAsientosDisponibles.add(H6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
 
         H7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        H7.addMouseListener(adapter(H7));
         jBAsientosDisponibles.add(H7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         H8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        H8.addMouseListener(adapter(H8));
         jBAsientosDisponibles.add(H8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
 
         H9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        H9.addMouseListener(adapter(H9));
         jBAsientosDisponibles.add(H9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         H10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        H10.addMouseListener(adapter(H10));
         jBAsientosDisponibles.add(H10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
 
         H11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        H11.addMouseListener(adapter(H11));
         jBAsientosDisponibles.add(H11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
 
         H12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        H12.addMouseListener(adapter(H12));
         jBAsientosDisponibles.add(H12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
 
         H13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        H13.addMouseListener(adapter(H13));
         jBAsientosDisponibles.add(H13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
 
         H14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        H14.addMouseListener(adapter(H14));
         jBAsientosDisponibles.add(H14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
 
         H15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H15.addMouseListener(adapter(H15));
         jBAsientosDisponibles.add(H15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
 
         H16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H16.addMouseListener(adapter(H16));
         jBAsientosDisponibles.add(H16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, -1, -1));
 
         H17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H17.addMouseListener(adapter(H17));
         jBAsientosDisponibles.add(H17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, -1, -1));
 
         H18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H18.addMouseListener(adapter(H18));
         jBAsientosDisponibles.add(H18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 110, -1, -1));
 
         H19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H19.addMouseListener(adapter(H19));
         jBAsientosDisponibles.add(H19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, -1, -1));
 
         H20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        H20.addMouseListener(adapter(H20));
         jBAsientosDisponibles.add(H20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 110, -1, -1));
 
+        G1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jBAsientosDisponibles.add(G1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+
         G2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G2.addMouseListener(adapter(G2));
         jBAsientosDisponibles.add(G2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         G3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G3.addMouseListener(adapter(G3));
         jBAsientosDisponibles.add(G3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
 
         G4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G4.addMouseListener(adapter(G4));
         jBAsientosDisponibles.add(G4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
 
         G5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G5.addMouseListener(adapter(G5));
         jBAsientosDisponibles.add(G5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
         G6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G6.addMouseListener(adapter(G6));
         jBAsientosDisponibles.add(G6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
 
         G7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        G7.addMouseListener(adapter(G7));
         jBAsientosDisponibles.add(G7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
 
         G8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        G8.addMouseListener(adapter(G8));
         jBAsientosDisponibles.add(G8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
 
         G9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        G9.addMouseListener(adapter(G9));
         jBAsientosDisponibles.add(G9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
 
         G10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        G10.addMouseListener(adapter(G10));
         jBAsientosDisponibles.add(G10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
 
         G11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        G11.addMouseListener(adapter(G11));
         jBAsientosDisponibles.add(G11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
 
         G12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        G12.addMouseListener(adapter(G12));
         jBAsientosDisponibles.add(G12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
 
         G13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        G13.addMouseListener(adapter(G13));
         jBAsientosDisponibles.add(G13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, -1, -1));
 
         G14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        G14.addMouseListener(adapter(G14));
         jBAsientosDisponibles.add(G14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
 
         G15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G15.addMouseListener(adapter(G15));
         jBAsientosDisponibles.add(G15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
 
         G16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G16.addMouseListener(adapter(G16));
         jBAsientosDisponibles.add(G16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, -1, -1));
 
         G17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G17.addMouseListener(adapter(G17));
         jBAsientosDisponibles.add(G17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
 
         G18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G18.addMouseListener(adapter(G18));
         jBAsientosDisponibles.add(G18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, -1, -1));
 
         G19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G19.addMouseListener(adapter(G19));
         jBAsientosDisponibles.add(G19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
 
         G20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G20.addMouseListener(adapter(G20));
         jBAsientosDisponibles.add(G20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 140, -1, -1));
 
         F1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F1.addMouseListener(adapter(F1));
         jBAsientosDisponibles.add(F1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
         F2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F2.addMouseListener(adapter(F2));
         jBAsientosDisponibles.add(F2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
         F3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F3.addMouseListener(adapter(F3));
         jBAsientosDisponibles.add(F3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
 
         F4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F4.addMouseListener(adapter(F4));
         jBAsientosDisponibles.add(F4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
 
         F5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F5.addMouseListener(adapter(F5));
         jBAsientosDisponibles.add(F5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
 
         F6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F6.addMouseListener(adapter(F6));
         jBAsientosDisponibles.add(F6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
 
         F7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        F7.addMouseListener(adapter(F7));
         jBAsientosDisponibles.add(F7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
 
         F8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        F8.addMouseListener(adapter(F8));
         jBAsientosDisponibles.add(F8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
 
         F9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        F9.addMouseListener(adapter(F9));
         jBAsientosDisponibles.add(F9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
 
         F10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        F10.addMouseListener(adapter(F10));
         jBAsientosDisponibles.add(F10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
 
         F11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        F11.addMouseListener(adapter(F11));
         jBAsientosDisponibles.add(F11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
 
         F12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        F12.addMouseListener(adapter(F12));
         jBAsientosDisponibles.add(F12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
 
         F13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        F13.addMouseListener(adapter(F13));
         jBAsientosDisponibles.add(F13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
 
         F14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        F14.addMouseListener(adapter(F14));
         jBAsientosDisponibles.add(F14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
 
         F15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F15.addMouseListener(adapter(F15));
         jBAsientosDisponibles.add(F15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, -1, -1));
 
         F16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F16.addMouseListener(adapter(F16));
         jBAsientosDisponibles.add(F16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
         F17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F17.addMouseListener(adapter(F17));
         jBAsientosDisponibles.add(F17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, -1, -1));
 
         F18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F18.addMouseListener(adapter(F18));
         jBAsientosDisponibles.add(F18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, -1, -1));
 
         F19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F19.addMouseListener(adapter(F19));
         jBAsientosDisponibles.add(F19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
 
         F20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        F20.addMouseListener(adapter(F20));
         jBAsientosDisponibles.add(F20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 170, -1, -1));
 
         E1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E1.addMouseListener(adapter(E1));
         jBAsientosDisponibles.add(E1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
 
         E2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E2.addMouseListener(adapter(E2));
         jBAsientosDisponibles.add(E2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
 
         E3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E3.addMouseListener(adapter(E3));
         jBAsientosDisponibles.add(E3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
         E4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E4.addMouseListener(adapter(E4));
         jBAsientosDisponibles.add(E4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
         E5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E5.addMouseListener(adapter(E5));
         jBAsientosDisponibles.add(E5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
         E6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E6.addMouseListener(adapter(E6));
         jBAsientosDisponibles.add(E6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
 
         E7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        E7.addMouseListener(adapter(E7));
         jBAsientosDisponibles.add(E7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
 
         E8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        E8.addMouseListener(adapter(E8));
         jBAsientosDisponibles.add(E8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
         E9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        E9.addMouseListener(adapter(E9));
         jBAsientosDisponibles.add(E9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
 
         E10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        E10.addMouseListener(adapter(E10));
         jBAsientosDisponibles.add(E10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
 
         E11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        E11.addMouseListener(adapter(E11));
         jBAsientosDisponibles.add(E11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
 
         E12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        E12.addMouseListener(adapter(E12));
         jBAsientosDisponibles.add(E12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
 
         E13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        E13.addMouseListener(adapter(E13));
         jBAsientosDisponibles.add(E13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
 
         E14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        E14.addMouseListener(adapter(E14));
         jBAsientosDisponibles.add(E14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, -1, -1));
 
         E15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E15.addMouseListener(adapter(E15));
         jBAsientosDisponibles.add(E15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, -1, -1));
 
         E16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E16.addMouseListener(adapter(E16));
         jBAsientosDisponibles.add(E16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, -1));
 
         E17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E17.addMouseListener(adapter(E17));
         jBAsientosDisponibles.add(E17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, -1, -1));
 
         E18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E18.addMouseListener(adapter(E18));
         jBAsientosDisponibles.add(E18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
 
         E19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E19.addMouseListener(adapter(E19));
         jBAsientosDisponibles.add(E19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, -1, -1));
 
         E20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        E20.addMouseListener(adapter(E20));
         jBAsientosDisponibles.add(E20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, -1, -1));
 
         D1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D1.addMouseListener(adapter(D1));
         jBAsientosDisponibles.add(D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
         D2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D2.addMouseListener(adapter(D2));
         jBAsientosDisponibles.add(D2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
 
         D3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D3.addMouseListener(adapter(D3));
         jBAsientosDisponibles.add(D3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
         D4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D4.addMouseListener(adapter(D4));
         jBAsientosDisponibles.add(D4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         D5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D5.addMouseListener(adapter(D5));
         jBAsientosDisponibles.add(D5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
         D6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D6.addMouseListener(adapter(D6));
         jBAsientosDisponibles.add(D6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
 
         D7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        D7.addMouseListener(adapter(D7));
         jBAsientosDisponibles.add(D7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
 
         D8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        D8.addMouseListener(adapter(D8));
         jBAsientosDisponibles.add(D8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
 
         D9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        D9.addMouseListener(adapter(D9));
         jBAsientosDisponibles.add(D9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
         D10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        D10.addMouseListener(adapter(D10));
         jBAsientosDisponibles.add(D10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
 
         D11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        D11.addMouseListener(adapter(D11));
         jBAsientosDisponibles.add(D11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
 
         D12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        D12.addMouseListener(adapter(D12));
         jBAsientosDisponibles.add(D12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
 
         D13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        D13.addMouseListener(adapter(D13));
         jBAsientosDisponibles.add(D13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
 
         D14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        D14.addMouseListener(adapter(D14));
         jBAsientosDisponibles.add(D14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, -1));
 
         D15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D15.addMouseListener(adapter(D15));
         jBAsientosDisponibles.add(D15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
 
         D16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D16.addMouseListener(adapter(D16));
         jBAsientosDisponibles.add(D16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, -1, -1));
 
         D17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D17.addMouseListener(adapter(D17));
         jBAsientosDisponibles.add(D17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, -1, -1));
 
         D18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D18.addMouseListener(adapter(D18));
         jBAsientosDisponibles.add(D18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
 
         D19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D19.addMouseListener(adapter(D19));
         jBAsientosDisponibles.add(D19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
 
         D20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        D20.addMouseListener(adapter(D20));
         jBAsientosDisponibles.add(D20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, -1, -1));
 
         C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C1.addMouseListener(adapter(C1));
         jBAsientosDisponibles.add(C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
 
         C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C2.addMouseListener(adapter(C2));
         jBAsientosDisponibles.add(C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
         C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C3.addMouseListener(adapter(C3));
         jBAsientosDisponibles.add(C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
 
         C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C4.addMouseListener(adapter(C4));
         jBAsientosDisponibles.add(C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
 
         C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C5.addMouseListener(adapter(C5));
         jBAsientosDisponibles.add(C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
 
         C6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C6.addMouseListener(adapter(C6));
         jBAsientosDisponibles.add(C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
 
         C7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        C7.addMouseListener(adapter(C7));
         jBAsientosDisponibles.add(C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
 
         C8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        C8.addMouseListener(adapter(C8));
         jBAsientosDisponibles.add(C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         C9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        C9.addMouseListener(adapter(C9));
         jBAsientosDisponibles.add(C9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
 
         C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        C10.addMouseListener(adapter(C10));
         jBAsientosDisponibles.add(C10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
 
         C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        C11.addMouseListener(adapter(C11));
         jBAsientosDisponibles.add(C11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
 
         C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        C12.addMouseListener(adapter(C12));
         jBAsientosDisponibles.add(C12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
 
         C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        C13.addMouseListener(adapter(C13));
         jBAsientosDisponibles.add(C13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, -1, -1));
 
         C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        C14.addMouseListener(adapter(C14));
         jBAsientosDisponibles.add(C14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
 
         C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C15.addMouseListener(adapter(C15));
         jBAsientosDisponibles.add(C15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, -1));
 
         C16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C16.addMouseListener(adapter(C16));
         jBAsientosDisponibles.add(C16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, -1, -1));
 
         C17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C17.addMouseListener(adapter(C17));
         jBAsientosDisponibles.add(C17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
 
         C18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C18.addMouseListener(adapter(C18));
         jBAsientosDisponibles.add(C18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
 
         C19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C19.addMouseListener(adapter(C19));
         jBAsientosDisponibles.add(C19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, -1));
 
         C20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        C20.addMouseListener(adapter(C20));
         jBAsientosDisponibles.add(C20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 260, -1, -1));
 
         B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B1.addMouseListener(adapter(B1));
         jBAsientosDisponibles.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
 
         B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B2.addMouseListener(adapter(B2));
         jBAsientosDisponibles.add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B3.addMouseListener(adapter(B3));
         jBAsientosDisponibles.add(B3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
 
         B4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B4.addMouseListener(adapter(B4));
         jBAsientosDisponibles.add(B4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
 
         B5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B5.addMouseListener(adapter(B5));
         jBAsientosDisponibles.add(B5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
 
         B6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B6.addMouseListener(adapter(B6));
         jBAsientosDisponibles.add(B6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, -1));
 
         B7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        B7.addMouseListener(adapter(B7));
         jBAsientosDisponibles.add(B7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, -1, -1));
 
         B8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        B8.addMouseListener(adapter(B8));
         jBAsientosDisponibles.add(B8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
 
         B9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        B9.addMouseListener(adapter(B9));
         jBAsientosDisponibles.add(B9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, -1));
 
         B10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        B10.addMouseListener(adapter(B10));
         jBAsientosDisponibles.add(B10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
 
         B11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        B11.addMouseListener(adapter(B11));
         jBAsientosDisponibles.add(B11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
 
         B12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        B12.addMouseListener(adapter(B12));
         jBAsientosDisponibles.add(B12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
 
         B13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        B13.addMouseListener(adapter(B13));
         jBAsientosDisponibles.add(B13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, -1, -1));
 
         B14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        B14.addMouseListener(adapter(B14));
         jBAsientosDisponibles.add(B14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
 
         B15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B15.addMouseListener(adapter(B15));
         jBAsientosDisponibles.add(B15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, -1, -1));
 
         B16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B16.addMouseListener(adapter(B16));
         jBAsientosDisponibles.add(B16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
 
         B17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B17.addMouseListener(adapter(B17));
         jBAsientosDisponibles.add(B17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
 
         B18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B18.addMouseListener(adapter(B18));
         jBAsientosDisponibles.add(B18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
 
         B19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B19.addMouseListener(adapter(B19));
         jBAsientosDisponibles.add(B19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, -1, -1));
 
         B20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        B20.addMouseListener(adapter(B20));
         jBAsientosDisponibles.add(B20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, -1, -1));
 
         A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A1.addMouseListener(adapter(A1));
         jBAsientosDisponibles.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
 
         A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A2.addMouseListener(adapter(A2));
         jBAsientosDisponibles.add(A2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
 
         A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A3.addMouseListener(adapter(A3));
         jBAsientosDisponibles.add(A3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
 
         A4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A4.addMouseListener(adapter(A4));
         jBAsientosDisponibles.add(A4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
 
         A5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A5.addMouseListener(adapter(A5));
         jBAsientosDisponibles.add(A5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
 
         A6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A6.addMouseListener(adapter(A6));
         jBAsientosDisponibles.add(A6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
 
         A7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        A7.addMouseListener(adapter(A7));
         jBAsientosDisponibles.add(A7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
 
         A8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        A8.addMouseListener(adapter(A8));
         jBAsientosDisponibles.add(A8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
 
         A9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        A9.addMouseListener(adapter(A9));
         jBAsientosDisponibles.add(A9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, -1));
 
         A10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        A10.addMouseListener(adapter(A10));
         jBAsientosDisponibles.add(A10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
 
         A11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        A11.addMouseListener(adapter(A11));
         jBAsientosDisponibles.add(A11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
 
         A12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        A12.addMouseListener(adapter(A12));
         jBAsientosDisponibles.add(A12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         A13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        A13.addMouseListener(adapter(A13));
         jBAsientosDisponibles.add(A13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
 
         A14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        A14.addMouseListener(adapter(A14));
         jBAsientosDisponibles.add(A14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, -1, -1));
 
         A15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A15.addMouseListener(adapter(A15));
         jBAsientosDisponibles.add(A15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
 
         A16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A16.addMouseListener(adapter(A16));
         jBAsientosDisponibles.add(A16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, -1, -1));
 
         A17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A17.addMouseListener(adapter(A17));
         jBAsientosDisponibles.add(A17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, -1, -1));
 
         A18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A18.addMouseListener(adapter(A18));
         jBAsientosDisponibles.add(A18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, -1, -1));
 
         A19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A19.addMouseListener(adapter(A19));
         jBAsientosDisponibles.add(A19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, -1, -1));
 
         A20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        A20.addMouseListener(adapter(A20));
         jBAsientosDisponibles.add(A20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 320, -1, -1));
 
         Escenario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/escenario.png"))); // NOI18N
@@ -1112,17 +882,85 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         Num20.setText("20");
         jBAsientosDisponibles.add(Num20, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, -1));
 
-        G1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        G1.addMouseListener(adapter(G1));
-        jBAsientosDisponibles.add(G1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
-
         getContentPane().add(jBAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 540));
+
+        jPCrearFuncion.setVisible(false);
+        jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
+        jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCrearFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCrearFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jLabel10.setText("Nombre de la Funcion");
+
+        jLabel11.setText("Horario de Inicio (horas/min)");
+
+        jBCrearFuncion.setText("Crear Funcion");
+
+        jLabel12.setText("Duración (horas/min)");
+
+        jComHoraInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+
+        jComMinutoInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+
+        jComHoraDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+
+        jComMinutoDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+
+        javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
+        jPCrearFuncion.setLayout(jPCrearFuncionLayout);
+        jPCrearFuncionLayout.setHorizontalGroup(
+            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(130, 130, 130)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                            .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                            .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jBCrearFuncion)))
+                .addContainerGap(178, Short.MAX_VALUE))
+        );
+        jPCrearFuncionLayout.setVerticalGroup(
+            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jBCrearFuncion)
+                .addContainerGap(380, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 670));
 
         jPCancelarFuncion.setVisible(false);
         jPCancelarFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
         jPCancelarFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBCancelarFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCancelarFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -1141,11 +979,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Lista de Funciones");
 
         jBCancelarFuncionSeleccionada.setText("Cancelar Funcion");
-        jBCancelarFuncionSeleccionada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarFuncionSeleccionadaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPCancelarFuncionLayout = new javax.swing.GroupLayout(jPCancelarFuncion);
         jPCancelarFuncion.setLayout(jPCancelarFuncionLayout);
@@ -1181,7 +1014,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPVentaBoletos.setVisible(false);
         jPVentaBoletos.setMinimumSize(new java.awt.Dimension(20, 20));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBVenderBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPVentaBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuVenderBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPVentaBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -1268,45 +1101,45 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jPMenuPrincipal, org.jdesktop.beansbinding.ELProperty.create("${background}"), jPMenuPrincipal, org.jdesktop.beansbinding.BeanProperty.create("foreground"));
         bindingGroup.addBinding(binding);
 
-        jBVenderBoleto.setText("Vender Boletos");
-        jBVenderBoleto.addActionListener(new java.awt.event.ActionListener() {
+        jBMenuVenderBoleto.setText("Vender Boletos");
+        jBMenuVenderBoleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBVenderBoletoActionPerformed(evt);
+                jBMenuVenderBoletoActionPerformed(evt);
             }
         });
 
-        jBCancelarBoleto.setText("Cancelar Boletos");
-        jBCancelarBoleto.addActionListener(new java.awt.event.ActionListener() {
+        jBMenuCancelarBoleto.setText("Cancelar Boletos");
+        jBMenuCancelarBoleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarBoletoActionPerformed(evt);
+                jBMenuCancelarBoletoActionPerformed(evt);
             }
         });
 
-        jBFunciones.setText("Funciones");
-        jBFunciones.addActionListener(new java.awt.event.ActionListener() {
+        jBMenuFunciones.setText("Funciones");
+        jBMenuFunciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBFuncionesActionPerformed(evt);
+                jBMenuFuncionesActionPerformed(evt);
             }
         });
 
-        jBCrearFuncion.setText("Crear Funcion");
-        jBCrearFuncion.addActionListener(new java.awt.event.ActionListener() {
+        jBMenuCrearFuncion.setText("Crear Funcion");
+        jBMenuCrearFuncion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCrearFuncionActionPerformed(evt);
+                jBMenuCrearFuncionActionPerformed(evt);
             }
         });
 
-        jBCancelarFuncion.setText("Cancelar Funcion");
-        jBCancelarFuncion.addActionListener(new java.awt.event.ActionListener() {
+        jBMenuCancelarFuncion.setText("Cancelar Funcion");
+        jBMenuCancelarFuncion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarFuncionActionPerformed(evt);
+                jBMenuCancelarFuncionActionPerformed(evt);
             }
         });
 
-        jBReporteDeVentas.setText("Ver Reporte de Ventas");
-        jBReporteDeVentas.addActionListener(new java.awt.event.ActionListener() {
+        jBMenuReporteDeVentas.setText("Ver Reporte de Ventas");
+        jBMenuReporteDeVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBReporteDeVentasActionPerformed(evt);
+                jBMenuReporteDeVentasActionPerformed(evt);
             }
         });
 
@@ -1318,18 +1151,18 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                 .addGap(94, 94, 94)
                 .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                        .addComponent(jBVenderBoleto)
+                        .addComponent(jBMenuVenderBoleto)
                         .addGap(154, 154, 154)
-                        .addComponent(jBFunciones))
+                        .addComponent(jBMenuFunciones))
                     .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                            .addComponent(jBReporteDeVentas)
+                            .addComponent(jBMenuReporteDeVentas)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBCancelarFuncion))
+                            .addComponent(jBMenuCancelarFuncion))
                         .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                            .addComponent(jBCancelarBoleto)
+                            .addComponent(jBMenuCancelarBoleto)
                             .addGap(116, 116, 116)
-                            .addComponent(jBCrearFuncion))))
+                            .addComponent(jBMenuCrearFuncion))))
                 .addGap(120, 120, 120))
         );
         jPMenuPrincipalLayout.setVerticalGroup(
@@ -1337,16 +1170,16 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBVenderBoleto)
-                    .addComponent(jBFunciones))
+                    .addComponent(jBMenuVenderBoleto)
+                    .addComponent(jBMenuFunciones))
                 .addGap(40, 40, 40)
                 .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBCancelarBoleto)
-                    .addComponent(jBCrearFuncion))
+                    .addComponent(jBMenuCancelarBoleto)
+                    .addComponent(jBMenuCrearFuncion))
                 .addGap(31, 31, 31)
                 .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBCancelarFuncion)
-                    .addComponent(jBReporteDeVentas))
+                    .addComponent(jBMenuCancelarFuncion)
+                    .addComponent(jBMenuReporteDeVentas))
                 .addGap(316, 316, 316))
         );
 
@@ -1355,14 +1188,8 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPFunciones.setVisible(false);
         jPFunciones.setPreferredSize(new java.awt.Dimension(610, 670));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBFunciones, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPFunciones, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuFunciones, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPFunciones, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Funcion");
 
@@ -1432,7 +1259,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPCancelarBoletos.setMaximumSize(new java.awt.Dimension(610, 670));
         jPCancelarBoletos.setPreferredSize(new java.awt.Dimension(610, 670));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBCancelarBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCancelarBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
         jLabel8.setText("Función del Boleto");
@@ -1478,7 +1305,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         jPReporteDeVentas.setVisible(false);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBReporteDeVentas, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPReporteDeVentas, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuReporteDeVentas, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPReporteDeVentas, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPReporteDeVentasLayout = new javax.swing.GroupLayout(jPReporteDeVentas);
@@ -1508,57 +1335,228 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBCrearFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearFuncionActionPerformed
+    /**
+     * En este metodo se colocarán todos los Listeners que sean requeridos.
+     */
+    private void eventos(){
+        /**
+         * eventos de las butacas
+         */
+        A1.addMouseListener(this.controller.butacaAdapter(A1));
+        A2.addMouseListener(this.controller.butacaAdapter(A2));
+        A3.addMouseListener(this.controller.butacaAdapter(A3));
+        A4.addMouseListener(this.controller.butacaAdapter(A4));
+        A5.addMouseListener(this.controller.butacaAdapter(A5));
+        A6.addMouseListener(this.controller.butacaAdapter(A6));
+        A7.addMouseListener(this.controller.butacaAdapter(A7));
+        A8.addMouseListener(this.controller.butacaAdapter(A8));
+        A9.addMouseListener(this.controller.butacaAdapter(A9));
+        A10.addMouseListener(this.controller.butacaAdapter(A10));
+        A11.addMouseListener(this.controller.butacaAdapter(A11));
+        A12.addMouseListener(this.controller.butacaAdapter(A12));
+        A13.addMouseListener(this.controller.butacaAdapter(A13));
+        A14.addMouseListener(this.controller.butacaAdapter(A14));
+        A15.addMouseListener(this.controller.butacaAdapter(A15));
+        A16.addMouseListener(this.controller.butacaAdapter(A16));
+        A17.addMouseListener(this.controller.butacaAdapter(A17));
+        A18.addMouseListener(this.controller.butacaAdapter(A18));
+        A19.addMouseListener(this.controller.butacaAdapter(A19));
+        A20.addMouseListener(this.controller.butacaAdapter(A20));
+        B1.addMouseListener(this.controller.butacaAdapter(B1));
+        B2.addMouseListener(this.controller.butacaAdapter(B2));
+        B3.addMouseListener(this.controller.butacaAdapter(B3));
+        B4.addMouseListener(this.controller.butacaAdapter(B4));
+        B5.addMouseListener(this.controller.butacaAdapter(B5));
+        B6.addMouseListener(this.controller.butacaAdapter(B6));
+        B7.addMouseListener(this.controller.butacaAdapter(B7));
+        B8.addMouseListener(this.controller.butacaAdapter(B8));
+        B9.addMouseListener(this.controller.butacaAdapter(B9));
+        B10.addMouseListener(this.controller.butacaAdapter(B10));
+        B11.addMouseListener(this.controller.butacaAdapter(B11));
+        B12.addMouseListener(this.controller.butacaAdapter(B12));
+        B13.addMouseListener(this.controller.butacaAdapter(B13));
+        B14.addMouseListener(this.controller.butacaAdapter(B14));
+        B15.addMouseListener(this.controller.butacaAdapter(B15));
+        B16.addMouseListener(this.controller.butacaAdapter(B16));
+        B17.addMouseListener(this.controller.butacaAdapter(B17));
+        B18.addMouseListener(this.controller.butacaAdapter(B18));
+        B19.addMouseListener(this.controller.butacaAdapter(B19));
+        B20.addMouseListener(this.controller.butacaAdapter(B20));
+        C1.addMouseListener(this.controller.butacaAdapter(C1));
+        C2.addMouseListener(this.controller.butacaAdapter(C2));
+        C3.addMouseListener(this.controller.butacaAdapter(C3));
+        C4.addMouseListener(this.controller.butacaAdapter(C4));
+        C5.addMouseListener(this.controller.butacaAdapter(C5));
+        C6.addMouseListener(this.controller.butacaAdapter(C6));
+        C7.addMouseListener(this.controller.butacaAdapter(C7));
+        C8.addMouseListener(this.controller.butacaAdapter(C8));
+        C9.addMouseListener(this.controller.butacaAdapter(C9));
+        C10.addMouseListener(this.controller.butacaAdapter(C10));
+        C11.addMouseListener(this.controller.butacaAdapter(C11));
+        C12.addMouseListener(this.controller.butacaAdapter(C12));
+        C13.addMouseListener(this.controller.butacaAdapter(C13));
+        C14.addMouseListener(this.controller.butacaAdapter(C14));
+        C15.addMouseListener(this.controller.butacaAdapter(C15));
+        C16.addMouseListener(this.controller.butacaAdapter(C16));
+        C17.addMouseListener(this.controller.butacaAdapter(C17));
+        C18.addMouseListener(this.controller.butacaAdapter(C18));
+        C19.addMouseListener(this.controller.butacaAdapter(C19));
+        C20.addMouseListener(this.controller.butacaAdapter(C20));
+        D1.addMouseListener(this.controller.butacaAdapter(D1));
+        D2.addMouseListener(this.controller.butacaAdapter(D2));
+        D3.addMouseListener(this.controller.butacaAdapter(D3));
+        D4.addMouseListener(this.controller.butacaAdapter(D4));
+        D5.addMouseListener(this.controller.butacaAdapter(D5));
+        D6.addMouseListener(this.controller.butacaAdapter(D6));
+        D7.addMouseListener(this.controller.butacaAdapter(D7));
+        D8.addMouseListener(this.controller.butacaAdapter(D8));
+        D9.addMouseListener(this.controller.butacaAdapter(D9));
+        D10.addMouseListener(this.controller.butacaAdapter(D10));
+        D11.addMouseListener(this.controller.butacaAdapter(D11));
+        D12.addMouseListener(this.controller.butacaAdapter(D12));
+        D13.addMouseListener(this.controller.butacaAdapter(D13));
+        D14.addMouseListener(this.controller.butacaAdapter(D14));
+        D15.addMouseListener(this.controller.butacaAdapter(D15));
+        D16.addMouseListener(this.controller.butacaAdapter(D16));
+        D17.addMouseListener(this.controller.butacaAdapter(D17));
+        D18.addMouseListener(this.controller.butacaAdapter(D18));
+        D19.addMouseListener(this.controller.butacaAdapter(D19));
+        D20.addMouseListener(this.controller.butacaAdapter(D20));
+        E1.addMouseListener(this.controller.butacaAdapter(E1));
+        E2.addMouseListener(this.controller.butacaAdapter(E2));
+        E3.addMouseListener(this.controller.butacaAdapter(E3));
+        E4.addMouseListener(this.controller.butacaAdapter(E4));
+        E5.addMouseListener(this.controller.butacaAdapter(E5));
+        E6.addMouseListener(this.controller.butacaAdapter(E6));
+        E7.addMouseListener(this.controller.butacaAdapter(E7));
+        E8.addMouseListener(this.controller.butacaAdapter(E8));
+        E9.addMouseListener(this.controller.butacaAdapter(E9));
+        E10.addMouseListener(this.controller.butacaAdapter(E10));
+        E11.addMouseListener(this.controller.butacaAdapter(E11));
+        E12.addMouseListener(this.controller.butacaAdapter(E12));
+        E13.addMouseListener(this.controller.butacaAdapter(E13));
+        E14.addMouseListener(this.controller.butacaAdapter(E14));
+        E15.addMouseListener(this.controller.butacaAdapter(E15));
+        E16.addMouseListener(this.controller.butacaAdapter(E16));
+        E17.addMouseListener(this.controller.butacaAdapter(E17));
+        E18.addMouseListener(this.controller.butacaAdapter(E18));
+        E19.addMouseListener(this.controller.butacaAdapter(E19));
+        E20.addMouseListener(this.controller.butacaAdapter(E20));
+        F1.addMouseListener(this.controller.butacaAdapter(F1));
+        F2.addMouseListener(this.controller.butacaAdapter(F2));
+        F3.addMouseListener(this.controller.butacaAdapter(F3));
+        F4.addMouseListener(this.controller.butacaAdapter(F4));
+        F5.addMouseListener(this.controller.butacaAdapter(F5));
+        F6.addMouseListener(this.controller.butacaAdapter(F6));
+        F7.addMouseListener(this.controller.butacaAdapter(F7));
+        F8.addMouseListener(this.controller.butacaAdapter(F8));
+        F9.addMouseListener(this.controller.butacaAdapter(F9));
+        F10.addMouseListener(this.controller.butacaAdapter(F10));
+        F11.addMouseListener(this.controller.butacaAdapter(F11));
+        F12.addMouseListener(this.controller.butacaAdapter(F12));
+        F13.addMouseListener(this.controller.butacaAdapter(F13));
+        F14.addMouseListener(this.controller.butacaAdapter(F14));
+        F15.addMouseListener(this.controller.butacaAdapter(F15));
+        F16.addMouseListener(this.controller.butacaAdapter(F16));
+        F17.addMouseListener(this.controller.butacaAdapter(F17));
+        F18.addMouseListener(this.controller.butacaAdapter(F18));
+        F19.addMouseListener(this.controller.butacaAdapter(F19));
+        F20.addMouseListener(this.controller.butacaAdapter(F20));
+        G1.addMouseListener(this.controller.butacaAdapter(G1));
+        G2.addMouseListener(this.controller.butacaAdapter(G2));
+        G3.addMouseListener(this.controller.butacaAdapter(G3));
+        G4.addMouseListener(this.controller.butacaAdapter(G4));
+        G5.addMouseListener(this.controller.butacaAdapter(G5));
+        G6.addMouseListener(this.controller.butacaAdapter(G6));
+        G7.addMouseListener(this.controller.butacaAdapter(G7));
+        G8.addMouseListener(this.controller.butacaAdapter(G8));
+        G9.addMouseListener(this.controller.butacaAdapter(G9));
+        G10.addMouseListener(this.controller.butacaAdapter(G10));
+        G11.addMouseListener(this.controller.butacaAdapter(G11));
+        G12.addMouseListener(this.controller.butacaAdapter(G12));
+        G13.addMouseListener(this.controller.butacaAdapter(G13));
+        G14.addMouseListener(this.controller.butacaAdapter(G14));
+        G15.addMouseListener(this.controller.butacaAdapter(G15));
+        G16.addMouseListener(this.controller.butacaAdapter(G16));
+        G17.addMouseListener(this.controller.butacaAdapter(G17));
+        G18.addMouseListener(this.controller.butacaAdapter(G18));
+        G19.addMouseListener(this.controller.butacaAdapter(G19));
+        G20.addMouseListener(this.controller.butacaAdapter(G20));
+        H1.addMouseListener(this.controller.butacaAdapter(H1));
+        H2.addMouseListener(this.controller.butacaAdapter(H2));
+        H3.addMouseListener(this.controller.butacaAdapter(H3));
+        H4.addMouseListener(this.controller.butacaAdapter(H4));
+        H5.addMouseListener(this.controller.butacaAdapter(H5));
+        H6.addMouseListener(this.controller.butacaAdapter(H6));
+        H7.addMouseListener(this.controller.butacaAdapter(H7));
+        H8.addMouseListener(this.controller.butacaAdapter(H8));
+        H9.addMouseListener(this.controller.butacaAdapter(H9));
+        H10.addMouseListener(this.controller.butacaAdapter(H10));
+        H11.addMouseListener(this.controller.butacaAdapter(H11));
+        H12.addMouseListener(this.controller.butacaAdapter(H12));
+        H13.addMouseListener(this.controller.butacaAdapter(H13));
+        H14.addMouseListener(this.controller.butacaAdapter(H14));
+        H15.addMouseListener(this.controller.butacaAdapter(H15));
+        H16.addMouseListener(this.controller.butacaAdapter(H16));
+        H17.addMouseListener(this.controller.butacaAdapter(H17));
+        H18.addMouseListener(this.controller.butacaAdapter(H18));
+        H19.addMouseListener(this.controller.butacaAdapter(H19));
+        H20.addMouseListener(this.controller.butacaAdapter(H20));
+
+        /**
+         * Otros eventos
+         */
+        jBCrearFuncion.addMouseListener(this.controller.crearFuncion(JTxtNombreFuncion.getText(),
+                Integer.parseInt((String) jComHoraInicioFuncion.getSelectedItem()),
+                Integer.parseInt((String) jComMinutoInicioFuncion.getSelectedItem()),
+                Integer.parseInt((String) jComHoraDuracion.getSelectedItem()),
+                Integer.parseInt((String) jComMinutoDuracion.getSelectedItem())));
+    }
+
+    private void jBMenuCrearFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuCrearFuncionActionPerformed
         // TODO add your handling code here:
         jPMenuPrincipal.setVisible(false);
         jPCrearFuncion.setVisible(true);
         jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBCrearFuncionActionPerformed
+    }//GEN-LAST:event_jBMenuCrearFuncionActionPerformed
 
-    private void jBVenderBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVenderBoletoActionPerformed
+    private void jBMenuVenderBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuVenderBoletoActionPerformed
         // TODO add your handling code here:
+        jTable3.setModel(this.controller.cargarTabla());
         jPMenuPrincipal.setVisible(false);
         jPVentaBoletos.setVisible(true);
         jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBVenderBoletoActionPerformed
+    }//GEN-LAST:event_jBMenuVenderBoletoActionPerformed
 
-    private void jBCancelarBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarBoletoActionPerformed
+    private void jBMenuCancelarBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuCancelarBoletoActionPerformed
         // TODO add your handling code here:
         jPMenuPrincipal.setVisible(false);
         jPCancelarBoletos.setVisible(true);
         jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBCancelarBoletoActionPerformed
+    }//GEN-LAST:event_jBMenuCancelarBoletoActionPerformed
 
-    private void jBFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFuncionesActionPerformed
+    private void jBMenuFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuFuncionesActionPerformed
         // TODO add your handling code here:
-
+        jTable1.setModel(this.controller.cargarTabla());
         jPMenuPrincipal.setVisible(false);
         jPFunciones.setVisible(true);
         jBRegresar.setVisible(true);
+    }//GEN-LAST:event_jBMenuFuncionesActionPerformed
 
-    }//GEN-LAST:event_jBFuncionesActionPerformed
-
-    private void jBCancelarFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarFuncionActionPerformed
+    private void jBMenuCancelarFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuCancelarFuncionActionPerformed
         // TODO add your handling code here:
+        jTable2.setModel(this.controller.cargarTabla());
         jPMenuPrincipal.setVisible(false);
         jPCancelarFuncion.setVisible(true);
         jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBCancelarFuncionActionPerformed
+    }//GEN-LAST:event_jBMenuCancelarFuncionActionPerformed
 
-    private void jBCancelarFuncionSeleccionadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarFuncionSeleccionadaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBCancelarFuncionSeleccionadaActionPerformed
-
-    private void JTxtHorarioFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTxtHorarioFuncionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTxtHorarioFuncionActionPerformed
-
-    private void jBReporteDeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReporteDeVentasActionPerformed
+    private void jBMenuReporteDeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuReporteDeVentasActionPerformed
         // TODO add your handling code here:
         jPMenuPrincipal.setVisible(false);
         jPReporteDeVentas.setVisible(true);
         jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBReporteDeVentasActionPerformed
+    }//GEN-LAST:event_jBMenuReporteDeVentasActionPerformed
 
     private void jBRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegresarActionPerformed
         // TODO add your handling code here:
@@ -1579,102 +1577,17 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jBAsientosDisponibles.setVisible(true);
     }//GEN-LAST:event_jBAsientosMouseClicked
 
-    public void conectController(Controller c){
-        
-        
-        jBAneadirFuncion.addActionListener(c);
-        jBAneadirFuncion.setActionCommand("INSERT");
-        
-
-    }
-    
-    private void jBAneadirFuncionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAneadirFuncionMouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jBAneadirFuncionMouseClicked
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jBAneadirFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAneadirFuncionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBAneadirFuncionActionPerformed
-
-    private void MouseEntered(MouseEvent evt, JLabel jl) {
-        // TODO add your handling code here:
-        String direccion[] = jl.getIcon().toString().split("classes");
-        switch (direccion[1]) {
-            case "/Images/asiento_azul_lata.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_lata.jpg")));
-                break;
-            case "/Images/asiento_azul_bronce.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_bronce.jpg")));
-                break;
-            case "/Images/asiento_azul_plata.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_plata.jpg")));
-                break;
-            case "/Images/asiento_azul_oro.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_oro.jpg")));
-                break;
-            case "/Images/asiento_azul_diamante.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_diamante.jpg")));
-                break;
-        }
-    }
-
-    private void MouseExited(MouseEvent evt, JLabel jl) {
-        // TODO add your handling code here:
-        String direccion[] = jl.getIcon().toString().split("classes");
-        switch (direccion[1]) {
-            case "/Images/asiento_verde_lata.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg")));
-                break;
-            case "/Images/asiento_verde_bronce.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg")));
-                break;
-            case "/Images/asiento_verde_plata.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg")));
-                break;
-            case "/Images/asiento_verde_oro.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg")));
-                break;
-            case "/Images/asiento_verde_diamante.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg")));
-                break;
-        }
-    }
-
-    private void MouseClicked(MouseEvent evt, JLabel jl) {
-        
-    }
-
-    private MouseAdapter adapter(JLabel jl) {
-        MouseAdapter mouseAdapter = new MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                MouseEntered(evt, jl);
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                MouseExited(evt, jl);
-            }
-
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MouseClicked(evt, jl);
-            }
-        };
-        return mouseAdapter;
-    }
-
     /**
-     * @param args the command line arguments
+     * No se como implementarlo T_T
      */
+    private void resetMenuCrearFuncion() {
+        this.JTxtNombreFuncion.setText("");
+        this.jComHoraInicioFuncion.setSelectedIndex(0);
+        this.jComMinutoInicioFuncion.setSelectedIndex(0);
+        this.jComHoraDuracion.setSelectedIndex(0);
+        this.jComMinutoDuracion.setSelectedIndex(0);
+    }
 
-    /**
-     * Generador de visor en forma de tabla extraida de la base de datos del
-     * sistema
-     */
-  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel A;
     private javax.swing.JLabel A1;
@@ -1845,8 +1758,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel H7;
     private javax.swing.JLabel H8;
     private javax.swing.JLabel H9;
-    public javax.swing.JTextField JTxtHorarioFuncion;
-    public javax.swing.JTextField JTxtNombreFuncion;
+    private javax.swing.JTextField JTxtNombreFuncion;
     private javax.swing.JLabel Num1;
     private javax.swing.JLabel Num10;
     private javax.swing.JLabel Num11;
@@ -1867,23 +1779,28 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel Num7;
     private javax.swing.JLabel Num8;
     private javax.swing.JLabel Num9;
-    private javax.swing.JButton jBAneadirFuncion;
     private javax.swing.JButton jBAsientos;
     private javax.swing.JPanel jBAsientosDisponibles;
-    private javax.swing.JButton jBCancelarBoleto;
     private javax.swing.JButton jBCancelarBoletoAsiento;
-    private javax.swing.JButton jBCancelarFuncion;
     private javax.swing.JButton jBCancelarFuncionSeleccionada;
     private javax.swing.JButton jBComprarBoletos;
     private javax.swing.JButton jBCrearFuncion;
-    private javax.swing.JButton jBFunciones;
+    private javax.swing.JButton jBMenuCancelarBoleto;
+    private javax.swing.JButton jBMenuCancelarFuncion;
+    private javax.swing.JButton jBMenuCrearFuncion;
+    private javax.swing.JButton jBMenuFunciones;
+    private javax.swing.JButton jBMenuReporteDeVentas;
+    private javax.swing.JButton jBMenuVenderBoleto;
     private javax.swing.JButton jBRegresar;
-    private javax.swing.JButton jBReporteDeVentas;
     private javax.swing.JButton jBSeleccionarAsientosDeCompra;
-    private javax.swing.JButton jBVenderBoleto;
+    private javax.swing.JComboBox<String> jComHoraDuracion;
+    private javax.swing.JComboBox<String> jComHoraInicioFuncion;
+    private javax.swing.JComboBox<String> jComMinutoDuracion;
+    private javax.swing.JComboBox<String> jComMinutoInicioFuncion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1902,9 +1819,9 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    public javax.swing.JTable jTable1;
-    public javax.swing.JTable jTable2;
-    public javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
