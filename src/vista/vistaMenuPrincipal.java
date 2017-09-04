@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Controller;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,9 +18,9 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form menuPrincipal
      */
-    private Controller controller;
+    private final Controller controller;
 
-    private DefaultTableModel modelo;
+    private final DefaultTableModel modelo;
     
     public vistaMenuPrincipal(Controller controller) {
         this.controller = controller;
@@ -896,6 +897,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jLabel11.setText("Horario de Inicio (horas/min)");
 
         jBCrearFuncion.setText("Crear Funcion");
+        jBCrearFuncion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrearFuncionActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Duración (horas/min)");
 
@@ -1576,6 +1582,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPFunciones.setVisible(false);
         jBAsientosDisponibles.setVisible(true);
     }//GEN-LAST:event_jBAsientosMouseClicked
+
+    private void jBCrearFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearFuncionActionPerformed
+        // TODO add your handling code here:
+        resetMenuCrearFuncion();
+    }//GEN-LAST:event_jBCrearFuncionActionPerformed
 
     /**
      * No se como implementarlo T_T

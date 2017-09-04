@@ -13,10 +13,12 @@ import javax.swing.JOptionPane;
 
 public class Funcion {
 
-    private Conexion funcionDAO;
-    private Connection connection;
+    private Connection connectionDAO;
     private String nombreFuncion;
-    private int horaInicioFuncion, minutoInicioFuncion, horaDuracionFuncion, minutoDuracionFuncion;
+    private int horaInicioFuncion;
+    private int minutoInicioFuncion;
+    private int horaDuracionFuncion;
+    private int minutoDuracionFuncion;
 
     public Funcion(String s, int horIni, int minIni, int horDur, int minDur) {
         this.nombreFuncion = s;
@@ -24,22 +26,21 @@ public class Funcion {
         this.minutoInicioFuncion = minIni;
         this.horaDuracionFuncion = horDur;
         this.minutoDuracionFuncion = minDur;
-        this.funcionDAO = null;
-        this.connection = null;
     }
 
     public void crearFuncion() {
-        String sql = "INSERT funcion(idFuncion,NombreFuncion,InicioFuncion,Duracion,FinalFuncion) VALUES (?,?,?,?,?)";
+        String sql = "INSERT funcion(idFuncion, NombreFuncion, InicioFuncion, Duracion, FinalFuncion) VALUES (?,?,?,?,?)";
         long milisecInicioFuncion = getMilisegundos(this.horaInicioFuncion, this.minutoInicioFuncion) + 21600000;
         long milisecDuracionFuncion = getMilisegundos(this.horaDuracionFuncion, this.minutoDuracionFuncion);
         long milisecFinFuncion = milisecInicioFuncion + milisecDuracionFuncion;
 
         try {
-            Statement st = this.connection.createStatement();
+            Statement st = connectionDAO.createStatement();
             ResultSet rs = st.executeQuery("SELECT InicioFuncion, FinalFuncion FROM teatro_patito_feo.funcion");
 
             if (!verificarHorariosCruzados(rs, milisecInicioFuncion, milisecFinFuncion)) {
-                PreparedStatement pst = this.connection.prepareStatement(sql);
+                
+                PreparedStatement pst = connectionDAO.prepareStatement(sql);
                 pst.setInt(1, 0);
                 pst.setString(2, this.nombreFuncion);
                 pst.setTime(3, new Time(milisecInicioFuncion));
@@ -49,8 +50,6 @@ public class Funcion {
                 int reply = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea registrar esta función?", "Registrar función", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (reply == JOptionPane.YES_OPTION) {
                     pst.executeUpdate();
-                    //mostrardatos();
-                    //resetCrearFuncion();
                     JOptionPane.showMessageDialog(null, "Se ha guardado correctamente", "", JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
@@ -76,8 +75,7 @@ public class Funcion {
         return (hor * 3600000) + (min * 60000);
     }
 
-    public void conectarBD(Conexion conexion, Connection connection) {
-        this.funcionDAO = conexion;
-        this.connection = connection;
+    public void conectarBD(Connection connection) {
+        connectionDAO = connection;
     }
 }

@@ -13,11 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Butaca;
 import modelo.Funcion;
-import vista.vistaMenuPrincipal;
 
 /**
  *
@@ -25,8 +23,8 @@ import vista.vistaMenuPrincipal;
  */
 public class Controller {
 
-    private Conexion funcionDAO;
-    private Connection connection;
+    private final Conexion funcionDAO;
+    private final Connection connection;
 
     /**
      * Constructor
@@ -41,7 +39,7 @@ public class Controller {
         Funcion funcion = new Funcion(s, horIni, minIni, horDur, minDur);
         MouseAdapter mouseAdapter = new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                funcion.conectarBD(funcionDAO, connection);
+                funcion.conectarBD(connection);
                 funcion.crearFuncion();
             }
         };
