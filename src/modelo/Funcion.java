@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 public class Funcion {
 
-    private Conexion conexion;
+    private Conexion funcionDAO;
     private Connection connection;
     private String nombreFuncion;
     private int horaInicioFuncion, minutoInicioFuncion, horaDuracionFuncion, minutoDuracionFuncion;
@@ -24,7 +24,7 @@ public class Funcion {
         this.minutoInicioFuncion = minIni;
         this.horaDuracionFuncion = horDur;
         this.minutoDuracionFuncion = minDur;
-        this.conexion = null;
+        this.funcionDAO = null;
         this.connection = null;
     }
 
@@ -77,7 +77,7 @@ public class Funcion {
     }
 
     public void conectarBD(Conexion conexion, Connection connection) {
-        this.conexion = conexion;
+        this.funcionDAO = conexion;
         this.connection = connection;
     }
 }

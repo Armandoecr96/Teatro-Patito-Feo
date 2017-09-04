@@ -25,7 +25,7 @@ import vista.vistaMenuPrincipal;
  */
 public class Controller {
 
-    private Conexion conexion;
+    private Conexion funcionDAO;
     private Connection connection;
 
     /**
@@ -33,15 +33,15 @@ public class Controller {
      *
      */
     public Controller() {
-        conexion = new Conexion();
-        connection = conexion.getConnection();
+        funcionDAO = new Conexion();
+        connection = funcionDAO.getConnection();
     }
 
     public MouseAdapter crearFuncion(String s, int horIni, int minIni, int horDur, int minDur) {
         Funcion funcion = new Funcion(s, horIni, minIni, horDur, minDur);
         MouseAdapter mouseAdapter = new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                funcion.conectarBD(conexion, connection);
+                funcion.conectarBD(funcionDAO, connection);
                 funcion.crearFuncion();
             }
         };
