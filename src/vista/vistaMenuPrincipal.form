@@ -2890,7 +2890,7 @@
             <Property name="text" type="java.lang.String" value="Funciones"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBMenuFuncionesActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBMenuFuncionesMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBMenuCrearFuncion">
@@ -2898,7 +2898,7 @@
             <Property name="text" type="java.lang.String" value="Crear Funcion"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBMenuCrearFuncionActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBMenuCrearFuncionMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBMenuCancelarFuncion">

@@ -13,11 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Butaca;
 import modelo.Funcion;
-import vista.vistaMenuPrincipal;
 
 /**
  *
@@ -25,23 +23,18 @@ import vista.vistaMenuPrincipal;
  */
 public class Controller {
 
-    private Conexion conexion;
-    private Connection connection;
-
     /**
      * Constructor
      *
      */
     public Controller() {
-        conexion = new Conexion();
-        connection = conexion.getConnection();
     }
 
     public MouseAdapter crearFuncion(String s, int horIni, int minIni, int horDur, int minDur) {
-        Funcion funcion = new Funcion(s, horIni, minIni, horDur, minDur);
         MouseAdapter mouseAdapter = new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                funcion.conectarBD(conexion, connection);
+                System.out.println("/ " + s + " " + horIni + " " + minIni + " " + horDur + " " + minDur);
+                Funcion funcion = new Funcion(s, horIni, minIni, horDur, minDur);
                 funcion.crearFuncion();
             }
         };
@@ -68,6 +61,9 @@ public class Controller {
 
     public DefaultTableModel cargarTabla() {
 
+        System.out.println("Controller");
+        Conexion conexion = new Conexion();
+        Connection connection = conexion.getConnection();
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.addColumn("Funcion");
@@ -87,6 +83,8 @@ public class Controller {
         } catch (SQLException ex) {
             System.out.println("Error: " + ex);
         }
+        conexion.desconectar();
+        System.out.println("Controller");
         return modelo;
     }
 }

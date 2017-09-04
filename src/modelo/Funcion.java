@@ -13,8 +13,6 @@ import javax.swing.JOptionPane;
 
 public class Funcion {
 
-    private Conexion conexion;
-    private Connection connection;
     private String nombreFuncion;
     private int horaInicioFuncion, minutoInicioFuncion, horaDuracionFuncion, minutoDuracionFuncion;
 
@@ -24,22 +22,24 @@ public class Funcion {
         this.minutoInicioFuncion = minIni;
         this.horaDuracionFuncion = horDur;
         this.minutoDuracionFuncion = minDur;
-        this.conexion = null;
-        this.connection = null;
     }
 
     public void crearFuncion() {
+        System.out.println("Funcion");
+        Conexion conexion = new Conexion();
+        Connection connection = conexion.getConnection();
+
         String sql = "INSERT funcion(idFuncion,NombreFuncion,InicioFuncion,Duracion,FinalFuncion) VALUES (?,?,?,?,?)";
         long milisecInicioFuncion = getMilisegundos(this.horaInicioFuncion, this.minutoInicioFuncion) + 21600000;
         long milisecDuracionFuncion = getMilisegundos(this.horaDuracionFuncion, this.minutoDuracionFuncion);
         long milisecFinFuncion = milisecInicioFuncion + milisecDuracionFuncion;
 
         try {
-            Statement st = this.connection.createStatement();
+            Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT InicioFuncion, FinalFuncion FROM teatro_patito_feo.funcion");
 
             if (!verificarHorariosCruzados(rs, milisecInicioFuncion, milisecFinFuncion)) {
-                PreparedStatement pst = this.connection.prepareStatement(sql);
+                PreparedStatement pst = connection.prepareStatement(sql);
                 pst.setInt(1, 0);
                 pst.setString(2, this.nombreFuncion);
                 pst.setTime(3, new Time(milisecInicioFuncion));
@@ -49,9 +49,8 @@ public class Funcion {
                 int reply = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea registrar esta función?", "Registrar función", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (reply == JOptionPane.YES_OPTION) {
                     pst.executeUpdate();
-                    //mostrardatos();
-                    //resetCrearFuncion();
                     JOptionPane.showMessageDialog(null, "Se ha guardado correctamente", "", JOptionPane.INFORMATION_MESSAGE);
+                    conexion.desconectar();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "No se puede guardar la función porque se cruzan los horarios", "Error al guardar", JOptionPane.WARNING_MESSAGE);
@@ -59,6 +58,8 @@ public class Funcion {
         } catch (SQLException ex) {
             Logger.getLogger(Funcion.class.getName()).log(Level.SEVERE, null, ex);
         }
+        conexion.desconectar();
+        System.out.println("Funcion");
     }
 
     private boolean verificarHorariosCruzados(ResultSet rs, long msInicio, long msFin) throws SQLException {
@@ -74,10 +75,5 @@ public class Funcion {
 
     private long getMilisegundos(int hor, int min) {
         return (hor * 3600000) + (min * 60000);
-    }
-
-    public void conectarBD(Conexion conexion, Connection connection) {
-        this.conexion = conexion;
-        this.connection = connection;
     }
 }

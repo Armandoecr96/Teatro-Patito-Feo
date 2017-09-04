@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Controller;
+import java.awt.event.MouseAdapter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -1116,16 +1117,16 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         });
 
         jBMenuFunciones.setText("Funciones");
-        jBMenuFunciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBMenuFuncionesActionPerformed(evt);
+        jBMenuFunciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBMenuFuncionesMouseClicked(evt);
             }
         });
 
         jBMenuCrearFuncion.setText("Crear Funcion");
-        jBMenuCrearFuncion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBMenuCrearFuncionActionPerformed(evt);
+        jBMenuCrearFuncion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBMenuCrearFuncionMouseClicked(evt);
             }
         });
 
@@ -1513,13 +1514,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                 Integer.parseInt((String) jComMinutoDuracion.getSelectedItem())));
     }
 
-    private void jBMenuCrearFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuCrearFuncionActionPerformed
-        // TODO add your handling code here:
-        jPMenuPrincipal.setVisible(false);
-        jPCrearFuncion.setVisible(true);
-        jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBMenuCrearFuncionActionPerformed
-
     private void jBMenuVenderBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuVenderBoletoActionPerformed
         // TODO add your handling code here:
         jTable3.setModel(this.controller.cargarTabla());
@@ -1534,14 +1528,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPCancelarBoletos.setVisible(true);
         jBRegresar.setVisible(true);
     }//GEN-LAST:event_jBMenuCancelarBoletoActionPerformed
-
-    private void jBMenuFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuFuncionesActionPerformed
-        // TODO add your handling code here:
-        jTable1.setModel(this.controller.cargarTabla());
-        jPMenuPrincipal.setVisible(false);
-        jPFunciones.setVisible(true);
-        jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBMenuFuncionesActionPerformed
 
     private void jBMenuCancelarFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuCancelarFuncionActionPerformed
         // TODO add your handling code here:
@@ -1576,6 +1562,20 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPFunciones.setVisible(false);
         jBAsientosDisponibles.setVisible(true);
     }//GEN-LAST:event_jBAsientosMouseClicked
+
+    private void jBMenuFuncionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBMenuFuncionesMouseClicked
+        // TODO add your handling code here:
+        jTable1.setModel(this.controller.cargarTabla());
+        jPMenuPrincipal.setVisible(false);
+        jPFunciones.setVisible(true);
+        jBRegresar.setVisible(true);
+    }//GEN-LAST:event_jBMenuFuncionesMouseClicked
+
+    private void jBMenuCrearFuncionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBMenuCrearFuncionMouseClicked
+        jPMenuPrincipal.setVisible(false);
+        jPCrearFuncion.setVisible(true);
+        jBRegresar.setVisible(true);
+    }//GEN-LAST:event_jBMenuCrearFuncionMouseClicked
 
     /**
      * No se como implementarlo T_T

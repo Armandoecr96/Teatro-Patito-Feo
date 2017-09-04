@@ -6,8 +6,6 @@
 package vista;
 
 import controlador.Controller;
-import java.sql.Connection;
-import modelo.Conexion;
 
 /**
  *
