@@ -6,7 +6,11 @@
 package vista;
 
 import controlador.Controller;
-import java.awt.event.MouseAdapter;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +26,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
     
+    public vistaMenuPrincipal() {
+        modelo = new DefaultTableModel();
+        initComponents();
+        panelInitialConfigurations();
+        //eventos();
+    }
     public vistaMenuPrincipal(Controller controller) {
         this.controller = controller;
         modelo = new DefaultTableModel();
@@ -39,6 +49,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        jBRegresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jBAsientosDisponibles = new javax.swing.JPanel();
         H1 = new javax.swing.JLabel();
@@ -277,15 +288,21 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jBCancelarBoletoAsiento = new javax.swing.JButton();
         jPReporteDeVentas = new javax.swing.JPanel();
-        jBRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jBRegresar.setText("Regresar");
+        jBRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
         jLabel2.setText("Teatro Patito Feo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 16, -1, -1));
 
-        jBAsientosDisponibles.setVisible(false);
         jBAsientosDisponibles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
@@ -885,7 +902,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jBAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 540));
 
-        jPCrearFuncion.setVisible(false);
         jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
         jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
 
@@ -957,7 +973,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 670));
 
-        jPCancelarFuncion.setVisible(false);
         jPCancelarFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
         jPCancelarFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
 
@@ -1012,7 +1027,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPCancelarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 620));
 
-        jPVentaBoletos.setVisible(false);
         jPVentaBoletos.setMinimumSize(new java.awt.Dimension(20, 20));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuVenderBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPVentaBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
@@ -1124,11 +1138,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         });
 
         jBMenuCrearFuncion.setText("Crear Funcion");
-        jBMenuCrearFuncion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBMenuCrearFuncionMouseClicked(evt);
-            }
-        });
 
         jBMenuCancelarFuncion.setText("Cancelar Funcion");
         jBMenuCancelarFuncion.addActionListener(new java.awt.event.ActionListener() {
@@ -1186,7 +1195,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 590));
 
-        jPFunciones.setVisible(false);
         jPFunciones.setPreferredSize(new java.awt.Dimension(610, 670));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuFunciones, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPFunciones, org.jdesktop.beansbinding.BeanProperty.create("background"));
@@ -1256,7 +1264,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPFunciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 620, 630));
 
-        jPCancelarBoletos.setVisible(false);
         jPCancelarBoletos.setMaximumSize(new java.awt.Dimension(610, 670));
         jPCancelarBoletos.setPreferredSize(new java.awt.Dimension(610, 670));
 
@@ -1304,8 +1311,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPCancelarBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 640));
 
-        jPReporteDeVentas.setVisible(false);
-
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuReporteDeVentas, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPReporteDeVentas, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
@@ -1322,19 +1327,21 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPReporteDeVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 79, 610, 640));
 
-        jBRegresar.setText("Regresar");
-        jBRegresar.setVisible(false);
-        jBRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRegresarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
         bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void panelInitialConfigurations() {
+        jBRegresar.setVisible(false);
+        jPCancelarBoletos.setVisible(false);
+        jPCancelarFuncion.setVisible(false);
+        jPCrearFuncion.setVisible(false);
+        jPFunciones.setVisible(false);
+        jPReporteDeVentas.setVisible(false);
+        jPVentaBoletos.setVisible(false);
+        jPMenuPrincipal.setVisible(true);
+    }
 
     /**
      * En este metodo se colocarán todos los Listeners que sean requeridos.
@@ -1571,22 +1578,251 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jBRegresar.setVisible(true);
     }//GEN-LAST:event_jBMenuFuncionesMouseClicked
 
-    private void jBMenuCrearFuncionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBMenuCrearFuncionMouseClicked
-        jPMenuPrincipal.setVisible(false);
-        jPCrearFuncion.setVisible(true);
-        jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBMenuCrearFuncionMouseClicked
-
-    /**
-     * No se como implementarlo T_T
-     */
-    private void resetMenuCrearFuncion() {
-        this.JTxtNombreFuncion.setText("");
-        this.jComHoraInicioFuncion.setSelectedIndex(0);
-        this.jComMinutoInicioFuncion.setSelectedIndex(0);
-        this.jComHoraDuracion.setSelectedIndex(0);
-        this.jComMinutoDuracion.setSelectedIndex(0);
+    public void resetComponents () {
+        initComponents();
+        //eventos();
     }
+
+    public DefaultTableModel getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(DefaultTableModel modelo) {
+        this.modelo = modelo;
+    }
+
+    public JTextField getJTxtNombreFuncion() {
+        return JTxtNombreFuncion;
+    }
+
+    public void setJTxtNombreFuncion(JTextField JTxtNombreFuncion) {
+        this.JTxtNombreFuncion = JTxtNombreFuncion;
+    }
+
+    public JButton getjBAsientos() {
+        return jBAsientos;
+    }
+
+    public void setjBAsientos(JButton jBAsientos) {
+        this.jBAsientos = jBAsientos;
+    }
+
+    public JPanel getjBAsientosDisponibles() {
+        return jBAsientosDisponibles;
+    }
+
+    public void setjBAsientosDisponibles(JPanel jBAsientosDisponibles) {
+        this.jBAsientosDisponibles = jBAsientosDisponibles;
+    }
+
+    public JButton getjBCancelarBoletoAsiento() {
+        return jBCancelarBoletoAsiento;
+    }
+
+    public void setjBCancelarBoletoAsiento(JButton jBCancelarBoletoAsiento) {
+        this.jBCancelarBoletoAsiento = jBCancelarBoletoAsiento;
+    }
+
+    public JButton getjBCancelarFuncionSeleccionada() {
+        return jBCancelarFuncionSeleccionada;
+    }
+
+    public void setjBCancelarFuncionSeleccionada(JButton jBCancelarFuncionSeleccionada) {
+        this.jBCancelarFuncionSeleccionada = jBCancelarFuncionSeleccionada;
+    }
+
+    public JButton getjBComprarBoletos() {
+        return jBComprarBoletos;
+    }
+
+    public void setjBComprarBoletos(JButton jBComprarBoletos) {
+        this.jBComprarBoletos = jBComprarBoletos;
+    }
+
+    public JButton getjBCrearFuncion() {
+        return jBCrearFuncion;
+    }
+
+    public void setjBCrearFuncion(JButton jBCrearFuncion) {
+        this.jBCrearFuncion = jBCrearFuncion;
+    }
+
+    public JButton getjBMenuCancelarBoleto() {
+        return jBMenuCancelarBoleto;
+    }
+
+    public void setjBMenuCancelarBoleto(JButton jBMenuCancelarBoleto) {
+        this.jBMenuCancelarBoleto = jBMenuCancelarBoleto;
+    }
+
+    public JButton getjBMenuCancelarFuncion() {
+        return jBMenuCancelarFuncion;
+    }
+
+    public void setjBMenuCancelarFuncion(JButton jBMenuCancelarFuncion) {
+        this.jBMenuCancelarFuncion = jBMenuCancelarFuncion;
+    }
+
+    public JButton getjBMenuCrearFuncion() {
+        return jBMenuCrearFuncion;
+    }
+
+    public void setjBMenuCrearFuncion(JButton jBMenuCrearFuncion) {
+        this.jBMenuCrearFuncion = jBMenuCrearFuncion;
+    }
+
+    public JButton getjBMenuFunciones() {
+        return jBMenuFunciones;
+    }
+
+    public void setjBMenuFunciones(JButton jBMenuFunciones) {
+        this.jBMenuFunciones = jBMenuFunciones;
+    }
+
+    public JButton getjBMenuReporteDeVentas() {
+        return jBMenuReporteDeVentas;
+    }
+
+    public void setjBMenuReporteDeVentas(JButton jBMenuReporteDeVentas) {
+        this.jBMenuReporteDeVentas = jBMenuReporteDeVentas;
+    }
+
+    public JButton getjBMenuVenderBoleto() {
+        return jBMenuVenderBoleto;
+    }
+
+    public void setjBMenuVenderBoleto(JButton jBMenuVenderBoleto) {
+        this.jBMenuVenderBoleto = jBMenuVenderBoleto;
+    }
+
+    public JButton getjBRegresar() {
+        return jBRegresar;
+    }
+
+    public void setjBRegresar(JButton jBRegresar) {
+        this.jBRegresar = jBRegresar;
+    }
+
+    public JButton getjBSeleccionarAsientosDeCompra() {
+        return jBSeleccionarAsientosDeCompra;
+    }
+
+    public void setjBSeleccionarAsientosDeCompra(JButton jBSeleccionarAsientosDeCompra) {
+        this.jBSeleccionarAsientosDeCompra = jBSeleccionarAsientosDeCompra;
+    }
+
+    public JComboBox<String> getjComHoraDuracion() {
+        return jComHoraDuracion;
+    }
+
+    public void setjComHoraDuracion(JComboBox<String> jComHoraDuracion) {
+        this.jComHoraDuracion = jComHoraDuracion;
+    }
+
+    public JComboBox<String> getjComHoraInicioFuncion() {
+        return jComHoraInicioFuncion;
+    }
+
+    public void setjComHoraInicioFuncion(JComboBox<String> jComHoraInicioFuncion) {
+        this.jComHoraInicioFuncion = jComHoraInicioFuncion;
+    }
+
+    public JComboBox<String> getjComMinutoDuracion() {
+        return jComMinutoDuracion;
+    }
+
+    public void setjComMinutoDuracion(JComboBox<String> jComMinutoDuracion) {
+        this.jComMinutoDuracion = jComMinutoDuracion;
+    }
+
+    public JComboBox<String> getjComMinutoInicioFuncion() {
+        return jComMinutoInicioFuncion;
+    }
+
+    public void setjComMinutoInicioFuncion(JComboBox<String> jComMinutoInicioFuncion) {
+        this.jComMinutoInicioFuncion = jComMinutoInicioFuncion;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
+    public void setjTable1(JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+    public JTable getjTable2() {
+        return jTable2;
+    }
+
+    public void setjTable2(JTable jTable2) {
+        this.jTable2 = jTable2;
+    }
+
+    public JTable getjTable3() {
+        return jTable3;
+    }
+
+    public void setjTable3(JTable jTable3) {
+        this.jTable3 = jTable3;
+    }
+
+    public JPanel getjPCancelarBoletos() {
+        return jPCancelarBoletos;
+    }
+
+    public void setjPCancelarBoletos(JPanel jPCancelarBoletos) {
+        this.jPCancelarBoletos = jPCancelarBoletos;
+    }
+
+    public JPanel getjPCancelarFuncion() {
+        return jPCancelarFuncion;
+    }
+
+    public void setjPCancelarFuncion(JPanel jPCancelarFuncion) {
+        this.jPCancelarFuncion = jPCancelarFuncion;
+    }
+
+    public JPanel getjPCrearFuncion() {
+        return jPCrearFuncion;
+    }
+
+    public void setjPCrearFuncion(JPanel jPCrearFuncion) {
+        this.jPCrearFuncion = jPCrearFuncion;
+    }
+
+    public JPanel getjPFunciones() {
+        return jPFunciones;
+    }
+
+    public void setjPFunciones(JPanel jPFunciones) {
+        this.jPFunciones = jPFunciones;
+    }
+
+    public JPanel getjPMenuPrincipal() {
+        return jPMenuPrincipal;
+    }
+
+    public void setjPMenuPrincipal(JPanel jPMenuPrincipal) {
+        this.jPMenuPrincipal = jPMenuPrincipal;
+    }
+
+    public JPanel getjPReporteDeVentas() {
+        return jPReporteDeVentas;
+    }
+
+    public void setjPReporteDeVentas(JPanel jPReporteDeVentas) {
+        this.jPReporteDeVentas = jPReporteDeVentas;
+    }
+
+    public JPanel getjPVentaBoletos() {
+        return jPVentaBoletos;
+    }
+
+    public void setjPVentaBoletos(JPanel jPVentaBoletos) {
+        this.jPVentaBoletos = jPVentaBoletos;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel A;

@@ -25,6 +25,19 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JButton" name="jBRegresar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRegresarActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="20" y="40" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Teatro Patito Feo"/>
@@ -36,9 +49,6 @@
       </Constraints>
     </Component>
     <Container class="javax.swing.JPanel" name="jBAsientosDisponibles">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jBAsientosDisponibles.setVisible(false);"/>
-      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="70" width="930" height="540"/>
@@ -2359,9 +2369,6 @@
       <BindingProperties>
         <BindingProperty name="background" source="jBMenuCrearFuncion" sourcePath="${action}" target="jPCrearFuncion" targetPath="background" updateStrategy="0" immediately="false"/>
       </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPCrearFuncion.setVisible(false);"/>
-      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="100" width="610" height="670"/>
@@ -2579,9 +2586,6 @@
       <BindingProperties>
         <BindingProperty name="background" source="jBMenuCancelarFuncion" sourcePath="${action}" target="jPCancelarFuncion" targetPath="background" updateStrategy="0" immediately="false"/>
       </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPCancelarFuncion.setVisible(false);"/>
-      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="100" width="610" height="620"/>
@@ -2667,9 +2671,6 @@
       <BindingProperties>
         <BindingProperty name="background" source="jBMenuVenderBoleto" sourcePath="${action}" target="jPVentaBoletos" targetPath="background" updateStrategy="0" immediately="false"/>
       </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPVentaBoletos.setVisible(false);"/>
-      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="100" width="610" height="670"/>
@@ -2897,9 +2898,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear Funcion"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBMenuCrearFuncionMouseClicked"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBMenuCancelarFuncion">
           <Properties>
@@ -2928,9 +2926,6 @@
       <BindingProperties>
         <BindingProperty name="background" source="jBMenuFunciones" sourcePath="${action}" target="jPFunciones" targetPath="background" updateStrategy="0" immediately="false"/>
       </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPFunciones.setVisible(false);"/>
-      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="100" width="620" height="630"/>
@@ -3041,9 +3036,6 @@
       <BindingProperties>
         <BindingProperty name="background" source="jBMenuCancelarBoleto" sourcePath="${action}" target="jPCancelarBoletos" targetPath="background" updateStrategy="0" immediately="false"/>
       </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPCancelarBoletos.setVisible(false);"/>
-      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="100" width="610" height="640"/>
@@ -3117,9 +3109,6 @@
       <BindingProperties>
         <BindingProperty name="background" source="jBMenuReporteDeVentas" sourcePath="${action}" target="jPReporteDeVentas" targetPath="background" updateStrategy="0" immediately="false"/>
       </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPReporteDeVentas.setVisible(false);"/>
-      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="79" width="610" height="640"/>
@@ -3139,21 +3128,5 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="jBRegresar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Regresar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRegresarActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jBRegresar.setVisible(false);"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="40" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
   </SubComponents>
 </Form>
