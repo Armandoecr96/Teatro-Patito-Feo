@@ -1,6 +1,7 @@
 
 package modelo;
 
+import elementosBaseDatos.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,12 +12,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class Funcion {
+public class AdministrarFunciones {
 
     private String nombreFuncion;
     private int horaInicioFuncion, minutoInicioFuncion, horaDuracionFuncion, minutoDuracionFuncion;
 
-    public Funcion(String s, int horIni, int minIni, int horDur, int minDur) {
+    public AdministrarFunciones(String s, int horIni, int minIni, int horDur, int minDur) {
         this.nombreFuncion = s;
         this.horaInicioFuncion = horIni;
         this.minutoInicioFuncion = minIni;
@@ -56,7 +57,7 @@ public class Funcion {
                 JOptionPane.showMessageDialog(null, "No se puede guardar la función porque se cruzan los horarios", "Error al guardar", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Funcion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdministrarFunciones.class.getName()).log(Level.SEVERE, null, ex);
         }
         conexion.desconectar();
         System.out.println("Funcion");

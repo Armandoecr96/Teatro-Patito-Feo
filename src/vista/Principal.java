@@ -5,7 +5,7 @@
  */
 package vista;
 
-import controlador.ManipuladorVistaMenuPrincipal;
+import manipuladores.ManipuladorJPMenuPrincipal;
 
 /**
  *
@@ -14,6 +14,8 @@ import controlador.ManipuladorVistaMenuPrincipal;
 public class Principal {
     
     public static void main(String[] args) {
-        new ManipuladorVistaMenuPrincipal();
+        vistaMenuPrincipal view = new vistaMenuPrincipal();
+        new ManipuladorJPMenuPrincipal(view);
+        view.setVisible(true);
     }
 }

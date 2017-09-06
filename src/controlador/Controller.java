@@ -5,7 +5,7 @@
  */
 package controlador;
 
-import modelo.Conexion;
+import elementosBaseDatos.Conexion;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -15,7 +15,7 @@ import java.sql.Statement;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Butaca;
-import modelo.Funcion;
+import modelo.AdministrarFunciones;
 
 /**
  *
@@ -34,7 +34,7 @@ public class Controller {
         MouseAdapter mouseAdapter = new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 System.out.println("/ " + s + " " + horIni + " " + minIni + " " + horDur + " " + minDur);
-                Funcion funcion = new Funcion(s, horIni, minIni, horDur, minDur);
+                AdministrarFunciones funcion = new AdministrarFunciones(s, horIni, minIni, horDur, minDur);
                 funcion.crearFuncion();
             }
         };

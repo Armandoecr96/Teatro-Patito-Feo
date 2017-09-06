@@ -29,7 +29,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     public vistaMenuPrincipal() {
         modelo = new DefaultTableModel();
         initComponents();
-        panelInitialConfigurations();
         //eventos();
     }
     public vistaMenuPrincipal(Controller controller) {
@@ -51,7 +50,37 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         jBRegresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jBAsientosDisponibles = new javax.swing.JPanel();
+        jPMenuPrincipal = new javax.swing.JPanel();
+        jBMenuVenderBoleto = new javax.swing.JButton();
+        jBMenuCancelarBoleto = new javax.swing.JButton();
+        jBMenuReporteDeVentas = new javax.swing.JButton();
+        jBMenuFunciones = new javax.swing.JButton();
+        jBMenuCrearFuncion = new javax.swing.JButton();
+        jBMenuCancelarFuncion = new javax.swing.JButton();
+        jPReporteDeVentas = new javax.swing.JPanel();
+        jPCancelarBoletos = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jBCancelarBoletoAsiento = new javax.swing.JButton();
+        jPVentaBoletos = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jBSeleccionarAsientosDeCompra = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jBComprarBoletos = new javax.swing.JButton();
+        jPCancelarFuncion = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jBCancelarFuncionSeleccionada = new javax.swing.JButton();
+        jPAsientosDisponibles = new javax.swing.JPanel();
         H1 = new javax.swing.JLabel();
         H2 = new javax.swing.JLabel();
         H3 = new javax.swing.JLabel();
@@ -241,6 +270,13 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         Num18 = new javax.swing.JLabel();
         Num19 = new javax.swing.JLabel();
         Num20 = new javax.swing.JLabel();
+        jPFunciones = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jBAsientos = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPCrearFuncion = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -251,728 +287,228 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jComMinutoInicioFuncion = new javax.swing.JComboBox<>();
         jComHoraDuracion = new javax.swing.JComboBox<>();
         jComMinutoDuracion = new javax.swing.JComboBox<>();
-        jPCancelarFuncion = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jBCancelarFuncionSeleccionada = new javax.swing.JButton();
-        jPVentaBoletos = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jBComprarBoletos = new javax.swing.JButton();
-        jBSeleccionarAsientosDeCompra = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        jPMenuPrincipal = new javax.swing.JPanel();
-        jBMenuVenderBoleto = new javax.swing.JButton();
-        jBMenuCancelarBoleto = new javax.swing.JButton();
-        jBMenuFunciones = new javax.swing.JButton();
-        jBMenuCrearFuncion = new javax.swing.JButton();
-        jBMenuCancelarFuncion = new javax.swing.JButton();
-        jBMenuReporteDeVentas = new javax.swing.JButton();
-        jPFunciones = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jBAsientos = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPCancelarBoletos = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jBCancelarBoletoAsiento = new javax.swing.JButton();
-        jPReporteDeVentas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jBRegresar.setVisible(false);
         jBRegresar.setText("Regresar");
-        jBRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRegresarActionPerformed(evt);
-            }
-        });
         getContentPane().add(jBRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel2.setText("Teatro Patito Feo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 16, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
-        jBAsientosDisponibles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPMenuPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPMenuPrincipal.setPreferredSize(new java.awt.Dimension(610, 670));
 
-        H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
-
-        H2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 30));
-
-        H3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
-
-        H4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
-
-        H5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
-
-        H6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
-
-        H7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
-
-        H8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
-
-        H9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
-
-        H10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
-
-        H11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
-
-        H12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
-
-        H13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
-
-        H14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
-
-        H15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
-
-        H16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, -1, -1));
-
-        H17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, -1, -1));
-
-        H18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 110, -1, -1));
-
-        H19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, -1, -1));
-
-        H20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(H20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 110, -1, -1));
-
-        G1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
-
-        G2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
-
-        G3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
-
-        G4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
-
-        G5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
-
-        G6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
-
-        G7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
-
-        G8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
-
-        G9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
-
-        G10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
-
-        G11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
-
-        G12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
-
-        G13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, -1, -1));
-
-        G14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
-
-        G15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
-
-        G16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, -1, -1));
-
-        G17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
-
-        G18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, -1, -1));
-
-        G19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
-
-        G20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(G20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 140, -1, -1));
-
-        F1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
-
-        F2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
-
-        F3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
-
-        F4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
-
-        F5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
-
-        F6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
-
-        F7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
-
-        F8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
-
-        F9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
-
-        F10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
-
-        F11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
-
-        F12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
-
-        F13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
-
-        F14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
-
-        F15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, -1, -1));
-
-        F16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
-
-        F17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, -1, -1));
-
-        F18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, -1, -1));
-
-        F19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
-
-        F20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(F20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 170, -1, -1));
-
-        E1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
-
-        E2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
-
-        E3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
-
-        E4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
-
-        E5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
-
-        E6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
-
-        E7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
-
-        E8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
-
-        E9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
-
-        E10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
-
-        E11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
-
-        E12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
-
-        E13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
-
-        E14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, -1, -1));
-
-        E15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, -1, -1));
-
-        E16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, -1));
-
-        E17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, -1, -1));
-
-        E18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
-
-        E19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, -1, -1));
-
-        E20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(E20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, -1, -1));
-
-        D1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
-
-        D2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
-
-        D3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
-
-        D4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
-
-        D5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
-
-        D6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
-
-        D7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
-
-        D8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
-
-        D9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
-
-        D10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
-
-        D11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
-
-        D12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
-
-        D13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
-
-        D14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, -1));
-
-        D15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
-
-        D16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, -1, -1));
-
-        D17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, -1, -1));
-
-        D18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
-
-        D19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
-
-        D20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(D20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, -1, -1));
-
-        C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
-
-        C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
-
-        C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
-
-        C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
-
-        C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
-
-        C6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
-
-        C7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
-
-        C8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
-
-        C9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
-
-        C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
-
-        C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
-
-        C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
-
-        C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, -1, -1));
-
-        C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
-
-        C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, -1));
-
-        C16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, -1, -1));
-
-        C17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
-
-        C18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
-
-        C19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, -1));
-
-        C20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(C20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 260, -1, -1));
-
-        B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
-
-        B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
-
-        B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
-
-        B4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
-
-        B5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
-
-        B6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, -1));
-
-        B7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, -1, -1));
-
-        B8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
-
-        B9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, -1));
-
-        B10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
-
-        B11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
-
-        B12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
-
-        B13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, -1, -1));
-
-        B14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
-
-        B15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, -1, -1));
-
-        B16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
-
-        B17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
-
-        B18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
-
-        B19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, -1, -1));
-
-        B20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(B20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, -1, -1));
-
-        A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
-
-        A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
-
-        A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
-
-        A4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
-
-        A5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
-
-        A6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
-
-        A7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
-
-        A8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
-
-        A9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, -1));
-
-        A10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
-
-        A11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
-
-        A12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
-
-        A13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
-
-        A14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, -1, -1));
-
-        A15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
-
-        A16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, -1, -1));
-
-        A17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, -1, -1));
-
-        A18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, -1, -1));
-
-        A19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, -1, -1));
-
-        A20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
-        jBAsientosDisponibles.add(A20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 320, -1, -1));
-
-        Escenario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/escenario.png"))); // NOI18N
-        jBAsientosDisponibles.add(Escenario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
-
-        H.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        H.setText("H");
-        jBAsientosDisponibles.add(H, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
-
-        G.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        G.setText("G");
-        jBAsientosDisponibles.add(G, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
-
-        F.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        F.setText("F");
-        jBAsientosDisponibles.add(F, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-
-        E.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        E.setText("E");
-        jBAsientosDisponibles.add(E, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
-
-        D.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        D.setText("D");
-        jBAsientosDisponibles.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
-
-        C.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        C.setText("C");
-        jBAsientosDisponibles.add(C, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
-
-        B.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        B.setText("B");
-        jBAsientosDisponibles.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
-
-        A.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        A.setText("A");
-        jBAsientosDisponibles.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
-
-        Num1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num1.setText("1");
-        jBAsientosDisponibles.add(Num1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
-
-        Num2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num2.setText("2");
-        jBAsientosDisponibles.add(Num2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
-
-        Num3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num3.setText("3");
-        jBAsientosDisponibles.add(Num3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
-
-        Num4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num4.setText("4");
-        jBAsientosDisponibles.add(Num4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
-
-        Num5.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num5.setText("5");
-        jBAsientosDisponibles.add(Num5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
-
-        Num6.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num6.setText("6");
-        jBAsientosDisponibles.add(Num6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
-
-        Num7.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num7.setText("7");
-        jBAsientosDisponibles.add(Num7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
-
-        Num8.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num8.setText("8");
-        jBAsientosDisponibles.add(Num8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
-
-        Num9.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num9.setText("9");
-        jBAsientosDisponibles.add(Num9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
-
-        Num10.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num10.setText("10");
-        jBAsientosDisponibles.add(Num10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
-
-        Num11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num11.setText("11");
-        jBAsientosDisponibles.add(Num11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, -1));
-
-        Num12.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num12.setText("12");
-        jBAsientosDisponibles.add(Num12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
-
-        Num13.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num13.setText("13");
-        jBAsientosDisponibles.add(Num13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
-
-        Num14.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num14.setText("14");
-        jBAsientosDisponibles.add(Num14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
-
-        Num15.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num15.setText("15");
-        jBAsientosDisponibles.add(Num15, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
-
-        Num16.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num16.setText("16");
-        jBAsientosDisponibles.add(Num16, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, -1, -1));
-
-        Num17.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num17.setText("17");
-        jBAsientosDisponibles.add(Num17, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, -1, -1));
-
-        Num18.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num18.setText("18");
-        jBAsientosDisponibles.add(Num18, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, -1, -1));
-
-        Num19.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num19.setText("19");
-        jBAsientosDisponibles.add(Num19, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
-
-        Num20.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Num20.setText("20");
-        jBAsientosDisponibles.add(Num20, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, -1));
-
-        getContentPane().add(jBAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 540));
-
-        jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
-        jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCrearFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCrearFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jPMenuPrincipal, org.jdesktop.beansbinding.ELProperty.create("${background}"), jPMenuPrincipal, org.jdesktop.beansbinding.BeanProperty.create("foreground"));
         bindingGroup.addBinding(binding);
 
-        jLabel10.setText("Nombre de la Funcion");
+        jBMenuVenderBoleto.setText("Vender Boletos");
 
-        jLabel11.setText("Horario de Inicio (horas/min)");
+        jBMenuCancelarBoleto.setText("Cancelar Boletos");
 
-        jBCrearFuncion.setText("Crear Funcion");
+        jBMenuReporteDeVentas.setText("Ver Reporte de Ventas");
 
-        jLabel12.setText("Duración (horas/min)");
+        jBMenuFunciones.setText("Funciones");
 
-        jComHoraInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        jBMenuCrearFuncion.setText("Crear Funcion");
 
-        jComMinutoInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+        jBMenuCancelarFuncion.setText("Cancelar Funcion");
 
-        jComHoraDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
-
-        jComMinutoDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
-
-        javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
-        jPCrearFuncion.setLayout(jPCrearFuncionLayout);
-        jPCrearFuncionLayout.setHorizontalGroup(
-            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addGap(130, 130, 130)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                            .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPMenuPrincipalLayout = new javax.swing.GroupLayout(jPMenuPrincipal);
+        jPMenuPrincipal.setLayout(jPMenuPrincipalLayout);
+        jPMenuPrincipalLayout.setHorizontalGroup(
+            jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
+                .addGap(263, 263, 263)
+                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
+                        .addComponent(jBMenuVenderBoleto)
+                        .addGap(154, 154, 154)
+                        .addComponent(jBMenuFunciones))
+                    .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
+                            .addComponent(jBMenuReporteDeVentas)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                            .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jBCrearFuncion)))
-                .addContainerGap(178, Short.MAX_VALUE))
+                            .addComponent(jBMenuCancelarFuncion))
+                        .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
+                            .addComponent(jBMenuCancelarBoleto)
+                            .addGap(116, 116, 116)
+                            .addComponent(jBMenuCrearFuncion))))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
-        jPCrearFuncionLayout.setVerticalGroup(
-            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(jBCrearFuncion)
-                .addContainerGap(380, Short.MAX_VALUE))
+        jPMenuPrincipalLayout.setVerticalGroup(
+            jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBMenuVenderBoleto)
+                    .addComponent(jBMenuFunciones))
+                .addGap(40, 40, 40)
+                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBMenuCancelarBoleto)
+                    .addComponent(jBMenuCrearFuncion))
+                .addGap(31, 31, 31)
+                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBMenuCancelarFuncion)
+                    .addComponent(jBMenuReporteDeVentas))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 670));
+        getContentPane().add(jPMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
 
+        jPReporteDeVentas.setVisible(false);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuReporteDeVentas, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPReporteDeVentas, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPReporteDeVentasLayout = new javax.swing.GroupLayout(jPReporteDeVentas);
+        jPReporteDeVentas.setLayout(jPReporteDeVentasLayout);
+        jPReporteDeVentasLayout.setHorizontalGroup(
+            jPReporteDeVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 930, Short.MAX_VALUE)
+        );
+        jPReporteDeVentasLayout.setVerticalGroup(
+            jPReporteDeVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPReporteDeVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
+
+        jPCancelarBoletos.setVisible(false);
+        jPCancelarBoletos.setMaximumSize(new java.awt.Dimension(610, 670));
+        jPCancelarBoletos.setPreferredSize(new java.awt.Dimension(610, 670));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCancelarBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jLabel8.setText("Función del Boleto");
+
+        jLabel9.setText("Numero de Asiento");
+
+        jBCancelarBoletoAsiento.setText("Cancelar Boleto");
+
+        javax.swing.GroupLayout jPCancelarBoletosLayout = new javax.swing.GroupLayout(jPCancelarBoletos);
+        jPCancelarBoletos.setLayout(jPCancelarBoletosLayout);
+        jPCancelarBoletosLayout.setHorizontalGroup(
+            jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCancelarBoletosLayout.createSequentialGroup()
+                .addGap(264, 264, 264)
+                .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addGap(98, 98, 98)
+                .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBCancelarBoletoAsiento)
+                    .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField5)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(293, Short.MAX_VALUE))
+        );
+        jPCancelarBoletosLayout.setVerticalGroup(
+            jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCancelarBoletosLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74)
+                .addComponent(jBCancelarBoletoAsiento)
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPCancelarBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
+
+        jPVentaBoletos.setVisible(false);
+        jPVentaBoletos.setMinimumSize(new java.awt.Dimension(20, 20));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuVenderBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPVentaBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        jLabel4.setText("Lista de Funciones");
+
+        jLabel5.setText("Pelicula Seleccionada");
+
+        jLabel6.setText("Numero de Boletos");
+
+        jBSeleccionarAsientosDeCompra.setText("Seleccionar Asientos");
+
+        jBComprarBoletos.setText("Comprar");
+
+        javax.swing.GroupLayout jPVentaBoletosLayout = new javax.swing.GroupLayout(jPVentaBoletos);
+        jPVentaBoletos.setLayout(jPVentaBoletosLayout);
+        jPVentaBoletosLayout.setHorizontalGroup(
+            jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPVentaBoletosLayout.createSequentialGroup()
+                .addContainerGap(245, Short.MAX_VALUE)
+                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPVentaBoletosLayout.createSequentialGroup()
+                        .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBComprarBoletos)
+                            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
+                                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jBSeleccionarAsientosDeCompra))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(32, 32, 32)))
+                .addGap(233, 233, 233))
+            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
+                .addGap(387, 387, 387)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPVentaBoletosLayout.setVerticalGroup(
+            jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBSeleccionarAsientosDeCompra)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBComprarBoletos)
+                .addGap(59, 59, 59))
+        );
+
+        getContentPane().add(jPVentaBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
+
+        jPCancelarFuncion.setVisible(false);
         jPCancelarFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
         jPCancelarFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
 
@@ -1003,198 +539,632 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
                 .addGroup(jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jLabel3))
-                    .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
                         .addGap(222, 222, 222)
-                        .addComponent(jBCancelarFuncionSeleccionada)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addComponent(jBCancelarFuncionSeleccionada))
+                    .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addGroup(jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
+                                .addGap(157, 157, 157)
+                                .addComponent(jLabel3)))))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         jPCancelarFuncionLayout.setVerticalGroup(
             jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                .addGap(194, 194, 194)
+                .addGap(122, 122, 122)
                 .addComponent(jLabel3)
                 .addGap(59, 59, 59)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79)
                 .addComponent(jBCancelarFuncionSeleccionada)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPCancelarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 620));
+        getContentPane().add(jPCancelarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
 
-        jPVentaBoletos.setMinimumSize(new java.awt.Dimension(20, 20));
+        jPAsientosDisponibles.setVisible(false);
+        jPAsientosDisponibles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuVenderBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPVentaBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
+        H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
+        H2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 30));
 
-        jLabel4.setText("Lista de Funciones");
+        H3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
-        jLabel5.setText("Pelicula Seleccionada");
+        H4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
 
-        jLabel6.setText("Numero de Boletos");
+        H5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
-        jBComprarBoletos.setText("Comprar");
+        H6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
 
-        jBSeleccionarAsientosDeCompra.setText("Seleccionar Asientos");
+        H7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
-        javax.swing.GroupLayout jPVentaBoletosLayout = new javax.swing.GroupLayout(jPVentaBoletos);
-        jPVentaBoletos.setLayout(jPVentaBoletosLayout);
-        jPVentaBoletosLayout.setHorizontalGroup(
-            jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
-                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPVentaBoletosLayout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(jLabel4))
-                    .addGroup(jPVentaBoletosLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPVentaBoletosLayout.createSequentialGroup()
-                                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jBComprarBoletos)
-                                    .addGroup(jPVentaBoletosLayout.createSequentialGroup()
-                                        .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jBSeleccionarAsientosDeCompra))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField4))))
-                                .addGap(32, 32, 32)))))
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
-        jPVentaBoletosLayout.setVerticalGroup(
-            jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBSeleccionarAsientosDeCompra)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                .addComponent(jBComprarBoletos)
-                .addGap(62, 62, 62))
-        );
+        H8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
 
-        getContentPane().add(jPVentaBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 670));
+        H9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
-        jPMenuPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPMenuPrincipal.setPreferredSize(new java.awt.Dimension(610, 670));
+        H10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jPMenuPrincipal, org.jdesktop.beansbinding.ELProperty.create("${background}"), jPMenuPrincipal, org.jdesktop.beansbinding.BeanProperty.create("foreground"));
-        bindingGroup.addBinding(binding);
+        H11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
 
-        jBMenuVenderBoleto.setText("Vender Boletos");
-        jBMenuVenderBoleto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBMenuVenderBoletoActionPerformed(evt);
-            }
-        });
+        H12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
 
-        jBMenuCancelarBoleto.setText("Cancelar Boletos");
-        jBMenuCancelarBoleto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBMenuCancelarBoletoActionPerformed(evt);
-            }
-        });
+        H13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
 
-        jBMenuFunciones.setText("Funciones");
-        jBMenuFunciones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBMenuFuncionesMouseClicked(evt);
-            }
-        });
+        H14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
 
-        jBMenuCrearFuncion.setText("Crear Funcion");
+        H15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
 
-        jBMenuCancelarFuncion.setText("Cancelar Funcion");
-        jBMenuCancelarFuncion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBMenuCancelarFuncionActionPerformed(evt);
-            }
-        });
+        H16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, -1, -1));
 
-        jBMenuReporteDeVentas.setText("Ver Reporte de Ventas");
-        jBMenuReporteDeVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBMenuReporteDeVentasActionPerformed(evt);
-            }
-        });
+        H17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, -1, -1));
 
-        javax.swing.GroupLayout jPMenuPrincipalLayout = new javax.swing.GroupLayout(jPMenuPrincipal);
-        jPMenuPrincipal.setLayout(jPMenuPrincipalLayout);
-        jPMenuPrincipalLayout.setHorizontalGroup(
-            jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                        .addComponent(jBMenuVenderBoleto)
-                        .addGap(154, 154, 154)
-                        .addComponent(jBMenuFunciones))
-                    .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                            .addComponent(jBMenuReporteDeVentas)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBMenuCancelarFuncion))
-                        .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                            .addComponent(jBMenuCancelarBoleto)
-                            .addGap(116, 116, 116)
-                            .addComponent(jBMenuCrearFuncion))))
-                .addGap(120, 120, 120))
-        );
-        jPMenuPrincipalLayout.setVerticalGroup(
-            jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPMenuPrincipalLayout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBMenuVenderBoleto)
-                    .addComponent(jBMenuFunciones))
-                .addGap(40, 40, 40)
-                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBMenuCancelarBoleto)
-                    .addComponent(jBMenuCrearFuncion))
-                .addGap(31, 31, 31)
-                .addGroup(jPMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBMenuCancelarFuncion)
-                    .addComponent(jBMenuReporteDeVentas))
-                .addGap(316, 316, 316))
-        );
+        H18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 110, -1, -1));
 
-        getContentPane().add(jPMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 590));
+        H19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, -1, -1));
 
+        H20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(H20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 110, -1, -1));
+
+        G1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+
+        G2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+
+        G3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
+
+        G4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+
+        G5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
+
+        G6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
+
+        G7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+
+        G8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
+
+        G9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
+
+        G10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
+
+        G11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
+
+        G12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
+
+        G13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, -1, -1));
+
+        G14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
+
+        G15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
+
+        G16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, -1, -1));
+
+        G17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
+
+        G18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, -1, -1));
+
+        G19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
+
+        G20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(G20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 140, -1, -1));
+
+        F1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+
+        F2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+
+        F3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+
+        F4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
+
+        F5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+
+        F6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
+
+        F7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
+
+        F8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+
+        F9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
+
+        F10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
+
+        F11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
+
+        F12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
+
+        F13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+
+        F14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
+
+        F15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, -1, -1));
+
+        F16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+
+        F17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, -1, -1));
+
+        F18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, -1, -1));
+
+        F19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
+
+        F20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(F20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 170, -1, -1));
+
+        E1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
+
+        E2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+
+        E3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+
+        E4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+
+        E5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+
+        E6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
+
+        E7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
+
+        E8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
+
+        E9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
+
+        E10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
+
+        E11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
+
+        E12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
+
+        E13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
+
+        E14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, -1, -1));
+
+        E15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, -1, -1));
+
+        E16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, -1));
+
+        E17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, -1, -1));
+
+        E18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
+
+        E19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, -1, -1));
+
+        E20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(E20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, -1, -1));
+
+        D1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+
+        D2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+
+        D3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        D4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+
+        D5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        D6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+
+        D7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+
+        D8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
+
+        D9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
+
+        D10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+
+        D11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+
+        D12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
+
+        D13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
+
+        D14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, -1));
+
+        D15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
+
+        D16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, -1, -1));
+
+        D17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, -1, -1));
+
+        D18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
+
+        D19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
+
+        D20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(D20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, -1, -1));
+
+        C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+
+        C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+
+        C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+
+        C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
+
+        C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+
+        C6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
+
+        C7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+
+        C8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+
+        C9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
+
+        C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
+
+        C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+
+        C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
+
+        C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, -1, -1));
+
+        C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
+
+        C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, -1));
+
+        C16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, -1, -1));
+
+        C17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
+
+        C18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
+
+        C19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, -1));
+
+        C20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(C20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 260, -1, -1));
+
+        B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+
+        B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+
+        B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
+
+        B4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
+
+        B5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
+
+        B6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, -1));
+
+        B7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, -1, -1));
+
+        B8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+
+        B9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, -1));
+
+        B10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
+
+        B11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
+
+        B12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
+
+        B13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, -1, -1));
+
+        B14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
+
+        B15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, -1, -1));
+
+        B16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
+
+        B17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
+
+        B18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
+
+        B19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, -1, -1));
+
+        B20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(B20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, -1, -1));
+
+        A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+
+        A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
+
+        A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
+
+        A4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
+
+        A5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+
+        A6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
+
+        A7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
+
+        A8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
+
+        A9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, -1));
+
+        A10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
+
+        A11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
+
+        A12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
+
+        A13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
+
+        A14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, -1, -1));
+
+        A15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
+
+        A16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, -1, -1));
+
+        A17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, -1, -1));
+
+        A18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, -1, -1));
+
+        A19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A19, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, -1, -1));
+
+        A20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg"))); // NOI18N
+        jPAsientosDisponibles.add(A20, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 320, -1, -1));
+
+        Escenario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/escenario.png"))); // NOI18N
+        jPAsientosDisponibles.add(Escenario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
+
+        H.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        H.setText("H");
+        jPAsientosDisponibles.add(H, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        G.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        G.setText("G");
+        jPAsientosDisponibles.add(G, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+
+        F.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        F.setText("F");
+        jPAsientosDisponibles.add(F, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        E.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        E.setText("E");
+        jPAsientosDisponibles.add(E, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+
+        D.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        D.setText("D");
+        jPAsientosDisponibles.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+
+        C.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        C.setText("C");
+        jPAsientosDisponibles.add(C, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+
+        B.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        B.setText("B");
+        jPAsientosDisponibles.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+
+        A.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        A.setText("A");
+        jPAsientosDisponibles.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
+
+        Num1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num1.setText("1");
+        jPAsientosDisponibles.add(Num1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+
+        Num2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num2.setText("2");
+        jPAsientosDisponibles.add(Num2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+
+        Num3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num3.setText("3");
+        jPAsientosDisponibles.add(Num3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+
+        Num4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num4.setText("4");
+        jPAsientosDisponibles.add(Num4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+
+        Num5.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num5.setText("5");
+        jPAsientosDisponibles.add(Num5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+
+        Num6.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num6.setText("6");
+        jPAsientosDisponibles.add(Num6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
+
+        Num7.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num7.setText("7");
+        jPAsientosDisponibles.add(Num7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
+
+        Num8.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num8.setText("8");
+        jPAsientosDisponibles.add(Num8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
+
+        Num9.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num9.setText("9");
+        jPAsientosDisponibles.add(Num9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
+
+        Num10.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num10.setText("10");
+        jPAsientosDisponibles.add(Num10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
+
+        Num11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num11.setText("11");
+        jPAsientosDisponibles.add(Num11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, -1));
+
+        Num12.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num12.setText("12");
+        jPAsientosDisponibles.add(Num12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
+
+        Num13.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num13.setText("13");
+        jPAsientosDisponibles.add(Num13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
+
+        Num14.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num14.setText("14");
+        jPAsientosDisponibles.add(Num14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
+
+        Num15.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num15.setText("15");
+        jPAsientosDisponibles.add(Num15, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
+
+        Num16.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num16.setText("16");
+        jPAsientosDisponibles.add(Num16, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, -1, -1));
+
+        Num17.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num17.setText("17");
+        jPAsientosDisponibles.add(Num17, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, -1, -1));
+
+        Num18.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num18.setText("18");
+        jPAsientosDisponibles.add(Num18, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, -1, -1));
+
+        Num19.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num19.setText("19");
+        jPAsientosDisponibles.add(Num19, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
+
+        Num20.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Num20.setText("20");
+        jPAsientosDisponibles.add(Num20, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, -1));
+
+        getContentPane().add(jPAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 540));
+
+        jPFunciones.setVisible(false);
         jPFunciones.setPreferredSize(new java.awt.Dimension(610, 670));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuFunciones, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPFunciones, org.jdesktop.beansbinding.BeanProperty.create("background"));
@@ -1228,120 +1198,119 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPFunciones.setLayout(jPFuncionesLayout);
         jPFuncionesLayout.setHorizontalGroup(
             jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFuncionesLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
+                .addContainerGap(249, Short.MAX_VALUE)
                 .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
+                    .addGroup(jPFuncionesLayout.createSequentialGroup()
+                        .addGap(134, 134, 134)
                         .addComponent(jLabel7)
-                        .addGap(216, 216, 216))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
-                        .addComponent(jBAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(148, 148, 148))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
-                        .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(191, 191, 191))
+                    .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPFuncionesLayout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(133, 133, 133)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPFuncionesLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(96, 96, 96))))
+                                .addGap(99, 99, 99)
+                                .addComponent(jBAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(229, 229, 229))
         );
         jPFuncionesLayout.setVerticalGroup(
             jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPFuncionesLayout.createSequentialGroup()
-                .addGap(157, 157, 157)
+                .addGap(81, 81, 81)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(32, 32, 32)
                 .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(49, 49, 49)
+                .addGap(34, 34, 34)
                 .addComponent(jBAsientos)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPFunciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 620, 630));
+        getContentPane().add(jPFunciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 530));
 
-        jPCancelarBoletos.setMaximumSize(new java.awt.Dimension(610, 670));
-        jPCancelarBoletos.setPreferredSize(new java.awt.Dimension(610, 670));
+        jPCrearFuncion.setVisible(false);
+        jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
+        jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCancelarBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCrearFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCrearFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
         bindingGroup.addBinding(binding);
 
-        jLabel8.setText("Función del Boleto");
+        jLabel10.setText("Nombre de la Funcion");
 
-        jLabel9.setText("Numero de Asiento");
+        jLabel11.setText("Horario de Inicio (horas/min)");
 
-        jBCancelarBoletoAsiento.setText("Cancelar Boleto");
+        jBCrearFuncion.setText("Crear Funcion");
 
-        javax.swing.GroupLayout jPCancelarBoletosLayout = new javax.swing.GroupLayout(jPCancelarBoletos);
-        jPCancelarBoletos.setLayout(jPCancelarBoletosLayout);
-        jPCancelarBoletosLayout.setHorizontalGroup(
-            jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCancelarBoletosLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addGap(98, 98, 98)
-                .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBCancelarBoletoAsiento)
-                    .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField5)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
-                .addContainerGap(248, Short.MAX_VALUE))
+        jLabel12.setText("Duración (horas/min)");
+
+        jComHoraInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+
+        jComMinutoInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+
+        jComHoraDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+
+        jComMinutoDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+
+        javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
+        jPCrearFuncion.setLayout(jPCrearFuncionLayout);
+        jPCrearFuncionLayout.setHorizontalGroup(
+            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCrearFuncionLayout.createSequentialGroup()
+                .addContainerGap(234, Short.MAX_VALUE)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(130, 130, 130)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                            .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                            .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jBCrearFuncion)))
+                .addGap(230, 230, 230))
         );
-        jPCancelarBoletosLayout.setVerticalGroup(
-            jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCancelarBoletosLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPCancelarBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74)
-                .addComponent(jBCancelarBoletoAsiento)
-                .addContainerGap(375, Short.MAX_VALUE))
+        jPCrearFuncionLayout.setVerticalGroup(
+            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jBCrearFuncion)
+                .addContainerGap(213, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPCancelarBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 640));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuReporteDeVentas, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPReporteDeVentas, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
-
-        javax.swing.GroupLayout jPReporteDeVentasLayout = new javax.swing.GroupLayout(jPReporteDeVentas);
-        jPReporteDeVentas.setLayout(jPReporteDeVentasLayout);
-        jPReporteDeVentasLayout.setHorizontalGroup(
-            jPReporteDeVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        jPReporteDeVentasLayout.setVerticalGroup(
-            jPReporteDeVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPReporteDeVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 79, 610, 640));
+        getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 530));
 
         bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void panelInitialConfigurations() {
-        jBRegresar.setVisible(false);
-        jPCancelarBoletos.setVisible(false);
-        jPCancelarFuncion.setVisible(false);
-        jPCrearFuncion.setVisible(false);
-        jPFunciones.setVisible(false);
-        jPReporteDeVentas.setVisible(false);
-        jPVentaBoletos.setVisible(false);
-        jPMenuPrincipal.setVisible(true);
-    }
 
     /**
      * En este metodo se colocarán todos los Listeners que sean requeridos.
@@ -1521,67 +1490,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                 Integer.parseInt((String) jComMinutoDuracion.getSelectedItem())));
     }
 
-    private void jBMenuVenderBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuVenderBoletoActionPerformed
-        // TODO add your handling code here:
-        jTable3.setModel(this.controller.cargarTabla());
-        jPMenuPrincipal.setVisible(false);
-        jPVentaBoletos.setVisible(true);
-        jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBMenuVenderBoletoActionPerformed
-
-    private void jBMenuCancelarBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuCancelarBoletoActionPerformed
-        // TODO add your handling code here:
-        jPMenuPrincipal.setVisible(false);
-        jPCancelarBoletos.setVisible(true);
-        jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBMenuCancelarBoletoActionPerformed
-
-    private void jBMenuCancelarFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuCancelarFuncionActionPerformed
-        // TODO add your handling code here:
-        jTable2.setModel(this.controller.cargarTabla());
-        jPMenuPrincipal.setVisible(false);
-        jPCancelarFuncion.setVisible(true);
-        jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBMenuCancelarFuncionActionPerformed
-
-    private void jBMenuReporteDeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenuReporteDeVentasActionPerformed
-        // TODO add your handling code here:
-        jPMenuPrincipal.setVisible(false);
-        jPReporteDeVentas.setVisible(true);
-        jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBMenuReporteDeVentasActionPerformed
-
-    private void jBRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegresarActionPerformed
-        // TODO add your handling code here:
-        jPCancelarBoletos.setVisible(false);
-        jPCancelarFuncion.setVisible(false);
-        jPCrearFuncion.setVisible(false);
-        jPFunciones.setVisible(false);
-        jPReporteDeVentas.setVisible(false);
-        jPVentaBoletos.setVisible(false);
-        jBRegresar.setVisible(false);
-        jBAsientosDisponibles.setVisible(false);
-        jPMenuPrincipal.setVisible(true);
-    }//GEN-LAST:event_jBRegresarActionPerformed
-
     private void jBAsientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAsientosMouseClicked
         // TODO add your handling code here:
         jPFunciones.setVisible(false);
-        jBAsientosDisponibles.setVisible(true);
+        jPAsientosDisponibles.setVisible(true);
     }//GEN-LAST:event_jBAsientosMouseClicked
-
-    private void jBMenuFuncionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBMenuFuncionesMouseClicked
-        // TODO add your handling code here:
-        jTable1.setModel(this.controller.cargarTabla());
-        jPMenuPrincipal.setVisible(false);
-        jPFunciones.setVisible(true);
-        jBRegresar.setVisible(true);
-    }//GEN-LAST:event_jBMenuFuncionesMouseClicked
-
-    public void resetComponents () {
-        initComponents();
-        //eventos();
-    }
 
     public DefaultTableModel getModelo() {
         return modelo;
@@ -1607,12 +1520,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.jBAsientos = jBAsientos;
     }
 
-    public JPanel getjBAsientosDisponibles() {
-        return jBAsientosDisponibles;
+    public JPanel getjPAsientosDisponibles() {
+        return jPAsientosDisponibles;
     }
 
-    public void setjBAsientosDisponibles(JPanel jBAsientosDisponibles) {
-        this.jBAsientosDisponibles = jBAsientosDisponibles;
+    public void setjPAsientosDisponibles(JPanel jBAsientosDisponibles) {
+        this.jPAsientosDisponibles = jBAsientosDisponibles;
     }
 
     public JButton getjBCancelarBoletoAsiento() {
@@ -2016,7 +1929,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel Num8;
     private javax.swing.JLabel Num9;
     private javax.swing.JButton jBAsientos;
-    private javax.swing.JPanel jBAsientosDisponibles;
     private javax.swing.JButton jBCancelarBoletoAsiento;
     private javax.swing.JButton jBCancelarFuncionSeleccionada;
     private javax.swing.JButton jBComprarBoletos;
@@ -2045,6 +1957,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPAsientosDisponibles;
     private javax.swing.JPanel jPCancelarBoletos;
     private javax.swing.JPanel jPCancelarFuncion;
     private javax.swing.JPanel jPCrearFuncion;

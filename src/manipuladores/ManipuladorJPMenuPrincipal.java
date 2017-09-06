@@ -1,0 +1,104 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package manipuladores;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import vista.vistaMenuPrincipal;
+
+/**
+ *
+ * @author brauni800
+ */
+public class ManipuladorJPMenuPrincipal implements ActionListener {
+    private vistaMenuPrincipal view;
+    private ManipuladorJPMenuFunciones menuFunciones;
+
+    public ManipuladorJPMenuPrincipal(vistaMenuPrincipal view) {
+        this.view = view;
+        initComponents();
+    }
+    
+    private void initComponents() {
+        this.view.getjBMenuCrearFuncion().addActionListener(this);
+        this.view.getjBMenuCrearFuncion().setActionCommand("MENU_CREAR_FUNCION");
+
+        this.view.getjBMenuFunciones().addActionListener(this);
+        this.view.getjBMenuFunciones().setActionCommand("MENU_FUNCIONES");
+
+        this.view.getjBMenuVenderBoleto().addActionListener(this);
+        this.view.getjBMenuVenderBoleto().setActionCommand("MENU_VENDER_BOLETO");
+
+        this.view.getjBMenuCancelarFuncion().addActionListener(this);
+        this.view.getjBMenuCancelarFuncion().setActionCommand("MENU_CANCELAR_FUNCION");
+
+        this.view.getjBMenuCancelarBoleto().addActionListener(this);
+        this.view.getjBMenuCancelarBoleto().setActionCommand("MENU_CANCELAR_BOLETO");
+
+        this.view.getjBMenuReporteDeVentas().addActionListener(this);
+        this.view.getjBMenuReporteDeVentas().setActionCommand("MENU_REPORTE_VENTAS");
+        
+        this.view.getjBRegresar().addActionListener(this);
+        this.view.getjBRegresar().setActionCommand("BOTON_REGRESAR");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String comando = e.getActionCommand();
+        switch (comando) {
+            case "MENU_CREAR_FUNCION":
+                this.view.getjPMenuPrincipal().setVisible(false);
+                this.view.getjBRegresar().setVisible(true);
+                this.view.getjPCrearFuncion().setVisible(true);
+                break;
+            case "MENU_FUNCIONES":
+                this.view.getjPMenuPrincipal().setVisible(false);
+                this.view.getjBRegresar().setVisible(true);
+                this.view.getjPFunciones().setVisible(true);
+                this.menuFunciones = new ManipuladorJPMenuFunciones(this.view);
+                break;
+            case "MENU_VENDER_BOLETO":
+                this.view.getjPMenuPrincipal().setVisible(false);
+                this.view.getjBRegresar().setVisible(true);
+                this.view.getjPVentaBoletos().setVisible(true);
+                break;
+            case "MENU_CANCELAR_FUNCION":
+                this.view.getjPMenuPrincipal().setVisible(false);
+                this.view.getjBRegresar().setVisible(true);
+                this.view.getjPCancelarFuncion().setVisible(true);
+                break;
+            case "MENU_CANCELAR_BOLETO":
+                this.view.getjPMenuPrincipal().setVisible(false);
+                this.view.getjBRegresar().setVisible(true);
+                this.view.getjPCancelarBoletos().setVisible(true);
+                break;
+            case "MENU_REPORTE_VENTAS":
+                this.view.getjPMenuPrincipal().setVisible(false);
+                this.view.getjBRegresar().setVisible(true);
+                this.view.getjPReporteDeVentas().setVisible(true);
+                break;
+            case "BOTON_REGRESAR":
+                this.view.getjPMenuPrincipal().setVisible(true);
+                this.view.getjBRegresar().setVisible(false);
+                this.view.getjPCrearFuncion().setVisible(false);
+                this.view.getjPFunciones().setVisible(false);
+                this.view.getjPVentaBoletos().setVisible(false);
+                this.view.getjPCancelarFuncion().setVisible(false);
+                this.view.getjPCancelarBoletos().setVisible(false);
+                this.view.getjPReporteDeVentas().setVisible(false);
+                this.menuFunciones = null;
+                break;
+        }
+    }
+
+    public vistaMenuPrincipal getView() {
+        return view;
+    }
+
+    public void setView(vistaMenuPrincipal view) {
+        this.view = view;
+    }
+}
