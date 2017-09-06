@@ -30,7 +30,7 @@ CREATE TABLE `funcion` (
   `FinalFuncion` time NOT NULL,
   PRIMARY KEY (`idFuncion`),
   UNIQUE KEY `idFuncion_UNIQUE` (`idFuncion`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `funcion` (
 
 LOCK TABLES `funcion` WRITE;
 /*!40000 ALTER TABLE `funcion` DISABLE KEYS */;
-INSERT INTO `funcion` VALUES (1,'Lola la trailera','09:00:00','00:00:00','00:00:00'),(2,'Zombies al ataque','09:30:00','00:00:00','00:00:00');
+INSERT INTO `funcion` VALUES (1,'','00:00:00','18:00:00','00:00:00');
 /*!40000 ALTER TABLE `funcion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-29 16:53:07
+-- Dump completed on 2017-09-06 10:28:05

@@ -5,8 +5,10 @@
  */
 package manipuladores;
 
+import interaccionesBaseDatos.AdministradorTablas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 import vista.vistaMenuPrincipal;
 
 /**
@@ -14,6 +16,7 @@ import vista.vistaMenuPrincipal;
  * @author brauni800
  */
 public class ManipuladorJPMenuPrincipal implements ActionListener {
+
     private vistaMenuPrincipal view;
     private ManipuladorJPMenuFunciones menuFunciones;
     private ManipuladorJPMenuCrearFuncion menuCrearFuncion;
@@ -45,9 +48,11 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
 
         this.view.getjBMenuReporteDeVentas().addActionListener(this);
         this.view.getjBMenuReporteDeVentas().setActionCommand("MENU_REPORTE_VENTAS");
-        
+
         this.view.getjBRegresar().addActionListener(this);
         this.view.getjBRegresar().setActionCommand("BOTON_REGRESAR");
+
+        cargarTablaFunciones();
     }
 
     @Override
@@ -106,8 +111,17 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
                 this.menuCancelarFuncion = null;
                 this.menuCancelarBoleto = null;
                 this.menuReporteVentas = null;
+                cargarTablaFunciones();
                 break;
         }
+    }
+
+    private void cargarTablaFunciones() {
+        AdministradorTablas adminTab = new AdministradorTablas();
+        DefaultTableModel modelo = adminTab.cargarTablaFunciones();
+        this.view.getjTable1().setModel(modelo);
+        this.view.getjTable2().setModel(modelo);
+        this.view.getjTable3().setModel(modelo);
     }
 
     public vistaMenuPrincipal getView() {

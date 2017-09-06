@@ -5,14 +5,12 @@
  */
 package vista;
 
-import controlador.Controller;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,12 +21,8 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form menuPrincipal
      */
-    private Controller controller;
-
-    private DefaultTableModel modelo;
     
     public vistaMenuPrincipal() {
-        modelo = new DefaultTableModel();
         initComponents();
     }
 
@@ -43,8 +37,8 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jBRegresar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jPAsientosDisponibles = new javax.swing.JPanel();
+        jBRegresarFunciones = new javax.swing.JButton();
         H1 = new javax.swing.JLabel();
         H2 = new javax.swing.JLabel();
         H3 = new javax.swing.JLabel();
@@ -290,11 +284,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jBRegresar.setText("Regresar");
         getContentPane().add(jBRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        jLabel2.setText("Teatro Patito Feo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
-
         jPAsientosDisponibles.setVisible(false);
         jPAsientosDisponibles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jBRegresarFunciones.setText("Regresar a Funciones");
+        jPAsientosDisponibles.add(jBRegresarFunciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_azul_plata.jpg"))); // NOI18N
         jPAsientosDisponibles.add(H1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
@@ -891,7 +885,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         Num20.setText("20");
         jPAsientosDisponibles.add(Num20, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, -1));
 
-        getContentPane().add(jPAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
+        getContentPane().add(jPAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 930, 520));
 
         jPCrearFuncion.setVisible(false);
         jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
@@ -1299,12 +1293,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public DefaultTableModel getModelo() {
-        return modelo;
+    public JButton getjBRegresarFunciones() {
+        return jBRegresarFunciones;
     }
 
-    public void setModelo(DefaultTableModel modelo) {
-        this.modelo = modelo;
+    public void setjBRegresarFunciones(JButton jBRegresarFunciones) {
+        this.jBRegresarFunciones = jBRegresarFunciones;
     }
 
     public JTextField getJTxtNombreFuncion() {
@@ -1547,6 +1541,70 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.A1 = A1;
     }
 
+    public JLabel getA2() {
+        return A2;
+    }
+
+    public void setA2(JLabel A2) {
+        this.A2 = A2;
+    }
+
+    public JLabel getA3() {
+        return A3;
+    }
+
+    public void setA3(JLabel A3) {
+        this.A3 = A3;
+    }
+
+    public JLabel getA4() {
+        return A4;
+    }
+
+    public void setA4(JLabel A4) {
+        this.A4 = A4;
+    }
+
+    public JLabel getA5() {
+        return A5;
+    }
+
+    public void setA5(JLabel A5) {
+        this.A5 = A5;
+    }
+
+    public JLabel getA6() {
+        return A6;
+    }
+
+    public void setA6(JLabel A6) {
+        this.A6 = A6;
+    }
+
+    public JLabel getA7() {
+        return A7;
+    }
+
+    public void setA7(JLabel A7) {
+        this.A7 = A7;
+    }
+
+    public JLabel getA8() {
+        return A8;
+    }
+
+    public void setA8(JLabel A8) {
+        this.A8 = A8;
+    }
+
+    public JLabel getA9() {
+        return A9;
+    }
+
+    public void setA9(JLabel A9) {
+        this.A9 = A9;
+    }
+
     public JLabel getA10() {
         return A10;
     }
@@ -1627,14 +1685,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.A19 = A19;
     }
 
-    public JLabel getA2() {
-        return A2;
-    }
-
-    public void setA2(JLabel A2) {
-        this.A2 = A2;
-    }
-
     public JLabel getA20() {
         return A20;
     }
@@ -1643,68 +1693,78 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.A20 = A20;
     }
 
-    public JLabel getA3() {
-        return A3;
-    }
-
-    public void setA3(JLabel A3) {
-        this.A3 = A3;
-    }
-
-    public JLabel getA4() {
-        return A4;
-    }
-
-    public void setA4(JLabel A4) {
-        this.A4 = A4;
-    }
-
-    public JLabel getA5() {
-        return A5;
-    }
-
-    public void setA5(JLabel A5) {
-        this.A5 = A5;
-    }
-
-    public JLabel getA6() {
-        return A6;
-    }
-
-    public void setA6(JLabel A6) {
-        this.A6 = A6;
-    }
-
-    public JLabel getA7() {
-        return A7;
-    }
-
-    public void setA7(JLabel A7) {
-        this.A7 = A7;
-    }
-
-    public JLabel getA8() {
-        return A8;
-    }
-
-    public void setA8(JLabel A8) {
-        this.A8 = A8;
-    }
-
-    public JLabel getA9() {
-        return A9;
-    }
-
-    public void setA9(JLabel A9) {
-        this.A9 = A9;
-    }
-
+    
+    
     public JLabel getB1() {
         return B1;
     }
 
     public void setB1(JLabel B1) {
         this.B1 = B1;
+    }
+
+    public JLabel getB2() {
+        return B2;
+    }
+
+    public void setB2(JLabel B2) {
+        this.B2 = B2;
+    }
+
+    public JLabel getB3() {
+        return B3;
+    }
+
+    public void setB3(JLabel B3) {
+        this.B3 = B3;
+    }
+
+    public JLabel getB4() {
+        return B4;
+    }
+
+    public void setB4(JLabel B4) {
+        this.B4 = B4;
+    }
+
+    public JLabel getB5() {
+        return B5;
+    }
+
+    public void setB5(JLabel B5) {
+        this.B5 = B5;
+    }
+
+    public JLabel getB6() {
+        return B6;
+    }
+
+    public void setB6(JLabel B6) {
+        this.B6 = B6;
+    }
+
+    public JLabel getB7() {
+        return B7;
+    }
+
+    public void setB7(JLabel B7) {
+        this.B7 = B7;
+    }
+
+    public JLabel getB8() {
+        return B8;
+    }
+
+    public void setB8(JLabel B8) {
+        this.B8 = B8;
+    }
+
+    public JLabel getB9() {
+        return B9;
+    }
+
+    public void setB9(JLabel B9) {
+        this.B9 = B9;
     }
 
     public JLabel getB10() {
@@ -1787,14 +1847,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.B19 = B19;
     }
 
-    public JLabel getB2() {
-        return B2;
-    }
-
-    public void setB2(JLabel B2) {
-        this.B2 = B2;
-    }
-
     public JLabel getB20() {
         return B20;
     }
@@ -1803,68 +1855,76 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.B20 = B20;
     }
 
-    public JLabel getB3() {
-        return B3;
-    }
-
-    public void setB3(JLabel B3) {
-        this.B3 = B3;
-    }
-
-    public JLabel getB4() {
-        return B4;
-    }
-
-    public void setB4(JLabel B4) {
-        this.B4 = B4;
-    }
-
-    public JLabel getB5() {
-        return B5;
-    }
-
-    public void setB5(JLabel B5) {
-        this.B5 = B5;
-    }
-
-    public JLabel getB6() {
-        return B6;
-    }
-
-    public void setB6(JLabel B6) {
-        this.B6 = B6;
-    }
-
-    public JLabel getB7() {
-        return B7;
-    }
-
-    public void setB7(JLabel B7) {
-        this.B7 = B7;
-    }
-
-    public JLabel getB8() {
-        return B8;
-    }
-
-    public void setB8(JLabel B8) {
-        this.B8 = B8;
-    }
-
-    public JLabel getB9() {
-        return B9;
-    }
-
-    public void setB9(JLabel B9) {
-        this.B9 = B9;
-    }
-
     public JLabel getC1() {
         return C1;
     }
 
     public void setC1(JLabel C1) {
         this.C1 = C1;
+    }
+
+    public JLabel getC2() {
+        return C2;
+    }
+
+    public void setC2(JLabel C2) {
+        this.C2 = C2;
+    }
+
+    public JLabel getC3() {
+        return C3;
+    }
+
+    public void setC3(JLabel C3) {
+        this.C3 = C3;
+    }
+
+    public JLabel getC4() {
+        return C4;
+    }
+
+    public void setC4(JLabel C4) {
+        this.C4 = C4;
+    }
+
+    public JLabel getC5() {
+        return C5;
+    }
+
+    public void setC5(JLabel C5) {
+        this.C5 = C5;
+    }
+
+    public JLabel getC6() {
+        return C6;
+    }
+
+    public void setC6(JLabel C6) {
+        this.C6 = C6;
+    }
+
+    public JLabel getC7() {
+        return C7;
+    }
+
+    public void setC7(JLabel C7) {
+        this.C7 = C7;
+    }
+
+    public JLabel getC8() {
+        return C8;
+    }
+
+    public void setC8(JLabel C8) {
+        this.C8 = C8;
+    }
+
+    public JLabel getC9() {
+        return C9;
+    }
+
+    public void setC9(JLabel C9) {
+        this.C9 = C9;
     }
 
     public JLabel getC10() {
@@ -1947,14 +2007,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.C19 = C19;
     }
 
-    public JLabel getC2() {
-        return C2;
-    }
-
-    public void setC2(JLabel C2) {
-        this.C2 = C2;
-    }
-
     public JLabel getC20() {
         return C20;
     }
@@ -1963,68 +2015,76 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.C20 = C20;
     }
 
-    public JLabel getC3() {
-        return C3;
-    }
-
-    public void setC3(JLabel C3) {
-        this.C3 = C3;
-    }
-
-    public JLabel getC4() {
-        return C4;
-    }
-
-    public void setC4(JLabel C4) {
-        this.C4 = C4;
-    }
-
-    public JLabel getC5() {
-        return C5;
-    }
-
-    public void setC5(JLabel C5) {
-        this.C5 = C5;
-    }
-
-    public JLabel getC6() {
-        return C6;
-    }
-
-    public void setC6(JLabel C6) {
-        this.C6 = C6;
-    }
-
-    public JLabel getC7() {
-        return C7;
-    }
-
-    public void setC7(JLabel C7) {
-        this.C7 = C7;
-    }
-
-    public JLabel getC8() {
-        return C8;
-    }
-
-    public void setC8(JLabel C8) {
-        this.C8 = C8;
-    }
-
-    public JLabel getC9() {
-        return C9;
-    }
-
-    public void setC9(JLabel C9) {
-        this.C9 = C9;
-    }
-
     public JLabel getD1() {
         return D1;
     }
 
     public void setD1(JLabel D1) {
         this.D1 = D1;
+    }
+
+    public JLabel getD2() {
+        return D2;
+    }
+
+    public void setD2(JLabel D2) {
+        this.D2 = D2;
+    }
+
+    public JLabel getD3() {
+        return D3;
+    }
+
+    public void setD3(JLabel D3) {
+        this.D3 = D3;
+    }
+
+    public JLabel getD4() {
+        return D4;
+    }
+
+    public void setD4(JLabel D4) {
+        this.D4 = D4;
+    }
+
+    public JLabel getD5() {
+        return D5;
+    }
+
+    public void setD5(JLabel D5) {
+        this.D5 = D5;
+    }
+
+    public JLabel getD6() {
+        return D6;
+    }
+
+    public void setD6(JLabel D6) {
+        this.D6 = D6;
+    }
+
+    public JLabel getD7() {
+        return D7;
+    }
+
+    public void setD7(JLabel D7) {
+        this.D7 = D7;
+    }
+
+    public JLabel getD8() {
+        return D8;
+    }
+
+    public void setD8(JLabel D8) {
+        this.D8 = D8;
+    }
+
+    public JLabel getD9() {
+        return D9;
+    }
+
+    public void setD9(JLabel D9) {
+        this.D9 = D9;
     }
 
     public JLabel getD10() {
@@ -2107,14 +2167,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.D19 = D19;
     }
 
-    public JLabel getD2() {
-        return D2;
-    }
-
-    public void setD2(JLabel D2) {
-        this.D2 = D2;
-    }
-
     public JLabel getD20() {
         return D20;
     }
@@ -2123,68 +2175,76 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.D20 = D20;
     }
 
-    public JLabel getD3() {
-        return D3;
-    }
-
-    public void setD3(JLabel D3) {
-        this.D3 = D3;
-    }
-
-    public JLabel getD4() {
-        return D4;
-    }
-
-    public void setD4(JLabel D4) {
-        this.D4 = D4;
-    }
-
-    public JLabel getD5() {
-        return D5;
-    }
-
-    public void setD5(JLabel D5) {
-        this.D5 = D5;
-    }
-
-    public JLabel getD6() {
-        return D6;
-    }
-
-    public void setD6(JLabel D6) {
-        this.D6 = D6;
-    }
-
-    public JLabel getD7() {
-        return D7;
-    }
-
-    public void setD7(JLabel D7) {
-        this.D7 = D7;
-    }
-
-    public JLabel getD8() {
-        return D8;
-    }
-
-    public void setD8(JLabel D8) {
-        this.D8 = D8;
-    }
-
-    public JLabel getD9() {
-        return D9;
-    }
-
-    public void setD9(JLabel D9) {
-        this.D9 = D9;
-    }
-
     public JLabel getE1() {
         return E1;
     }
 
     public void setE1(JLabel E1) {
         this.E1 = E1;
+    }
+
+    public JLabel getE2() {
+        return E2;
+    }
+
+    public void setE2(JLabel E2) {
+        this.E2 = E2;
+    }
+
+    public JLabel getE3() {
+        return E3;
+    }
+
+    public void setE3(JLabel E3) {
+        this.E3 = E3;
+    }
+
+    public JLabel getE4() {
+        return E4;
+    }
+
+    public void setE4(JLabel E4) {
+        this.E4 = E4;
+    }
+
+    public JLabel getE5() {
+        return E5;
+    }
+
+    public void setE5(JLabel E5) {
+        this.E5 = E5;
+    }
+
+    public JLabel getE6() {
+        return E6;
+    }
+
+    public void setE6(JLabel E6) {
+        this.E6 = E6;
+    }
+
+    public JLabel getE7() {
+        return E7;
+    }
+
+    public void setE7(JLabel E7) {
+        this.E7 = E7;
+    }
+
+    public JLabel getE8() {
+        return E8;
+    }
+
+    public void setE8(JLabel E8) {
+        this.E8 = E8;
+    }
+
+    public JLabel getE9() {
+        return E9;
+    }
+
+    public void setE9(JLabel E9) {
+        this.E9 = E9;
     }
 
     public JLabel getE10() {
@@ -2267,14 +2327,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.E19 = E19;
     }
 
-    public JLabel getE2() {
-        return E2;
-    }
-
-    public void setE2(JLabel E2) {
-        this.E2 = E2;
-    }
-
     public JLabel getE20() {
         return E20;
     }
@@ -2283,68 +2335,76 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.E20 = E20;
     }
 
-    public JLabel getE3() {
-        return E3;
-    }
-
-    public void setE3(JLabel E3) {
-        this.E3 = E3;
-    }
-
-    public JLabel getE4() {
-        return E4;
-    }
-
-    public void setE4(JLabel E4) {
-        this.E4 = E4;
-    }
-
-    public JLabel getE5() {
-        return E5;
-    }
-
-    public void setE5(JLabel E5) {
-        this.E5 = E5;
-    }
-
-    public JLabel getE6() {
-        return E6;
-    }
-
-    public void setE6(JLabel E6) {
-        this.E6 = E6;
-    }
-
-    public JLabel getE7() {
-        return E7;
-    }
-
-    public void setE7(JLabel E7) {
-        this.E7 = E7;
-    }
-
-    public JLabel getE8() {
-        return E8;
-    }
-
-    public void setE8(JLabel E8) {
-        this.E8 = E8;
-    }
-
-    public JLabel getE9() {
-        return E9;
-    }
-
-    public void setE9(JLabel E9) {
-        this.E9 = E9;
-    }
-
     public JLabel getF1() {
         return F1;
     }
 
     public void setF1(JLabel F1) {
         this.F1 = F1;
+    }
+
+    public JLabel getF2() {
+        return F2;
+    }
+
+    public void setF2(JLabel F2) {
+        this.F2 = F2;
+    }
+
+    public JLabel getF3() {
+        return F3;
+    }
+
+    public void setF3(JLabel F3) {
+        this.F3 = F3;
+    }
+
+    public JLabel getF4() {
+        return F4;
+    }
+
+    public void setF4(JLabel F4) {
+        this.F4 = F4;
+    }
+
+    public JLabel getF5() {
+        return F5;
+    }
+
+    public void setF5(JLabel F5) {
+        this.F5 = F5;
+    }
+
+    public JLabel getF6() {
+        return F6;
+    }
+
+    public void setF6(JLabel F6) {
+        this.F6 = F6;
+    }
+
+    public JLabel getF7() {
+        return F7;
+    }
+
+    public void setF7(JLabel F7) {
+        this.F7 = F7;
+    }
+
+    public JLabel getF8() {
+        return F8;
+    }
+
+    public void setF8(JLabel F8) {
+        this.F8 = F8;
+    }
+
+    public JLabel getF9() {
+        return F9;
+    }
+
+    public void setF9(JLabel F9) {
+        this.F9 = F9;
     }
 
     public JLabel getF10() {
@@ -2427,14 +2487,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.F19 = F19;
     }
 
-    public JLabel getF2() {
-        return F2;
-    }
-
-    public void setF2(JLabel F2) {
-        this.F2 = F2;
-    }
-
     public JLabel getF20() {
         return F20;
     }
@@ -2443,68 +2495,76 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.F20 = F20;
     }
 
-    public JLabel getF3() {
-        return F3;
-    }
-
-    public void setF3(JLabel F3) {
-        this.F3 = F3;
-    }
-
-    public JLabel getF4() {
-        return F4;
-    }
-
-    public void setF4(JLabel F4) {
-        this.F4 = F4;
-    }
-
-    public JLabel getF5() {
-        return F5;
-    }
-
-    public void setF5(JLabel F5) {
-        this.F5 = F5;
-    }
-
-    public JLabel getF6() {
-        return F6;
-    }
-
-    public void setF6(JLabel F6) {
-        this.F6 = F6;
-    }
-
-    public JLabel getF7() {
-        return F7;
-    }
-
-    public void setF7(JLabel F7) {
-        this.F7 = F7;
-    }
-
-    public JLabel getF8() {
-        return F8;
-    }
-
-    public void setF8(JLabel F8) {
-        this.F8 = F8;
-    }
-
-    public JLabel getF9() {
-        return F9;
-    }
-
-    public void setF9(JLabel F9) {
-        this.F9 = F9;
-    }
-
     public JLabel getG1() {
         return G1;
     }
 
     public void setG1(JLabel G1) {
         this.G1 = G1;
+    }
+
+    public JLabel getG2() {
+        return G2;
+    }
+
+    public void setG2(JLabel G2) {
+        this.G2 = G2;
+    }
+
+    public JLabel getG3() {
+        return G3;
+    }
+
+    public void setG3(JLabel G3) {
+        this.G3 = G3;
+    }
+
+    public JLabel getG4() {
+        return G4;
+    }
+
+    public void setG4(JLabel G4) {
+        this.G4 = G4;
+    }
+
+    public JLabel getG5() {
+        return G5;
+    }
+
+    public void setG5(JLabel G5) {
+        this.G5 = G5;
+    }
+
+    public JLabel getG6() {
+        return G6;
+    }
+
+    public void setG6(JLabel G6) {
+        this.G6 = G6;
+    }
+
+    public JLabel getG7() {
+        return G7;
+    }
+
+    public void setG7(JLabel G7) {
+        this.G7 = G7;
+    }
+
+    public JLabel getG8() {
+        return G8;
+    }
+
+    public void setG8(JLabel G8) {
+        this.G8 = G8;
+    }
+
+    public JLabel getG9() {
+        return G9;
+    }
+
+    public void setG9(JLabel G9) {
+        this.G9 = G9;
     }
 
     public JLabel getG10() {
@@ -2587,14 +2647,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.G19 = G19;
     }
 
-    public JLabel getG2() {
-        return G2;
-    }
-
-    public void setG2(JLabel G2) {
-        this.G2 = G2;
-    }
-
     public JLabel getG20() {
         return G20;
     }
@@ -2603,68 +2655,76 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.G20 = G20;
     }
 
-    public JLabel getG3() {
-        return G3;
-    }
-
-    public void setG3(JLabel G3) {
-        this.G3 = G3;
-    }
-
-    public JLabel getG4() {
-        return G4;
-    }
-
-    public void setG4(JLabel G4) {
-        this.G4 = G4;
-    }
-
-    public JLabel getG5() {
-        return G5;
-    }
-
-    public void setG5(JLabel G5) {
-        this.G5 = G5;
-    }
-
-    public JLabel getG6() {
-        return G6;
-    }
-
-    public void setG6(JLabel G6) {
-        this.G6 = G6;
-    }
-
-    public JLabel getG7() {
-        return G7;
-    }
-
-    public void setG7(JLabel G7) {
-        this.G7 = G7;
-    }
-
-    public JLabel getG8() {
-        return G8;
-    }
-
-    public void setG8(JLabel G8) {
-        this.G8 = G8;
-    }
-
-    public JLabel getG9() {
-        return G9;
-    }
-
-    public void setG9(JLabel G9) {
-        this.G9 = G9;
-    }
-
     public JLabel getH1() {
         return H1;
     }
 
     public void setH1(JLabel H1) {
         this.H1 = H1;
+    }
+
+    public JLabel getH2() {
+        return H2;
+    }
+
+    public void setH2(JLabel H2) {
+        this.H2 = H2;
+    }
+
+    public JLabel getH3() {
+        return H3;
+    }
+
+    public void setH3(JLabel H3) {
+        this.H3 = H3;
+    }
+
+    public JLabel getH4() {
+        return H4;
+    }
+
+    public void setH4(JLabel H4) {
+        this.H4 = H4;
+    }
+
+    public JLabel getH5() {
+        return H5;
+    }
+
+    public void setH5(JLabel H5) {
+        this.H5 = H5;
+    }
+
+    public JLabel getH6() {
+        return H6;
+    }
+
+    public void setH6(JLabel H6) {
+        this.H6 = H6;
+    }
+
+    public JLabel getH7() {
+        return H7;
+    }
+
+    public void setH7(JLabel H7) {
+        this.H7 = H7;
+    }
+
+    public JLabel getH8() {
+        return H8;
+    }
+
+    public void setH8(JLabel H8) {
+        this.H8 = H8;
+    }
+
+    public JLabel getH9() {
+        return H9;
+    }
+
+    public void setH9(JLabel H9) {
+        this.H9 = H9;
     }
 
     public JLabel getH10() {
@@ -2747,76 +2807,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.H19 = H19;
     }
 
-    public JLabel getH2() {
-        return H2;
-    }
-
-    public void setH2(JLabel H2) {
-        this.H2 = H2;
-    }
-
     public JLabel getH20() {
         return H20;
     }
 
     public void setH20(JLabel H20) {
         this.H20 = H20;
-    }
-
-    public JLabel getH3() {
-        return H3;
-    }
-
-    public void setH3(JLabel H3) {
-        this.H3 = H3;
-    }
-
-    public JLabel getH4() {
-        return H4;
-    }
-
-    public void setH4(JLabel H4) {
-        this.H4 = H4;
-    }
-
-    public JLabel getH5() {
-        return H5;
-    }
-
-    public void setH5(JLabel H5) {
-        this.H5 = H5;
-    }
-
-    public JLabel getH6() {
-        return H6;
-    }
-
-    public void setH6(JLabel H6) {
-        this.H6 = H6;
-    }
-
-    public JLabel getH7() {
-        return H7;
-    }
-
-    public void setH7(JLabel H7) {
-        this.H7 = H7;
-    }
-
-    public JLabel getH8() {
-        return H8;
-    }
-
-    public void setH8(JLabel H8) {
-        this.H8 = H8;
-    }
-
-    public JLabel getH9() {
-        return H9;
-    }
-
-    public void setH9(JLabel H9) {
-        this.H9 = H9;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3022,6 +3018,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBMenuReporteDeVentas;
     private javax.swing.JButton jBMenuVenderBoleto;
     private javax.swing.JButton jBRegresar;
+    private javax.swing.JButton jBRegresarFunciones;
     private javax.swing.JButton jBSeleccionarAsientosDeCompra;
     private javax.swing.JComboBox<String> jComHoraDuracion;
     private javax.swing.JComboBox<String> jComHoraInicioFuncion;
@@ -3031,7 +3028,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

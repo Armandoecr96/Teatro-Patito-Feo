@@ -25,6 +25,9 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
     private void initComponents() {
         this.view.getjBAsientos().addActionListener(this);
         this.view.getjBAsientos().setActionCommand("ASIENTOS_DISPONIBLES");
+
+        this.view.getjBRegresarFunciones().addActionListener(this);
+        this.view.getjBRegresarFunciones().setActionCommand("REGRESAR_FUNCIONES");
     }
 
     @Override
@@ -34,7 +37,14 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
             case "ASIENTOS_DISPONIBLES":
                 this.view.getjPAsientosDisponibles().setVisible(true);
                 this.view.getjPFunciones().setVisible(false);
+                this.view.getjBRegresar().setVisible(false);
                 this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view);
+                break;
+            case "REGRESAR_FUNCIONES":
+                this.menuAsientosDisponibles = null;
+                this.view.getjPAsientosDisponibles().setVisible(false);
+                this.view.getjPFunciones().setVisible(true);
+                this.view.getjBRegresar().setVisible(true);
                 break;
         }
     }

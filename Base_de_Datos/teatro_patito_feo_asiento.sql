@@ -24,9 +24,13 @@ DROP TABLE IF EXISTS `asiento`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `asiento` (
   `idAsiento` int(11) NOT NULL AUTO_INCREMENT,
+  `idFuncion` int(11) NOT NULL,
+  `Nombre` varchar(45) NOT NULL,
   `Precio` double NOT NULL,
   PRIMARY KEY (`idAsiento`),
-  UNIQUE KEY `idasiento_UNIQUE` (`idAsiento`)
+  UNIQUE KEY `idasiento_UNIQUE` (`idAsiento`),
+  UNIQUE KEY `idFuncion_UNIQUE` (`idFuncion`),
+  CONSTRAINT `fun` FOREIGN KEY (`idFuncion`) REFERENCES `funcion` (`idFuncion`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -48,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-29 16:53:06
+-- Dump completed on 2017-09-06 10:28:05

@@ -5,9 +5,8 @@
  */
 package manipuladores;
 
+import interaccionesBaseDatos.AdministrarButacas;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import vista.vistaMenuPrincipal;
 
@@ -364,68 +363,6 @@ public class ManipuladorJPMenuAsientosDisponibles {
     }
 
     private MouseAdapter butacaAdapter(JLabel jl) {
-        MouseAdapter mouseAdapter = new MouseAdapter() {
-            public void mouseEntered(MouseEvent evt) {
-                String direccion[] = jl.getIcon().toString().split("classes");
-                switch (direccion[1]) {
-                    case "/images/asiento_azul_lata.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_lata.jpg")));
-                        break;
-                    case "/images/asiento_azul_bronce.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_bronce.jpg")));
-                        break;
-                    case "/images/asiento_azul_plata.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_plata.jpg")));
-                        break;
-                    case "/images/asiento_azul_oro.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_oro.jpg")));
-                        break;
-                    case "/images/asiento_azul_diamante.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_diamante.jpg")));
-                        break;
-                    case "/images/asiento_rojo_lata.jpg":
-                    case "/images/asiento_rojo_bronce.jpg":
-                    case "/images/asiento_rojo_plata.jpg":
-                    case "/images/asiento_rojo_oro.jpg":
-                    case "/images/asiento_rojo_diamante.jpg":
-                        break;
-                }
-            }
-
-            public void mouseExited(MouseEvent evt) {
-                String direccion[] = jl.getIcon().toString().split("classes");
-                switch (direccion[1]) {
-                    case "/images/asiento_verde_lata.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_azul_lata.jpg")));
-                        break;
-                    case "/images/asiento_verde_bronce.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_azul_bronce.jpg")));
-                        break;
-                    case "/images/asiento_verde_plata.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_azul_plata.jpg")));
-                        break;
-                    case "/images/asiento_verde_oro.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_azul_oro.jpg")));
-                        break;
-                    case "/images/asiento_verde_diamante.jpg":
-                        jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_azul_diamante.jpg")));
-                        break;
-                    case "/images/asiento_rojo_lata.jpg":
-                    case "/images/asiento_rojo_bronce.jpg":
-                    case "/images/asiento_rojo_plata.jpg":
-                    case "/images/asiento_rojo_oro.jpg":
-                    case "/images/asiento_rojo_diamante.jpg":
-                        break;
-                }
-            }
-
-            public void mouseClicked(MouseEvent evt) {
-                String direccion[] = jl.getIcon().toString().split("classes");
-                switch(direccion[1]) {
-                    
-                }
-            }
-        };
-        return mouseAdapter;
+        return new AdministrarButacas(jl);
     }
 }
