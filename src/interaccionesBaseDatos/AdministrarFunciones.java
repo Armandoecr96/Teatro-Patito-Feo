@@ -1,7 +1,7 @@
 
-package modelo;
+package interaccionesBaseDatos;
 
-import elementosBaseDatos.Conexion;
+import entidades.Funcion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,35 +14,31 @@ import javax.swing.JOptionPane;
 
 public class AdministrarFunciones {
 
-    private String nombreFuncion;
-    private int horaInicioFuncion, minutoInicioFuncion, horaDuracionFuncion, minutoDuracionFuncion;
+    private Conexion conexion;
+    private Connection connection;
+    private Funcion funcion;
 
-    public AdministrarFunciones(String s, int horIni, int minIni, int horDur, int minDur) {
-        this.nombreFuncion = s;
-        this.horaInicioFuncion = horIni;
-        this.minutoInicioFuncion = minIni;
-        this.horaDuracionFuncion = horDur;
-        this.minutoDuracionFuncion = minDur;
+    public AdministrarFunciones(Funcion funcion) {
+        this.funcion = funcion;
+        System.out.println("Conexion Funcion");
+        this.conexion = new Conexion();
+        this.connection = conexion.getConnection();
     }
 
     public void crearFuncion() {
-        System.out.println("Funcion");
-        Conexion conexion = new Conexion();
-        Connection connection = conexion.getConnection();
-
         String sql = "INSERT funcion(idFuncion,NombreFuncion,InicioFuncion,Duracion,FinalFuncion) VALUES (?,?,?,?,?)";
-        long milisecInicioFuncion = getMilisegundos(this.horaInicioFuncion, this.minutoInicioFuncion) + 21600000;
-        long milisecDuracionFuncion = getMilisegundos(this.horaDuracionFuncion, this.minutoDuracionFuncion);
+        long milisecInicioFuncion = getMilisegundos(this.funcion.getHoraInicio(), this.funcion.getMinutoInicio()) + 21600000;
+        long milisecDuracionFuncion = getMilisegundos(this.funcion.getHoraDuracion(), this.funcion.getMinutoDuracion());
         long milisecFinFuncion = milisecInicioFuncion + milisecDuracionFuncion;
-
+        
         try {
-            Statement st = connection.createStatement();
+            Statement st = this.connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT InicioFuncion, FinalFuncion FROM teatro_patito_feo.funcion");
 
             if (!verificarHorariosCruzados(rs, milisecInicioFuncion, milisecFinFuncion)) {
-                PreparedStatement pst = connection.prepareStatement(sql);
+                PreparedStatement pst = this.connection.prepareStatement(sql);
                 pst.setInt(1, 0);
-                pst.setString(2, this.nombreFuncion);
+                pst.setString(2, this.funcion.getNombre());
                 pst.setTime(3, new Time(milisecInicioFuncion));
                 pst.setTime(4, new Time(milisecDuracionFuncion));
                 pst.setTime(5, new Time(milisecFinFuncion));
@@ -51,7 +47,7 @@ public class AdministrarFunciones {
                 if (reply == JOptionPane.YES_OPTION) {
                     pst.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Se ha guardado correctamente", "", JOptionPane.INFORMATION_MESSAGE);
-                    conexion.desconectar();
+                    this.conexion.desconectar();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "No se puede guardar la función porque se cruzan los horarios", "Error al guardar", JOptionPane.WARNING_MESSAGE);
@@ -59,7 +55,7 @@ public class AdministrarFunciones {
         } catch (SQLException ex) {
             Logger.getLogger(AdministrarFunciones.class.getName()).log(Level.SEVERE, null, ex);
         }
-        conexion.desconectar();
+        this.conexion.desconectar();
         System.out.println("Funcion");
     }
 

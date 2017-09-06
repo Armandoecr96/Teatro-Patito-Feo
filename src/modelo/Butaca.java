@@ -21,19 +21,19 @@ public class Butaca {
         String direccion[] = jl.getIcon().toString().split("classes");
         switch (direccion[1]) {
             case "/Images/asiento_azul_lata.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_lata.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_verde_lata.jpg")));
                 break;
             case "/Images/asiento_azul_bronce.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_bronce.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_verde_bronce.jpg")));
                 break;
             case "/Images/asiento_azul_plata.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_plata.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_verde_plata.jpg")));
                 break;
             case "/Images/asiento_azul_oro.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_oro.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_verde_oro.jpg")));
                 break;
             case "/Images/asiento_azul_diamante.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_verde_diamante.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_verde_diamante.jpg")));
                 break;
         }
     }
@@ -42,19 +42,19 @@ public class Butaca {
         String direccion[] = jl.getIcon().toString().split("classes");
         switch (direccion[1]) {
             case "/Images/asiento_verde_lata.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_lata.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_azul_lata.jpg")));
                 break;
             case "/Images/asiento_verde_bronce.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_bronce.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_azul_bronce.jpg")));
                 break;
             case "/Images/asiento_verde_plata.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_plata.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_azul_plata.jpg")));
                 break;
             case "/Images/asiento_verde_oro.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_oro.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_azul_oro.jpg")));
                 break;
             case "/Images/asiento_verde_diamante.jpg":
-                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/asiento_azul_diamante.jpg")));
+                jl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_azul_diamante.jpg")));
                 break;
         }
     }

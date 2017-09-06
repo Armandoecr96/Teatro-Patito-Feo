@@ -15,6 +15,7 @@ import vista.vistaMenuPrincipal;
  */
 public class ManipuladorJPMenuFunciones implements ActionListener {
     private vistaMenuPrincipal view;
+    private ManipuladorJPMenuAsientosDisponibles menuAsientosDisponibles;
 
     public ManipuladorJPMenuFunciones(vistaMenuPrincipal view) {
         this.view = view;
@@ -33,6 +34,7 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
             case "ASIENTOS_DISPONIBLES":
                 this.view.getjPAsientosDisponibles().setVisible(true);
                 this.view.getjPFunciones().setVisible(false);
+                this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view);
                 break;
         }
     }

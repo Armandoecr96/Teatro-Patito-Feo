@@ -16,12 +16,17 @@ import vista.vistaMenuPrincipal;
 public class ManipuladorJPMenuPrincipal implements ActionListener {
     private vistaMenuPrincipal view;
     private ManipuladorJPMenuFunciones menuFunciones;
+    private ManipuladorJPMenuCrearFuncion menuCrearFuncion;
+    private ManipuladorJPMenuVenderBoleto menuVenderBoleto;
+    private ManipuladorJPMenuCancelarFuncion menuCancelarFuncion;
+    private ManipuladorJPMenuCancelarBoleto menuCancelarBoleto;
+    private ManipuladorJPMenuReporteVentas menuReporteVentas;
 
     public ManipuladorJPMenuPrincipal(vistaMenuPrincipal view) {
         this.view = view;
         initComponents();
     }
-    
+
     private void initComponents() {
         this.view.getjBMenuCrearFuncion().addActionListener(this);
         this.view.getjBMenuCrearFuncion().setActionCommand("MENU_CREAR_FUNCION");
@@ -53,6 +58,7 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPCrearFuncion().setVisible(true);
+                this.menuCrearFuncion = new ManipuladorJPMenuCrearFuncion(this.view);
                 break;
             case "MENU_FUNCIONES":
                 this.view.getjPMenuPrincipal().setVisible(false);
@@ -64,21 +70,25 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPVentaBoletos().setVisible(true);
+                this.menuVenderBoleto = new ManipuladorJPMenuVenderBoleto(this.view);
                 break;
             case "MENU_CANCELAR_FUNCION":
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPCancelarFuncion().setVisible(true);
+                this.menuCancelarFuncion = new ManipuladorJPMenuCancelarFuncion(this.view);
                 break;
             case "MENU_CANCELAR_BOLETO":
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPCancelarBoletos().setVisible(true);
+                this.menuCancelarBoleto = new ManipuladorJPMenuCancelarBoleto(this.view);
                 break;
             case "MENU_REPORTE_VENTAS":
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPReporteDeVentas().setVisible(true);
+                this.menuReporteVentas = new ManipuladorJPMenuReporteVentas(this.view);
                 break;
             case "BOTON_REGRESAR":
                 this.view.getjPMenuPrincipal().setVisible(true);
@@ -89,7 +99,13 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
                 this.view.getjPCancelarFuncion().setVisible(false);
                 this.view.getjPCancelarBoletos().setVisible(false);
                 this.view.getjPReporteDeVentas().setVisible(false);
+                this.view.getjPAsientosDisponibles().setVisible(false);
+                this.menuCrearFuncion = null;
                 this.menuFunciones = null;
+                this.menuVenderBoleto = null;
+                this.menuCancelarFuncion = null;
+                this.menuCancelarBoleto = null;
+                this.menuReporteVentas = null;
                 break;
         }
     }
