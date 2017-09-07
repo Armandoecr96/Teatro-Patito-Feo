@@ -5,7 +5,7 @@
  */
 package manipuladores;
 
-import interaccionesBaseDatos.AdministradorTablas;
+import interaccionesBaseDatos.AdministrarTablas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vista.vistaMenuPrincipal;
@@ -15,8 +15,10 @@ import vista.vistaMenuPrincipal;
  * @author brauni800
  */
 public class ManipuladorJPMenuFunciones implements ActionListener {
+
     private vistaMenuPrincipal view;
     private ManipuladorJPMenuAsientosDisponibles menuAsientosDisponibles;
+    private AdministrarTablas adminTab;
 
     public ManipuladorJPMenuFunciones(vistaMenuPrincipal view) {
         this.view = view;
@@ -29,9 +31,9 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
 
         this.view.getjBRegresarFunciones().addActionListener(this);
         this.view.getjBRegresarFunciones().setActionCommand("REGRESAR_FUNCIONES");
-        
-        AdministradorTablas adminTab = new AdministradorTablas(this.view.getjTable1());
-        this.view.getjTable1().addMouseListener(adminTab);
+
+        this.adminTab = new AdministrarTablas(this.view.getjTable1(), this.view.getjBAsientos());
+        this.view.getjTable1().addMouseListener(this.adminTab);
     }
 
     @Override
@@ -42,7 +44,8 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
                 this.view.getjPAsientosDisponibles().setVisible(true);
                 this.view.getjPFunciones().setVisible(false);
                 this.view.getjBRegresar().setVisible(false);
-                this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view);
+                System.out.println(Integer.parseInt(this.adminTab.getValueObtained().toString()));
+                this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view, Integer.parseInt(this.adminTab.getValueObtained().toString()));
                 break;
             case "REGRESAR_FUNCIONES":
                 this.menuAsientosDisponibles = null;
@@ -52,5 +55,5 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
                 break;
         }
     }
-    
+
 }

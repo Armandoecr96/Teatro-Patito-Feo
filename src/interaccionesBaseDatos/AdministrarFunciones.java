@@ -25,8 +25,9 @@ public class AdministrarFunciones {
         this.connection = conexion.getConnection();
     }
 
-    public void crearFuncion() {
-        String sql = "INSERT funcion(idFuncion,NombreFuncion,InicioFuncion,Duracion,FinalFuncion) VALUES (?,?,?,?,?)";
+    public boolean crearFuncion() {
+        boolean funcionCreada = false;
+        String sql = "INSERT funcion(idFuncion,NombreFuncion,InicioFuncion,Duracion,FinalFuncion,PrecioPorAsiento) VALUES (?,?,?,?,?,?)";
         long milisecInicioFuncion = getMilisegundos(this.funcion.getHoraInicio(), this.funcion.getMinutoInicio()) + 21600000;
         long milisecDuracionFuncion = getMilisegundos(this.funcion.getHoraDuracion(), this.funcion.getMinutoDuracion());
         long milisecFinFuncion = milisecInicioFuncion + milisecDuracionFuncion;
@@ -42,12 +43,14 @@ public class AdministrarFunciones {
                 pst.setTime(3, new Time(milisecInicioFuncion));
                 pst.setTime(4, new Time(milisecDuracionFuncion));
                 pst.setTime(5, new Time(milisecFinFuncion));
+                pst.setDouble(6, this.funcion.getPrecioPorAsiento());
 
                 int reply = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea registrar esta función?", "Registrar función", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (reply == JOptionPane.YES_OPTION) {
                     pst.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Se ha guardado correctamente", "", JOptionPane.INFORMATION_MESSAGE);
                     this.conexion.desconectar();
+                    funcionCreada = true;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "No se puede guardar la función porque se cruzan los horarios", "Error al guardar", JOptionPane.WARNING_MESSAGE);
@@ -57,6 +60,7 @@ public class AdministrarFunciones {
         }
         this.conexion.desconectar();
         System.out.println("Funcion");
+        return funcionCreada;
     }
 
     private boolean verificarHorariosCruzados(ResultSet rs, long msInicio, long msFin) throws SQLException {

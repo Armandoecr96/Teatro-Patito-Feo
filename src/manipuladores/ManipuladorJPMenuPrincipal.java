@@ -5,7 +5,7 @@
  */
 package manipuladores;
 
-import interaccionesBaseDatos.AdministradorTablas;
+import interaccionesBaseDatos.AdministrarTablas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
@@ -117,7 +117,7 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
     }
 
     private void cargarTablaFunciones() {
-        AdministradorTablas adminTab = new AdministradorTablas();
+        AdministrarTablas adminTab = new AdministrarTablas();
         DefaultTableModel modelo = adminTab.cargarTablaFunciones();
         this.view.getjTable1().setModel(modelo);
         this.view.getjTable2().setModel(modelo);

@@ -15,6 +15,7 @@ public class Funcion {
     private int minutoInicio;
     private int horaDuracion;
     private int minutoDuracion;
+    private double precioPorAsiento;
 
     public Funcion() {
     }
@@ -87,5 +88,19 @@ public class Funcion {
      */
     public void setMinutoDuracion(int minutoDuracion) {
         this.minutoDuracion = minutoDuracion;
+    }
+
+    /**
+     * @return the precioPorAsiento
+     */
+    public double getPrecioPorAsiento() {
+        return precioPorAsiento;
+    }
+
+    /**
+     * @param precioPorAsiento the precioPorAsiento to set
+     */
+    public void setPrecioPorAsiento(double precioPorAsiento) {
+        this.precioPorAsiento = precioPorAsiento;
     }
 }

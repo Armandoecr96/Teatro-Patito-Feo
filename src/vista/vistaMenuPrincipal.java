@@ -232,12 +232,14 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         JTxtNombreFuncion = new javax.swing.JTextField();
+        JTxtPrecioPorAsiento = new javax.swing.JTextField();
         jBCrearFuncion = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jComHoraInicioFuncion = new javax.swing.JComboBox<>();
         jComMinutoInicioFuncion = new javax.swing.JComboBox<>();
         jComHoraDuracion = new javax.swing.JComboBox<>();
         jComMinutoDuracion = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         jPFunciones = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -910,19 +912,22 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         jComMinutoDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
 
+        jLabel2.setText("Precio por persona (Asientos Diamante)");
+
         javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
         jPCrearFuncion.setLayout(jPCrearFuncionLayout);
         jPCrearFuncionLayout.setHorizontalGroup(
             jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCrearFuncionLayout.createSequentialGroup()
-                .addContainerGap(234, Short.MAX_VALUE)
+                .addContainerGap(238, Short.MAX_VALUE)
                 .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel2))
                 .addGap(130, 130, 130)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                     .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPCrearFuncionLayout.createSequentialGroup()
                             .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -932,7 +937,8 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                             .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jBCrearFuncion)))
+                        .addComponent(jBCrearFuncion, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(JTxtPrecioPorAsiento))
                 .addGap(230, 230, 230))
         );
         jPCrearFuncionLayout.setVerticalGroup(
@@ -952,9 +958,13 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(30, 30, 30)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JTxtPrecioPorAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(27, 27, 27)
                 .addComponent(jBCrearFuncion)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
@@ -968,6 +978,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Funcion");
 
         jBAsientos.setText("Asientos Disponibles");
+        jBAsientos.setEnabled(false);
 
         jLabel7.setText("Lista de Funciones");
 
@@ -1531,6 +1542,14 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
     public void setjPVentaBoletos(JPanel jPVentaBoletos) {
         this.jPVentaBoletos = jPVentaBoletos;
+    }
+
+    public JTextField getJTxtPrecioPorAsiento() {
+        return JTxtPrecioPorAsiento;
+    }
+
+    public void setJTxtPrecioPorAsiento(JTextField JTxtPrecioPorAsiento) {
+        this.JTxtPrecioPorAsiento = JTxtPrecioPorAsiento;
     }
 
     public JLabel getA1() {
@@ -2986,6 +3005,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel H8;
     private javax.swing.JLabel H9;
     private javax.swing.JTextField JTxtNombreFuncion;
+    private javax.swing.JTextField JTxtPrecioPorAsiento;
     private javax.swing.JLabel Num1;
     private javax.swing.JLabel Num10;
     private javax.swing.JLabel Num11;
@@ -3028,6 +3048,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

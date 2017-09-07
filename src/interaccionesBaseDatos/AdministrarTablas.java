@@ -5,13 +5,13 @@
  */
 package interaccionesBaseDatos;
 
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,18 +19,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author b1796
  */
-public class AdministradorTablas extends MouseAdapter {
+public class AdministrarTablas extends MouseAdapter {
 
     private Conexion conexion;
     private Connection connection;
     private JTable tabla;
+    private JButton boton;
     private Object valueObtained;
 
-    public AdministradorTablas() {
+    public AdministrarTablas() {
     }
 
-    public AdministradorTablas(JTable tabla) {
+    public AdministrarTablas(JTable tabla, JButton boton) {
         this.tabla = tabla;
+        this.boton = boton;
     }
 
     public DefaultTableModel cargarTablaFunciones() {
@@ -64,28 +66,17 @@ public class AdministradorTablas extends MouseAdapter {
     }
 
     @Override
-    public void mousePressed(MouseEvent me) {
+    public void mouseClicked(MouseEvent me) {
         super.mousePressed(me);
-        JTable table = (JTable) me.getSource();
-        Point point = me.getPoint();
-        int row = table.rowAtPoint(point);
-        if (me.getClickCount() == 2) {
-            System.out.println("" + tabla.getValueAt(tabla.getSelectedRow(), 1));
-            this.setValueObtained(tabla.getValueAt(tabla.getSelectedRow(), 1));
-        }
+        int row = this.tabla.getSelectedRow();
+        this.valueObtained = this.tabla.getModel().getValueAt(row, 0);
+        this.boton.setEnabled(true);
     }
 
     /**
      * @return the valueObtained
      */
     public Object getValueObtained() {
-        return valueObtained;
-    }
-
-    /**
-     * @param valueObtained the valueObtained to set
-     */
-    public void setValueObtained(Object valueObtained) {
-        this.valueObtained = valueObtained;
+        return this.valueObtained;
     }
 }

@@ -25,13 +25,13 @@ DROP TABLE IF EXISTS `asiento`;
 CREATE TABLE `asiento` (
   `idAsiento` int(11) NOT NULL AUTO_INCREMENT,
   `idFuncion` int(11) NOT NULL,
-  `Nombre` varchar(45) NOT NULL,
-  `Precio` double NOT NULL,
+  `Coordenada` varchar(45) NOT NULL,
+  `Comprado` tinyint(1) NOT NULL,
   PRIMARY KEY (`idAsiento`),
   UNIQUE KEY `idasiento_UNIQUE` (`idAsiento`),
-  UNIQUE KEY `idFuncion_UNIQUE` (`idFuncion`),
+  KEY `idFuncion_UNIQUE` (`idFuncion`),
   CONSTRAINT `fun` FOREIGN KEY (`idFuncion`) REFERENCES `funcion` (`idFuncion`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `asiento` (
 
 LOCK TABLES `asiento` WRITE;
 /*!40000 ALTER TABLE `asiento` DISABLE KEYS */;
+INSERT INTO `asiento` VALUES (1,1,'A1',1),(3,1,'A2',1),(4,1,'A3',0),(5,1,'H17',0),(6,2,'H8',1),(7,2,'F5',1),(8,2,'G5',0);
 /*!40000 ALTER TABLE `asiento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-06 10:28:05
+-- Dump completed on 2017-09-07 13:21:30
