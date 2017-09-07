@@ -5,6 +5,7 @@
  */
 package manipuladores;
 
+import interaccionesBaseDatos.AdministradorTablas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vista.vistaMenuPrincipal;
@@ -28,6 +29,9 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
 
         this.view.getjBRegresarFunciones().addActionListener(this);
         this.view.getjBRegresarFunciones().setActionCommand("REGRESAR_FUNCIONES");
+        
+        AdministradorTablas adminTab = new AdministradorTablas(this.view.getjTable1());
+        this.view.getjTable1().addMouseListener(adminTab);
     }
 
     @Override
