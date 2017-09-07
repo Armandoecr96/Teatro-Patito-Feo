@@ -1988,7 +1988,7 @@
         <Component class="javax.swing.JLabel" name="Escenario">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/escenario.png"/>
+              <Image iconType="3" name="/images/escenario.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -2398,19 +2398,17 @@
                   <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="JTxtNombreFuncion" pref="142" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jComHoraDuracion" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jComMinutoDuracion" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jComHoraInicioFuncion" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jComMinutoInicioFuncion" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jBCrearFuncion" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jComHoraDuracion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jComMinutoDuracion" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jComHoraInicioFuncion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jComMinutoInicioFuncion" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jBCrearFuncion" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="JTxtPrecioPorAsiento" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>

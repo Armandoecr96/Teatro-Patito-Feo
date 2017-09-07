@@ -121,6 +121,7 @@ public class AdministrarAsientos extends MouseAdapter {
             }
         }
         if (icon == null) {
+            this.listaAsientos = new ArrayList<AsientoFactory>();
             crearListaAsientos(this.coordenada);
             icon = asignarImagenAzulPorRango(this.listaAsientos.get(0).getRango());
         }
@@ -130,6 +131,7 @@ public class AdministrarAsientos extends MouseAdapter {
     private void buscarAsientosBD() {
         this.conexion = new Conexion();
         this.connection = conexion.getConnection();
+        this.listaAsientos = new ArrayList<AsientoFactory>();
         try {
             Statement st = this.connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM asiento WHERE idFuncion = " + this.idFuncion);
@@ -187,7 +189,6 @@ public class AdministrarAsientos extends MouseAdapter {
     }
 
     private void crearListaAsientos(String s) {
-        this.listaAsientos = new ArrayList<>();
         switch (s) {
             case "C7":
             case "C8":
@@ -213,7 +214,7 @@ public class AdministrarAsientos extends MouseAdapter {
             case "A12":
             case "A13":
             case "A14":
-                this.listaAsientos.add(new AsientoBronce(this.idFuncion));
+                this.listaAsientos.add(new AsientoBronce(this.idFuncion, s));
                 break;
             case "H1":
             case "H2":
@@ -239,7 +240,7 @@ public class AdministrarAsientos extends MouseAdapter {
             case "G18":
             case "G19":
             case "G20":
-                this.listaAsientos.add(new AsientoPlata(this.idFuncion));
+                this.listaAsientos.add(new AsientoPlata(this.idFuncion, s));
                 break;
             case "H7":
             case "H8":
@@ -257,7 +258,7 @@ public class AdministrarAsientos extends MouseAdapter {
             case "G12":
             case "G13":
             case "G14":
-                this.listaAsientos.add(new AsientoOro(this.idFuncion));
+                this.listaAsientos.add(new AsientoOro(this.idFuncion, s));
                 break;
             case "F7":
             case "F8":
@@ -283,10 +284,10 @@ public class AdministrarAsientos extends MouseAdapter {
             case "D12":
             case "D13":
             case "D14":
-                this.listaAsientos.add(new AsientoDiamante(this.idFuncion));
+                this.listaAsientos.add(new AsientoDiamante(this.idFuncion, s));
                 break;
             default:
-                this.listaAsientos.add(new AsientoLata(this.idFuncion));
+                this.listaAsientos.add(new AsientoLata(this.idFuncion, s));
                 break;
         }
     }

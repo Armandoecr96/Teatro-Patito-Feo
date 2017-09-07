@@ -11,8 +11,8 @@ package entidades.asiento;
  */
 public class AsientoPlata extends AsientoFactory {
     
-    public AsientoPlata(int idFuncion) {
-        super(idFuncion);
+    public AsientoPlata(int idFuncion, String coordenada) {
+        super(idFuncion, coordenada);
         super.rango = AsientoFactory.PLATA;
     }
 

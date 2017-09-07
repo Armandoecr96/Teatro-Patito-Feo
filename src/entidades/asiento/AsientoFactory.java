@@ -23,8 +23,9 @@ public abstract class AsientoFactory {
     protected boolean comprado;
     protected String rango;
 
-    public AsientoFactory(int idFuncion) {
+    public AsientoFactory(int idFuncion, String coordenada) {
         this.idFuncion = idFuncion;
+        this.coordenada = coordenada;
     }
 
     public abstract double getPrecio();
