@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import entidades.Funcion;
+
 /**
  *
  * @author arman
