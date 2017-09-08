@@ -38,7 +38,8 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         jBRegresar = new javax.swing.JButton();
         jPAsientosDisponibles = new javax.swing.JPanel();
-        jBRegresarFunciones = new javax.swing.JButton();
+        jBRegresarAsientosDisponibles = new javax.swing.JButton();
+        jBComprarAsiento = new javax.swing.JButton();
         H1 = new javax.swing.JLabel();
         H2 = new javax.swing.JLabel();
         H3 = new javax.swing.JLabel();
@@ -289,8 +290,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jPAsientosDisponibles.setVisible(false);
         jPAsientosDisponibles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jBRegresarFunciones.setText("Regresar a Funciones");
-        jPAsientosDisponibles.add(jBRegresarFunciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jBRegresarAsientosDisponibles.setText("Regresar");
+        jPAsientosDisponibles.add(jBRegresarAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jBComprarAsiento.setText("Comprar");
+        jPAsientosDisponibles.add(jBComprarAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, -1));
 
         H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/asiento_azul_plata.jpg"))); // NOI18N
         jPAsientosDisponibles.add(H1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
@@ -1303,12 +1307,20 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getjBRegresarFunciones() {
-        return jBRegresarFunciones;
+    public JButton getjBComprarAsiento() {
+        return jBComprarAsiento;
     }
 
-    public void setjBRegresarFunciones(JButton jBRegresarFunciones) {
-        this.jBRegresarFunciones = jBRegresarFunciones;
+    public void setjBComprarAsiento(JButton jBComprarAsiento) {
+        this.jBComprarAsiento = jBComprarAsiento;
+    }
+
+    public JButton getjBRegresarAsientosDisponibles() {
+        return jBRegresarAsientosDisponibles;
+    }
+
+    public void setjBRegresarAsientosDisponibles(JButton jBRegresarAsientosDisponibles) {
+        this.jBRegresarAsientosDisponibles = jBRegresarAsientosDisponibles;
     }
 
     public JTextField getJTxtNombreFuncion() {
@@ -3028,6 +3040,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBAsientos;
     private javax.swing.JButton jBCancelarBoletoAsiento;
     private javax.swing.JButton jBCancelarFuncionSeleccionada;
+    private javax.swing.JButton jBComprarAsiento;
     private javax.swing.JButton jBComprarBoletos;
     private javax.swing.JButton jBCrearFuncion;
     private javax.swing.JButton jBMenuCancelarBoleto;
@@ -3037,7 +3050,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBMenuReporteDeVentas;
     private javax.swing.JButton jBMenuVenderBoleto;
     private javax.swing.JButton jBRegresar;
-    private javax.swing.JButton jBRegresarFunciones;
+    private javax.swing.JButton jBRegresarAsientosDisponibles;
     private javax.swing.JButton jBSeleccionarAsientosDeCompra;
     private javax.swing.JComboBox<String> jComHoraDuracion;
     private javax.swing.JComboBox<String> jComHoraInicioFuncion;

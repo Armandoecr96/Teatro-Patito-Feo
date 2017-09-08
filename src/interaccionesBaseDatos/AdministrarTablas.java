@@ -36,7 +36,6 @@ public class AdministrarTablas extends MouseAdapter {
     }
 
     public DefaultTableModel cargarTablaFunciones() {
-        System.out.println("AdministradorTablas");
         this.conexion = new Conexion();
         this.connection = this.conexion.getConnection();
         DefaultTableModel modelo = new DefaultTableModel();
@@ -60,9 +59,14 @@ public class AdministrarTablas extends MouseAdapter {
         } catch (SQLException ex) {
             System.out.println("Error: " + ex);
         }
-        this.conexion.desconectar();
-        System.out.println("AdministradorTablas");
+        desconectarBD();
         return modelo;
+    }
+
+    private void desconectarBD() {
+        this.conexion = null;
+        this.connection = null;
+        System.out.println("Conexion terminada..");
     }
 
     @Override

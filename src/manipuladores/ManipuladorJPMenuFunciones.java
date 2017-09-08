@@ -29,9 +29,6 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
         this.view.getjBAsientos().addActionListener(this);
         this.view.getjBAsientos().setActionCommand("ASIENTOS_DISPONIBLES");
 
-        this.view.getjBRegresarFunciones().addActionListener(this);
-        this.view.getjBRegresarFunciones().setActionCommand("REGRESAR_FUNCIONES");
-
         this.adminTab = new AdministrarTablas(this.view.getjTable1(), this.view.getjBAsientos());
         this.view.getjTable1().addMouseListener(this.adminTab);
     }
@@ -41,17 +38,13 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
         String comando = e.getActionCommand();
         switch (comando) {
             case "ASIENTOS_DISPONIBLES":
+                this.menuAsientosDisponibles = null;
                 this.view.getjPAsientosDisponibles().setVisible(true);
                 this.view.getjPFunciones().setVisible(false);
                 this.view.getjBRegresar().setVisible(false);
+                this.view.getjBComprarAsiento().setVisible(false);
                 System.out.println(Integer.parseInt(this.adminTab.getValueObtained().toString()));
                 this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view, Integer.parseInt(this.adminTab.getValueObtained().toString()));
-                break;
-            case "REGRESAR_FUNCIONES":
-                this.menuAsientosDisponibles = null;
-                this.view.getjPAsientosDisponibles().setVisible(false);
-                this.view.getjPFunciones().setVisible(true);
-                this.view.getjBRegresar().setVisible(true);
                 break;
         }
     }

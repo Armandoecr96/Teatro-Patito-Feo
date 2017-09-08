@@ -49,7 +49,6 @@ public class AdministrarFunciones {
                 if (reply == JOptionPane.YES_OPTION) {
                     pst.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Se ha guardado correctamente", "", JOptionPane.INFORMATION_MESSAGE);
-                    this.conexion.desconectar();
                     funcionCreada = true;
                 }
             } else {
@@ -58,8 +57,7 @@ public class AdministrarFunciones {
         } catch (SQLException ex) {
             Logger.getLogger(AdministrarFunciones.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.conexion.desconectar();
-        System.out.println("Funcion");
+        desconectarBD();
         return funcionCreada;
     }
 
@@ -76,5 +74,11 @@ public class AdministrarFunciones {
 
     private long getMilisegundos(int hor, int min) {
         return (hor * 3600000) + (min * 60000);
+    }
+
+    private void desconectarBD() {
+        this.conexion = null;
+        this.connection = null;
+        System.out.println("Conexion terminada..");
     }
 }
