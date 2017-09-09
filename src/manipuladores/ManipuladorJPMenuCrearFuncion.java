@@ -9,6 +9,9 @@ import entidades.Funcion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import interaccionesBaseDatos.AdministrarFunciones;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vista.vistaMenuPrincipal;
 
 /**
@@ -38,21 +41,26 @@ public class ManipuladorJPMenuCrearFuncion implements ActionListener {
             case "CREAR_FUNCION":
                 crearFuncion();
                 this.administrarFunciones = new AdministrarFunciones(this.funcion);
-                boolean funcionCreada = this.administrarFunciones.crearFuncion();
-                if(funcionCreada){
+                boolean funcionCreada = false;
+                try {
+                    funcionCreada = this.administrarFunciones.crearFuncion();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ManipuladorJPMenuCrearFuncion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (funcionCreada) {
                     resetFields();
                 }
                 break;
         }
     }
-    
+
     private void crearFuncion() {
         this.funcion = new Funcion();
         this.funcion.setNombre(this.view.getJTxtNombreFuncion().getText());
-        this.funcion.setHoraInicio(Integer.parseInt((String)this.view.getjComHoraInicioFuncion().getSelectedItem()));
-        this.funcion.setMinutoInicio(Integer.parseInt((String)this.view.getjComMinutoInicioFuncion().getSelectedItem()));
-        this.funcion.setHoraDuracion(Integer.parseInt((String)this.view.getjComHoraDuracion().getSelectedItem()));
-        this.funcion.setMinutoDuracion(Integer.parseInt((String)this.view.getjComMinutoDuracion().getSelectedItem()));
+        this.funcion.setHoraInicio(Integer.parseInt((String) this.view.getjComHoraInicioFuncion().getSelectedItem()));
+        this.funcion.setMinutoInicio(Integer.parseInt((String) this.view.getjComMinutoInicioFuncion().getSelectedItem()));
+        this.funcion.setHoraDuracion(Integer.parseInt((String) this.view.getjComHoraDuracion().getSelectedItem()));
+        this.funcion.setMinutoDuracion(Integer.parseInt((String) this.view.getjComMinutoDuracion().getSelectedItem()));
         this.funcion.setPrecioPorAsiento(Double.parseDouble(this.view.getJTxtPrecioPorAsiento().getText()));
     }
 

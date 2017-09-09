@@ -9,6 +9,7 @@ import entidades.asiento.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,7 +25,8 @@ import javax.swing.JLabel;
  */
 public class AdministrarAsientos extends MouseAdapter {
 
-    private int idFuncion;
+    private final int idFuncion;
+    private int idAsiento;
     private JLabel jl;
     private Conexion conexion;
     private Connection connection;
@@ -32,12 +34,26 @@ public class AdministrarAsientos extends MouseAdapter {
     private AsientoFactory asientoEncontrado;
     private String coordenada;
 
-    public AdministrarAsientos(JLabel jl, String coordenada) {
+    /**
+     * Constructor para los eventos del Mouse.
+     *
+     * @param idFuncion Indica el número de la función que fue clickeada.
+     * @param jl El asiento que fue clickeado.
+     * @param coordenada Indica la coordenada del asiento.
+     */
+    public AdministrarAsientos(int idFuncion, JLabel jl, String coordenada) {
+        this.idFuncion = idFuncion;
         this.jl = jl;
         this.coordenada = coordenada;
     }
 
-    public AdministrarAsientos(int idFuncion) {
+    /**
+     * Constructor para uso de metodos publicos.
+     *
+     * @param idFuncion Indica el número de la función que fue clickeada.
+     * @throws SQLException
+     */
+    public AdministrarAsientos(int idFuncion) throws SQLException {
         this.idFuncion = idFuncion;
         buscarAsientosBD("idFuncion", this.idFuncion);
     }
@@ -103,76 +119,70 @@ public class AdministrarAsientos extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent me) {
         super.mouseClicked(me);
-//        buscarAsientosBD("Comprado", true);
-//        if (asientoEncontradoEnLaLista()) {
-//
-//        }
         String direccion[] = this.jl.getIcon().toString().split("classes");
-        switch (direccion[1]) {
-            case "/images/asiento_verde_lata.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_lata_clicked.jpg")));
-                break;
-            case "/images/asiento_verde_bronce.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_bronce_clicked.jpg")));
-                break;
-            case "/images/asiento_verde_plata.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_plata_clicked.jpg")));
-                break;
-            case "/images/asiento_verde_oro.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_oro_clicked.jpg")));
-                break;
-            case "/images/asiento_verde_diamante.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_diamante_clicked.jpg")));
-                break;
-            case "/images/asiento_verde_lata_clicked.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_lata.jpg")));
-                break;
-            case "/images/asiento_verde_bronce_clicked.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_bronce.jpg")));
-                break;
-            case "/images/asiento_verde_plata_clicked.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_plata.jpg")));
-                break;
-            case "/images/asiento_verde_oro_clicked.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_oro.jpg")));
-                break;
-            case "/images/asiento_verde_diamante_clicked.jpg":
-                this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_diamante.jpg")));
-                break;
-            case "/images/asiento_rojo_lata.jpg":
-            case "/images/asiento_rojo_bronce.jpg":
-            case "/images/asiento_rojo_plata.jpg":
-            case "/images/asiento_rojo_oro.jpg":
-            case "/images/asiento_rojo_diamante.jpg":
-                break;
-        }
-    }
-
-    public ArrayList<AsientoFactory> getListaAsientos() {
-        return listaAsientos;
-    }
-
-    private boolean asientoEncontradoEnLaLista() {
-        boolean asientoEncontrado = false;
-        for (int i = 0; i < this.listaAsientos.size(); i++) {
-            if (this.listaAsientos.get(i).getCoordenada().equals(this.coordenada)) {
-                asientoEncontrado = true;
-                this.asientoEncontrado = this.listaAsientos.get(i);
-                break;
+        try {
+            switch (direccion[1]) {
+                case "/images/asiento_verde_lata.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_lata_clicked.jpg")));
+                    insertarAsientoBD();
+                    break;
+                case "/images/asiento_verde_bronce.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_bronce_clicked.jpg")));
+                    insertarAsientoBD();
+                    break;
+                case "/images/asiento_verde_plata.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_plata_clicked.jpg")));
+                    insertarAsientoBD();
+                    break;
+                case "/images/asiento_verde_oro.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_oro_clicked.jpg")));
+                    insertarAsientoBD();
+                    break;
+                case "/images/asiento_verde_diamante.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_diamante_clicked.jpg")));
+                    insertarAsientoBD();
+                    break;
+                case "/images/asiento_verde_lata_clicked.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_lata.jpg")));
+                    procedimientoParaBorrarAsientoBD();
+                    break;
+                case "/images/asiento_verde_bronce_clicked.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_bronce.jpg")));
+                    procedimientoParaBorrarAsientoBD();
+                    break;
+                case "/images/asiento_verde_plata_clicked.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_plata.jpg")));
+                    procedimientoParaBorrarAsientoBD();
+                    break;
+                case "/images/asiento_verde_oro_clicked.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_oro.jpg")));
+                    procedimientoParaBorrarAsientoBD();
+                    break;
+                case "/images/asiento_verde_diamante_clicked.jpg":
+                    this.jl.setIcon(new ImageIcon(getClass().getResource("/images/asiento_verde_diamante.jpg")));
+                    procedimientoParaBorrarAsientoBD();
+                    break;
+                case "/images/asiento_rojo_lata.jpg":
+                case "/images/asiento_rojo_bronce.jpg":
+                case "/images/asiento_rojo_plata.jpg":
+                case "/images/asiento_rojo_oro.jpg":
+                case "/images/asiento_rojo_diamante.jpg":
+                    break;
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdministrarAsientos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return asientoEncontrado;
     }
 
-    private void desconectarBD() {
-        this.conexion = null;
-        this.connection = null;
-        System.out.println("Conexion terminada..");
-    }
-
+    /**
+     * Metodo para colocar imagenes en los JLabel.
+     *
+     * @param coordenada Indica la coordenada del asiento.
+     * @return Objeto de tipo ImageIcon.
+     */
     public ImageIcon colocarImagen(String coordenada) {
         this.coordenada = coordenada;
-        ImageIcon icon = null;
+        ImageIcon icon;
         if (asientoEncontradoEnLaLista()) {
             icon = asignarImagenRojaPorRango(this.asientoEncontrado.getRango());
         } else {
@@ -181,20 +191,94 @@ public class AdministrarAsientos extends MouseAdapter {
         return icon;
     }
 
-    private void buscarAsientosBD(String where, Object what) {
+    /**
+     * Metodo para borrar asientos de la Base de Datos "teatro_patito_feo" en la
+     * tabla "asiento".
+     *
+     * @param where Columna que se filtrará.
+     * @param what Valor de la columna.
+     * @throws SQLException
+     */
+    public void borrarAsientoBD(String where, Object what) throws SQLException {
+        this.conexion = new Conexion();
+        this.connection = this.conexion.getConnection();
+        String sql = "DELETE FROM asiento WHERE " + where + " = " + what.toString();
+        PreparedStatement pst = this.connection.prepareStatement(sql);
+        pst.executeUpdate();
+        desconectarBD();
+    }
+
+    /**
+     * Metodo para actualizar asientos de la Base de Datos "teatro_patito_feo"
+     * en la tabla "asiento".
+     *
+     * @param where Columna que se filtrará.
+     * @param what Valor de la columna.
+     * @throws SQLException
+     */
+    public void actualizarAsientoBD(String where, Object what) throws SQLException {
+        this.conexion = new Conexion();
+        this.connection = this.conexion.getConnection();
+        String sql = "UPDATE asiento SET " + where + " = " + what.toString();
+        PreparedStatement pst = this.connection.prepareStatement(sql);
+        pst.executeUpdate();
+        desconectarBD();
+    }
+
+    //******************************************************************************************************
+    //******************************************************************************************************
+    //******************************************************************************************************
+    //Recursos para los metodos principales
+    private void insertarAsientoBD() throws SQLException {
+        this.conexion = new Conexion();
+        this.connection = this.conexion.getConnection();
+        AsientoFactory asiento = generarAsiento(this.coordenada);
+        String sql = "INSERT asiento(idAsiento,idFuncion,Coordenada,Comprado) VALUES (?,?,?,?)";
+        PreparedStatement pst = this.connection.prepareStatement(sql);
+        pst.setInt(1, 0);
+        pst.setInt(2, asiento.getIdFuncion());
+        pst.setString(3, asiento.getCoordenada());
+        pst.setBoolean(4, asiento.isComprado());
+        pst.executeUpdate();
+        desconectarBD();
+    }
+
+    private void procedimientoParaBorrarAsientoBD() throws SQLException {
+        buscarAsientosBD("idFuncion", this.idFuncion);
+        if (asientoEncontradoEnLaLista()) {
+            borrarAsientoBD("idAsiento", this.asientoEncontrado.getIdAsiento());
+        }
+    }
+
+    private void buscarAsientosBD(String where, Object what) throws SQLException {
         this.conexion = new Conexion();
         this.connection = conexion.getConnection();
-        this.listaAsientos = new ArrayList<AsientoFactory>();
-        try {
-            Statement st = this.connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM asiento WHERE " + where + " = " + what.toString());
-            while (rs.next()) {
-                crearListaAsientos(rs.getString(3));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AdministrarAsientos.class.getName()).log(Level.SEVERE, null, ex);
+        this.listaAsientos = new ArrayList<>();
+        Statement st = this.connection.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM asiento WHERE " + where + " = " + what.toString());
+        while (rs.next()) {
+            this.idAsiento = rs.getInt(1);
+            crearListaAsientos(rs.getString(3));
         }
         desconectarBD();
+    }
+
+    private boolean asientoEncontradoEnLaLista() {
+        boolean encontrado = false;
+        for (int i = 0; i < this.listaAsientos.size(); i++) {
+            if (this.listaAsientos.get(i).getCoordenada().equals(this.coordenada)) {
+                encontrado = true;
+                this.asientoEncontrado = this.listaAsientos.get(i);
+                break;
+            }
+        }
+        return encontrado;
+    }
+
+    private void desconectarBD() {
+        this.conexion = null;
+        this.connection = null;
+        System.out.println("Conexion terminada..");
     }
 
     private ImageIcon asignarImagenRojaPorRango(String s) {
@@ -242,11 +326,13 @@ public class AdministrarAsientos extends MouseAdapter {
     }
 
     private void crearListaAsientos(String s) {
-        this.listaAsientos.add(generarAsiento(s));
+        AsientoFactory asiento = generarAsiento(s);
+        asiento.setIdAsiento(this.idAsiento);
+        this.listaAsientos.add(asiento);
     }
 
     private AsientoFactory generarAsiento(String s) {
-        AsientoFactory asiento = null;
+        AsientoFactory asiento;
         switch (s) {
             case "C7":
             case "C8":

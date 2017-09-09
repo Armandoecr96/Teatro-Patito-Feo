@@ -5,13 +5,15 @@
  */
 package manipuladores;
 
-import entidades.asiento.AsientoFactory;
 import interaccionesBaseDatos.AdministrarAsientos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import vista.vistaMenuPrincipal;
 
 /**
@@ -20,15 +22,13 @@ import vista.vistaMenuPrincipal;
  */
 public class ManipuladorJPMenuAsientosDisponibles implements ActionListener {
 
-    private vistaMenuPrincipal view;
+    private final vistaMenuPrincipal view;
+    private final int idFuncion;
     private JLabel jl;
-    private int idFuncion;
-    private ArrayList<AsientoFactory> listaAsientos;
 
-    public ManipuladorJPMenuAsientosDisponibles(vistaMenuPrincipal view, int idFuncion) {
+    public ManipuladorJPMenuAsientosDisponibles(vistaMenuPrincipal view, int idFuncion) throws SQLException {
         this.idFuncion = idFuncion;
         this.view = view;
-        this.listaAsientos = new ArrayList<AsientoFactory>();
         initButtons();
         colocandoImagenes();
         agregandoEventos();
@@ -37,25 +37,40 @@ public class ManipuladorJPMenuAsientosDisponibles implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         String comando = ae.getActionCommand();
-        switch (comando) {
-            case "REGRESAR_ASIENTOS_DISPONIBLES":
-                this.view.getjPAsientosDisponibles().setVisible(false);
-                this.view.getjPFunciones().setVisible(true);
-                this.view.getjBRegresar().setVisible(true);
-                break;
+        try {
+            switch (comando) {
+                case "REGRESAR_ASIENTOS_DISPONIBLES":
+                    new AdministrarAsientos(this.idFuncion).borrarAsientoBD("Comprado", false);
+                    this.view.getjPAsientosDisponibles().setVisible(false);
+                    this.view.getjPFunciones().setVisible(true);
+                    this.view.getjBRegresar().setVisible(true);
+                    break;
+                case "COMPRAR_ASIENTO":
+                    int reply = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea comprar estos asientos?", "Comprar Asiento", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        new AdministrarAsientos(this.idFuncion).actualizarAsientoBD("Comprado", true);
+                        JOptionPane.showMessageDialog(null, "Se ha guardado correctamente", "", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    break;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManipuladorJPMenuAsientosDisponibles.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void initButtons() {
         this.view.getjBRegresarAsientosDisponibles().addActionListener(this);
         this.view.getjBRegresarAsientosDisponibles().setActionCommand("REGRESAR_ASIENTOS_DISPONIBLES");
+
+        this.view.getjBComprarAsiento().addActionListener(this);
+        this.view.getjBComprarAsiento().setActionCommand("COMPRAR_ASIENTO");
     }
 
     private MouseAdapter asientoAdapter(JLabel jl, String coordenada) {
-        return new AdministrarAsientos(jl, coordenada);
+        return new AdministrarAsientos(this.idFuncion, jl, coordenada);
     }
 
-    private void colocandoImagenes() {
+    private void colocandoImagenes() throws SQLException {
         AdministrarAsientos adminAsientos = new AdministrarAsientos(this.idFuncion);
         //Imagenes de la fila A
         this.view.getA1().setIcon(adminAsientos.colocarImagen("A1"));

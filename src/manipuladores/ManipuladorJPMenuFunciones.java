@@ -8,6 +8,9 @@ package manipuladores;
 import interaccionesBaseDatos.AdministrarTablas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vista.vistaMenuPrincipal;
 
 /**
@@ -44,7 +47,12 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
                 this.view.getjBRegresar().setVisible(false);
                 this.view.getjBComprarAsiento().setVisible(false);
                 System.out.println(Integer.parseInt(this.adminTab.getValueObtained().toString()));
-                this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view, Integer.parseInt(this.adminTab.getValueObtained().toString()));
+                try {
+                    this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view, Integer.parseInt(this.adminTab.getValueObtained().toString()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ManipuladorJPMenuFunciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
         }
     }

@@ -17,6 +17,7 @@ public abstract class AsientoFactory {
     public static final String ORO = "ORO";
     public static final String DIAMANTE = "DIAMANTE";
 
+    protected int idAsiento;
     protected int idFuncion;
     protected String coordenada;
     protected double precio;
@@ -26,9 +27,18 @@ public abstract class AsientoFactory {
     public AsientoFactory(int idFuncion, String coordenada) {
         this.idFuncion = idFuncion;
         this.coordenada = coordenada;
+        this.comprado = false;
     }
 
     public abstract double getPrecio();
+
+    public int getIdAsiento() {
+        return idAsiento;
+    }
+
+    public void setIdAsiento(int idAsiento) {
+        this.idAsiento = idAsiento;
+    }
 
     public void setPrecio(int precio) {
         this.precio = precio;
