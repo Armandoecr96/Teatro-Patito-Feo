@@ -5,7 +5,7 @@
  */
 package manipuladores;
 
-import interaccionesBaseDatos.AdministrarAsientos;
+import administradores.AdministrarAsientos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;

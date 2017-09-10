@@ -5,9 +5,12 @@
  */
 package manipuladores;
 
-import interaccionesBaseDatos.AdministrarTablas;
+import administradores.AdministrarTablas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import vista.vistaMenuPrincipal;
 
@@ -25,12 +28,12 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
     private ManipuladorJPMenuCancelarBoleto menuCancelarBoleto;
     private ManipuladorJPMenuReporteVentas menuReporteVentas;
 
-    public ManipuladorJPMenuPrincipal(vistaMenuPrincipal view) {
+    public ManipuladorJPMenuPrincipal(vistaMenuPrincipal view) throws SQLException {
         this.view = view;
         initComponents();
     }
 
-    private void initComponents() {
+    private void initComponents() throws SQLException {
         this.view.getjBMenuCrearFuncion().addActionListener(this);
         this.view.getjBMenuCrearFuncion().setActionCommand("MENU_CREAR_FUNCION");
 
@@ -111,12 +114,18 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
                 this.menuCancelarFuncion = null;
                 this.menuCancelarBoleto = null;
                 this.menuReporteVentas = null;
-                cargarTablaFunciones();
+                 {
+                    try {
+                        cargarTablaFunciones();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManipuladorJPMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 break;
         }
     }
 
-    private void cargarTablaFunciones() {
+    private void cargarTablaFunciones() throws SQLException {
         AdministrarTablas adminTab = new AdministrarTablas();
         DefaultTableModel modelo = adminTab.cargarTablaFunciones();
         this.view.getjTable1().setModel(modelo);

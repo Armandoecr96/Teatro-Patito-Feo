@@ -8,7 +8,7 @@ package manipuladores;
 import entidades.Funcion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import interaccionesBaseDatos.AdministrarFunciones;
+import administradores.AdministrarFunciones;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,21 +36,23 @@ public class ManipuladorJPMenuCrearFuncion implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String comando = ae.getActionCommand();
-        switch (comando) {
-            case "CREAR_FUNCION":
-                crearFuncion();
-                this.administrarFunciones = new AdministrarFunciones(this.funcion);
-                boolean funcionCreada = false;
-                try {
+        try {
+            String comando = ae.getActionCommand();
+            switch (comando) {
+                case "CREAR_FUNCION":
+                    crearFuncion();
+                    this.administrarFunciones = new AdministrarFunciones(this.funcion);
+                    boolean funcionCreada = false;
+
                     funcionCreada = this.administrarFunciones.crearFuncion();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ManipuladorJPMenuCrearFuncion.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                if (funcionCreada) {
-                    resetFields();
-                }
-                break;
+
+                    if (funcionCreada) {
+                        resetFields();
+                    }
+                    break;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManipuladorJPMenuCrearFuncion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

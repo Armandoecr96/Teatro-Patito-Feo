@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.sql.SQLException;
 import manipuladores.ManipuladorJPMenuPrincipal;
 
 /**
@@ -13,7 +14,7 @@ import manipuladores.ManipuladorJPMenuPrincipal;
  */
 public class Principal {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         vistaMenuPrincipal view = new vistaMenuPrincipal();
         new ManipuladorJPMenuPrincipal(view);
         view.setVisible(true);

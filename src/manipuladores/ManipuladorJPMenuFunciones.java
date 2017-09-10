@@ -5,7 +5,7 @@
  */
 package manipuladores;
 
-import interaccionesBaseDatos.AdministrarTablas;
+import administradores.AdministrarTablas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;

@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interaccionesBaseDatos;
+package administradores;
 
 import entidades.asiento.*;
+import interaccionBaseDatos.DAO;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,8 +25,6 @@ public class AdministrarAsientos extends MouseAdapter {
     private final int idFuncion;
     private int idAsiento;
     private JLabel jl;
-    private Conexion conexion;
-    private Connection connection;
     private ArrayList<AsientoFactory> listaAsientos;
     private AsientoFactory asientoEncontrado;
     private String coordenada;
@@ -200,12 +195,9 @@ public class AdministrarAsientos extends MouseAdapter {
      * @throws SQLException
      */
     public void borrarAsientoBD(String where, Object what) throws SQLException {
-        this.conexion = new Conexion();
-        this.connection = this.conexion.getConnection();
-        String sql = "DELETE FROM asiento WHERE " + where + " = " + what.toString();
-        PreparedStatement pst = this.connection.prepareStatement(sql);
-        pst.executeUpdate();
-        desconectarBD();
+        DAO eliminar = new DAO();
+        eliminar.crearEstructuraParaEliminar(DAO.ASIENTO, where, what);
+        eliminar.confirmar();
     }
 
     /**
@@ -217,12 +209,9 @@ public class AdministrarAsientos extends MouseAdapter {
      * @throws SQLException
      */
     public void actualizarAsientoBD(String where, Object what) throws SQLException {
-        this.conexion = new Conexion();
-        this.connection = this.conexion.getConnection();
-        String sql = "UPDATE asiento SET " + where + " = " + what.toString();
-        PreparedStatement pst = this.connection.prepareStatement(sql);
-        pst.executeUpdate();
-        desconectarBD();
+        DAO actualizar = new DAO();
+        actualizar.crearEstructuraParaActualizar(DAO.ASIENTO, where, what.toString());
+        actualizar.confirmar();
     }
 
     //******************************************************************************************************
@@ -230,17 +219,13 @@ public class AdministrarAsientos extends MouseAdapter {
     //******************************************************************************************************
     //Recursos para los metodos principales
     private void insertarAsientoBD() throws SQLException {
-        this.conexion = new Conexion();
-        this.connection = this.conexion.getConnection();
         AsientoFactory asiento = generarAsiento(this.coordenada);
-        String sql = "INSERT asiento(idAsiento,idFuncion,Coordenada,Comprado) VALUES (?,?,?,?)";
-        PreparedStatement pst = this.connection.prepareStatement(sql);
-        pst.setInt(1, 0);
-        pst.setInt(2, asiento.getIdFuncion());
-        pst.setString(3, asiento.getCoordenada());
-        pst.setBoolean(4, asiento.isComprado());
-        pst.executeUpdate();
-        desconectarBD();
+        DAO insertar = new DAO();
+        insertar.crearEstructuraParaInsertar(DAO.ASIENTO, "idFuncion,Coordenada,Comprado");
+        insertar.insertarInt(1, asiento.getIdFuncion());
+        insertar.insertarString(2, asiento.getCoordenada());
+        insertar.insertarBoolean(3, asiento.isComprado());
+        insertar.confirmar();
     }
 
     private void procedimientoParaBorrarAsientoBD() throws SQLException {
@@ -251,16 +236,12 @@ public class AdministrarAsientos extends MouseAdapter {
     }
 
     private void buscarAsientosBD(String where, Object what) throws SQLException {
-        this.conexion = new Conexion();
-        this.connection = conexion.getConnection();
         this.listaAsientos = new ArrayList<>();
-        Statement st = this.connection.createStatement();
-        ResultSet rs = st.executeQuery("SELECT * FROM asiento WHERE " + where + " = " + what.toString());
-        while (rs.next()) {
-            this.idAsiento = rs.getInt(1);
-            crearListaAsientos(rs.getString(3));
+        Object[][] objetos = new DAO().buscarConFiltro("idAsiento,Coordenada", DAO.ASIENTO, where, what.toString());
+        for (int i = 0; i < objetos.length; i++) {
+            this.idAsiento = (Integer)objetos[i][0];
+            crearListaAsientos(objetos[i][1].toString());
         }
-        desconectarBD();
     }
 
     private boolean asientoEncontradoEnLaLista() {
@@ -273,12 +254,6 @@ public class AdministrarAsientos extends MouseAdapter {
             }
         }
         return encontrado;
-    }
-
-    private void desconectarBD() {
-        this.conexion = null;
-        this.connection = null;
-        System.out.println("Conexion terminada..");
     }
 
     private ImageIcon asignarImagenRojaPorRango(String s) {

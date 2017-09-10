@@ -18,7 +18,7 @@ public class AsientoBronce extends AsientoFactory {
 
     @Override
     public double getPrecio() {
-        return (super.precio)*(0.7);
+        return (super.precio)*(0.6);
     }
     
 }

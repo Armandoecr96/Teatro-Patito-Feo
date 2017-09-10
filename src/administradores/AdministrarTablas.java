@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interaccionesBaseDatos;
+package administradores;
 
+import interaccionBaseDatos.DAO;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -21,8 +19,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdministrarTablas extends MouseAdapter {
 
-    private Conexion conexion;
-    private Connection connection;
     private JTable tabla;
     private JButton boton;
     private Object valueObtained;
@@ -35,9 +31,7 @@ public class AdministrarTablas extends MouseAdapter {
         this.boton = boton;
     }
 
-    public DefaultTableModel cargarTablaFunciones() {
-        this.conexion = new Conexion();
-        this.connection = this.conexion.getConnection();
+    public DefaultTableModel cargarTablaFunciones() throws SQLException {
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.addColumn("ID Funcion");
@@ -46,27 +40,17 @@ public class AdministrarTablas extends MouseAdapter {
         modelo.addColumn("Horario de Fin");
 
         String[] datos = new String[4];
-        try {
-            Statement st = this.connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM teatro_patito_feo.funcion");
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(5);
-                modelo.addRow(datos);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex);
-        }
-        desconectarBD();
-        return modelo;
-    }
 
-    private void desconectarBD() {
-        this.conexion = null;
-        this.connection = null;
-        System.out.println("Conexion terminada..");
+        Object[][] dao = new DAO().buscar("idFuncion,NombreFuncion,InicioFuncion,FinalFuncion", DAO.FUNCION);
+
+        for (int i = 0; i < dao.length; i++) {
+            datos[0] = dao[i][0].toString();
+            datos[1] = dao[i][1].toString();
+            datos[2] = dao[i][2].toString();
+            datos[3] = dao[i][3].toString();
+            modelo.addRow(datos);
+        }
+        return modelo;
     }
 
     @Override
