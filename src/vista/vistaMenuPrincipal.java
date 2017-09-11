@@ -37,6 +37,41 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jBRegresar = new javax.swing.JButton();
+        jPVentaBoletos = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_VentaBoletos = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jBAsientos_VentaBoletos = new javax.swing.JButton();
+        jTxtNombreFuncion_VentaBoletos = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jBComprarBoletos = new javax.swing.JButton();
+        jPCancelarFuncion = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_CancelarFuncion = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jBCancelarFuncionSeleccionada = new javax.swing.JButton();
+        jPFunciones = new javax.swing.JPanel();
+        jTxtNombreFuncion_Funciones = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jBAsientos_Funciones = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_Funciones = new javax.swing.JTable();
+        jPCrearFuncion = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        JTxtNombreFuncion_CrearFuncion = new javax.swing.JTextField();
+        JTxtPrecioPorAsiento = new javax.swing.JTextField();
+        jBCrearFuncion = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jComHoraInicioFuncion = new javax.swing.JComboBox<>();
+        jComMinutoInicioFuncion = new javax.swing.JComboBox<>();
+        jComHoraDuracion = new javax.swing.JComboBox<>();
+        jComMinutoDuracion = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         jPAsientosDisponibles = new javax.swing.JPanel();
         jBRegresarAsientosDisponibles = new javax.swing.JButton();
         jBComprarAsiento = new javax.swing.JButton();
@@ -229,25 +264,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         Num18 = new javax.swing.JLabel();
         Num19 = new javax.swing.JLabel();
         Num20 = new javax.swing.JLabel();
-        jPCrearFuncion = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        JTxtNombreFuncion = new javax.swing.JTextField();
-        JTxtPrecioPorAsiento = new javax.swing.JTextField();
-        jBCrearFuncion = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jComHoraInicioFuncion = new javax.swing.JComboBox<>();
-        jComMinutoInicioFuncion = new javax.swing.JComboBox<>();
-        jComHoraDuracion = new javax.swing.JComboBox<>();
-        jComMinutoDuracion = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jPFunciones = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jBAsientos = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jPMenuPrincipal = new javax.swing.JPanel();
         jBMenuVenderBoleto = new javax.swing.JButton();
         jBMenuCancelarBoleto = new javax.swing.JButton();
@@ -262,22 +278,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jBCancelarBoletoAsiento = new javax.swing.JButton();
-        jPVentaBoletos = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jBSeleccionarAsientosDeCompra = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jBComprarBoletos = new javax.swing.JButton();
-        jPCancelarFuncion = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jBCancelarFuncionSeleccionada = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -286,6 +286,293 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jBRegresar.setVisible(false);
         jBRegresar.setText("Regresar");
         getContentPane().add(jBRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jPVentaBoletos.setVisible(false);
+        jPVentaBoletos.setMinimumSize(new java.awt.Dimension(20, 20));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuVenderBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPVentaBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jTable_VentaBoletos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable_VentaBoletos);
+
+        jLabel4.setText("Lista de Funciones");
+
+        jLabel5.setText("Pelicula Seleccionada");
+
+        jLabel6.setText("Numero de Boletos");
+
+        jBAsientos_VentaBoletos.setText("Seleccionar Asientos");
+        jBAsientos_VentaBoletos.setEnabled(false);
+
+        jBComprarBoletos.setText("Comprar");
+
+        javax.swing.GroupLayout jPVentaBoletosLayout = new javax.swing.GroupLayout(jPVentaBoletos);
+        jPVentaBoletos.setLayout(jPVentaBoletosLayout);
+        jPVentaBoletosLayout.setHorizontalGroup(
+            jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPVentaBoletosLayout.createSequentialGroup()
+                .addContainerGap(245, Short.MAX_VALUE)
+                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPVentaBoletosLayout.createSequentialGroup()
+                        .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBComprarBoletos)
+                            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
+                                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jBAsientos_VentaBoletos))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTxtNombreFuncion_VentaBoletos, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(32, 32, 32)))
+                .addGap(233, 233, 233))
+            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
+                .addGap(387, 387, 387)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPVentaBoletosLayout.setVerticalGroup(
+            jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtNombreFuncion_VentaBoletos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAsientos_VentaBoletos)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBComprarBoletos)
+                .addGap(59, 59, 59))
+        );
+
+        getContentPane().add(jPVentaBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
+
+        jPCancelarFuncion.setVisible(false);
+        jPCancelarFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
+        jPCancelarFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCancelarFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jTable_CancelarFuncion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable_CancelarFuncion);
+
+        jLabel3.setText("Lista de Funciones");
+
+        jBCancelarFuncionSeleccionada.setText("Cancelar Funcion");
+
+        javax.swing.GroupLayout jPCancelarFuncionLayout = new javax.swing.GroupLayout(jPCancelarFuncion);
+        jPCancelarFuncion.setLayout(jPCancelarFuncionLayout);
+        jPCancelarFuncionLayout.setHorizontalGroup(
+            jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
+                .addGap(229, 229, 229)
+                .addGroup(jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBCancelarFuncionSeleccionada)
+                    .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
+                                .addGap(157, 157, 157)
+                                .addComponent(jLabel3)))))
+                .addContainerGap(239, Short.MAX_VALUE))
+        );
+        jPCancelarFuncionLayout.setVerticalGroup(
+            jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel3)
+                .addGap(59, 59, 59)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(jBCancelarFuncionSeleccionada)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPCancelarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
+
+        jPFunciones.setVisible(false);
+        jPFunciones.setPreferredSize(new java.awt.Dimension(610, 670));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuFunciones, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPFunciones, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jTxtNombreFuncion_Funciones.setEditable(false);
+        jTxtNombreFuncion_Funciones.setOpaque(false);
+
+        jLabel1.setText("Funcion");
+
+        jBAsientos_Funciones.setText("Asientos Disponibles");
+        jBAsientos_Funciones.setEnabled(false);
+
+        jLabel7.setText("Lista de Funciones");
+
+        jTable_Funciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable_Funciones);
+
+        javax.swing.GroupLayout jPFuncionesLayout = new javax.swing.GroupLayout(jPFunciones);
+        jPFunciones.setLayout(jPFuncionesLayout);
+        jPFuncionesLayout.setHorizontalGroup(
+            jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
+                .addContainerGap(249, Short.MAX_VALUE)
+                .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPFuncionesLayout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel7))
+                    .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPFuncionesLayout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(133, 133, 133)
+                            .addComponent(jTxtNombreFuncion_Funciones, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPFuncionesLayout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(jBAsientos_Funciones, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(229, 229, 229))
+        );
+        jPFuncionesLayout.setVerticalGroup(
+            jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPFuncionesLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtNombreFuncion_Funciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(34, 34, 34)
+                .addComponent(jBAsientos_Funciones)
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPFunciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
+
+        jPCrearFuncion.setVisible(false);
+        jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
+        jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCrearFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCrearFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        jLabel10.setText("Nombre de la Funcion");
+
+        jLabel11.setText("Horario de Inicio (horas/min)");
+
+        jBCrearFuncion.setText("Crear Funcion");
+
+        jLabel12.setText("Duración (horas/min)");
+
+        jComHoraInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+
+        jComMinutoInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+
+        jComHoraDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+
+        jComMinutoDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+
+        jLabel2.setText("Precio por persona (Asientos Diamante)");
+
+        javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
+        jPCrearFuncion.setLayout(jPCrearFuncionLayout);
+        jPCrearFuncionLayout.setHorizontalGroup(
+            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCrearFuncionLayout.createSequentialGroup()
+                .addContainerGap(238, Short.MAX_VALUE)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel2))
+                .addGap(130, 130, 130)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JTxtNombreFuncion_CrearFuncion, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCrearFuncionLayout.createSequentialGroup()
+                        .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCrearFuncionLayout.createSequentialGroup()
+                        .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBCrearFuncion)
+                    .addComponent(JTxtPrecioPorAsiento))
+                .addGap(230, 230, 230))
+        );
+        jPCrearFuncionLayout.setVerticalGroup(
+            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(JTxtNombreFuncion_CrearFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JTxtPrecioPorAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(27, 27, 27)
+                .addComponent(jBCrearFuncion)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
 
         jPAsientosDisponibles.setVisible(false);
         jPAsientosDisponibles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -893,151 +1180,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPAsientosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 930, 520));
 
-        jPCrearFuncion.setVisible(false);
-        jPCrearFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
-        jPCrearFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCrearFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCrearFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
-
-        jLabel10.setText("Nombre de la Funcion");
-
-        jLabel11.setText("Horario de Inicio (horas/min)");
-
-        jBCrearFuncion.setText("Crear Funcion");
-
-        jLabel12.setText("Duración (horas/min)");
-
-        jComHoraInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
-
-        jComMinutoInicioFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
-
-        jComHoraDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
-
-        jComMinutoDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
-
-        jLabel2.setText("Precio por persona (Asientos Diamante)");
-
-        javax.swing.GroupLayout jPCrearFuncionLayout = new javax.swing.GroupLayout(jPCrearFuncion);
-        jPCrearFuncion.setLayout(jPCrearFuncionLayout);
-        jPCrearFuncionLayout.setHorizontalGroup(
-            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCrearFuncionLayout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel2))
-                .addGap(130, 130, 130)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCrearFuncionLayout.createSequentialGroup()
-                        .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCrearFuncionLayout.createSequentialGroup()
-                        .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jBCrearFuncion)
-                    .addComponent(JTxtPrecioPorAsiento))
-                .addGap(230, 230, 230))
-        );
-        jPCrearFuncionLayout.setVerticalGroup(
-            jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCrearFuncionLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(JTxtNombreFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jComHoraInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComMinutoInicioFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jComHoraDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComMinutoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPCrearFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JTxtPrecioPorAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(27, 27, 27)
-                .addComponent(jBCrearFuncion)
-                .addContainerGap(134, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPCrearFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
-
-        jPFunciones.setVisible(false);
-        jPFunciones.setPreferredSize(new java.awt.Dimension(610, 670));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuFunciones, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPFunciones, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
-
-        jLabel1.setText("Funcion");
-
-        jBAsientos.setText("Asientos Disponibles");
-        jBAsientos.setEnabled(false);
-
-        jLabel7.setText("Lista de Funciones");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPFuncionesLayout = new javax.swing.GroupLayout(jPFunciones);
-        jPFunciones.setLayout(jPFuncionesLayout);
-        jPFuncionesLayout.setHorizontalGroup(
-            jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionesLayout.createSequentialGroup()
-                .addContainerGap(249, Short.MAX_VALUE)
-                .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPFuncionesLayout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel7))
-                    .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPFuncionesLayout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(133, 133, 133)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPFuncionesLayout.createSequentialGroup()
-                                .addGap(99, 99, 99)
-                                .addComponent(jBAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(229, 229, 229))
-        );
-        jPFuncionesLayout.setVerticalGroup(
-            jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFuncionesLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(jPFuncionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(34, 34, 34)
-                .addComponent(jBAsientos)
-                .addContainerGap(102, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPFunciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
-
         jPMenuPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPMenuPrincipal.setPreferredSize(new java.awt.Dimension(610, 670));
 
@@ -1163,145 +1305,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPCancelarBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
 
-        jPVentaBoletos.setVisible(false);
-        jPVentaBoletos.setMinimumSize(new java.awt.Dimension(20, 20));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuVenderBoleto, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPVentaBoletos, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        jLabel4.setText("Lista de Funciones");
-
-        jLabel5.setText("Pelicula Seleccionada");
-
-        jLabel6.setText("Numero de Boletos");
-
-        jBSeleccionarAsientosDeCompra.setText("Seleccionar Asientos");
-
-        jBComprarBoletos.setText("Comprar");
-
-        javax.swing.GroupLayout jPVentaBoletosLayout = new javax.swing.GroupLayout(jPVentaBoletos);
-        jPVentaBoletos.setLayout(jPVentaBoletosLayout);
-        jPVentaBoletosLayout.setHorizontalGroup(
-            jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPVentaBoletosLayout.createSequentialGroup()
-                .addContainerGap(245, Short.MAX_VALUE)
-                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPVentaBoletosLayout.createSequentialGroup()
-                        .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBComprarBoletos)
-                            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
-                                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jBSeleccionarAsientosDeCompra))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(32, 32, 32)))
-                .addGap(233, 233, 233))
-            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
-                .addGap(387, 387, 387)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPVentaBoletosLayout.setVerticalGroup(
-            jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPVentaBoletosLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPVentaBoletosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBSeleccionarAsientosDeCompra)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBComprarBoletos)
-                .addGap(59, 59, 59))
-        );
-
-        getContentPane().add(jPVentaBoletos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
-
-        jPCancelarFuncion.setVisible(false);
-        jPCancelarFuncion.setMaximumSize(new java.awt.Dimension(610, 670));
-        jPCancelarFuncion.setPreferredSize(new java.awt.Dimension(610, 670));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jBMenuCancelarFuncion, org.jdesktop.beansbinding.ELProperty.create("${action}"), jPCancelarFuncion, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jLabel3.setText("Lista de Funciones");
-
-        jBCancelarFuncionSeleccionada.setText("Cancelar Funcion");
-
-        javax.swing.GroupLayout jPCancelarFuncionLayout = new javax.swing.GroupLayout(jPCancelarFuncion);
-        jPCancelarFuncion.setLayout(jPCancelarFuncionLayout);
-        jPCancelarFuncionLayout.setHorizontalGroup(
-            jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                .addGroup(jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(jBCancelarFuncionSeleccionada))
-                    .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addGroup(jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                                .addGap(157, 157, 157)
-                                .addComponent(jLabel3)))))
-                .addContainerGap(246, Short.MAX_VALUE))
-        );
-        jPCancelarFuncionLayout.setVerticalGroup(
-            jPCancelarFuncionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCancelarFuncionLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jLabel3)
-                .addGap(59, 59, 59)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(jBCancelarFuncionSeleccionada)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPCancelarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 930, 480));
-
         bindingGroup.bind();
 
         pack();
@@ -1323,20 +1326,20 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.jBRegresarAsientosDisponibles = jBRegresarAsientosDisponibles;
     }
 
-    public JTextField getJTxtNombreFuncion() {
-        return JTxtNombreFuncion;
+    public JTextField getJTxtNombreFuncion_CrearFuncion() {
+        return JTxtNombreFuncion_CrearFuncion;
     }
 
-    public void setJTxtNombreFuncion(JTextField JTxtNombreFuncion) {
-        this.JTxtNombreFuncion = JTxtNombreFuncion;
+    public void setJTxtNombreFuncion_CrearFuncion(JTextField JTxtNombreFuncion_CrearFuncion) {
+        this.JTxtNombreFuncion_CrearFuncion = JTxtNombreFuncion_CrearFuncion;
     }
 
-    public JButton getjBAsientos() {
-        return jBAsientos;
+    public JButton getjBAsientos_Funciones() {
+        return jBAsientos_Funciones;
     }
 
-    public void setjBAsientos(JButton jBAsientos) {
-        this.jBAsientos = jBAsientos;
+    public void setjBAsientos_Funciones(JButton jBAsientos_Funciones) {
+        this.jBAsientos_Funciones = jBAsientos_Funciones;
     }
 
     public JPanel getjPAsientosDisponibles() {
@@ -1435,12 +1438,12 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.jBRegresar = jBRegresar;
     }
 
-    public JButton getjBSeleccionarAsientosDeCompra() {
-        return jBSeleccionarAsientosDeCompra;
+    public JButton getjBAsientos_VentaBoletos() {
+        return jBAsientos_VentaBoletos;
     }
 
-    public void setjBSeleccionarAsientosDeCompra(JButton jBSeleccionarAsientosDeCompra) {
-        this.jBSeleccionarAsientosDeCompra = jBSeleccionarAsientosDeCompra;
+    public void setjBAsientos_VentaBoletos(JButton jBAsientos_VentaBoletos) {
+        this.jBAsientos_VentaBoletos = jBAsientos_VentaBoletos;
     }
 
     public JComboBox<String> getjComHoraDuracion() {
@@ -1475,28 +1478,28 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         this.jComMinutoInicioFuncion = jComMinutoInicioFuncion;
     }
 
-    public JTable getjTable1() {
-        return jTable1;
+    public JTable getjTable_Funciones() {
+        return jTable_Funciones;
     }
 
-    public void setjTable1(JTable jTable1) {
-        this.jTable1 = jTable1;
+    public void setjTable_Funciones(JTable jTable_Funciones) {
+        this.jTable_Funciones = jTable_Funciones;
     }
 
-    public JTable getjTable2() {
-        return jTable2;
+    public JTable getjTable_CancelarFuncion() {
+        return jTable_CancelarFuncion;
     }
 
-    public void setjTable2(JTable jTable2) {
-        this.jTable2 = jTable2;
+    public void setjTable_CancelarFuncion(JTable jTable_CancelarFuncion) {
+        this.jTable_CancelarFuncion = jTable_CancelarFuncion;
     }
 
-    public JTable getjTable3() {
-        return jTable3;
+    public JTable getjTable_VentaBoletos() {
+        return jTable_VentaBoletos;
     }
 
-    public void setjTable3(JTable jTable3) {
-        this.jTable3 = jTable3;
+    public void setjTable_VentaBoletos(JTable jTable_VentaBoletos) {
+        this.jTable_VentaBoletos = jTable_VentaBoletos;
     }
 
     public JPanel getjPCancelarBoletos() {
@@ -1561,6 +1564,22 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
 
     public void setJTxtPrecioPorAsiento(JTextField JTxtPrecioPorAsiento) {
         this.JTxtPrecioPorAsiento = JTxtPrecioPorAsiento;
+    }
+
+    public JTextField getjTxtNombreFuncion_Funciones() {
+        return jTxtNombreFuncion_Funciones;
+    }
+
+    public void setjTxtNombreFuncion_Funciones(JTextField jTxtNombreFuncion_Funciones) {
+        this.jTxtNombreFuncion_Funciones = jTxtNombreFuncion_Funciones;
+    }
+
+    public JTextField getjTxtNombreFuncion_VentaBoletos() {
+        return jTxtNombreFuncion_VentaBoletos;
+    }
+
+    public void setjTxtNombreFuncion_VentaBoletos(JTextField jTxtNombreFuncion_VentaBoletos) {
+        this.jTxtNombreFuncion_VentaBoletos = jTxtNombreFuncion_VentaBoletos;
     }
 
     public JLabel getA1() {
@@ -3015,7 +3034,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel H7;
     private javax.swing.JLabel H8;
     private javax.swing.JLabel H9;
-    private javax.swing.JTextField JTxtNombreFuncion;
+    private javax.swing.JTextField JTxtNombreFuncion_CrearFuncion;
     private javax.swing.JTextField JTxtPrecioPorAsiento;
     private javax.swing.JLabel Num1;
     private javax.swing.JLabel Num10;
@@ -3037,7 +3056,8 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel Num7;
     private javax.swing.JLabel Num8;
     private javax.swing.JLabel Num9;
-    private javax.swing.JButton jBAsientos;
+    private javax.swing.JButton jBAsientos_Funciones;
+    private javax.swing.JButton jBAsientos_VentaBoletos;
     private javax.swing.JButton jBCancelarBoletoAsiento;
     private javax.swing.JButton jBCancelarFuncionSeleccionada;
     private javax.swing.JButton jBComprarAsiento;
@@ -3051,7 +3071,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBMenuVenderBoleto;
     private javax.swing.JButton jBRegresar;
     private javax.swing.JButton jBRegresarAsientosDisponibles;
-    private javax.swing.JButton jBSeleccionarAsientosDeCompra;
     private javax.swing.JComboBox<String> jComHoraDuracion;
     private javax.swing.JComboBox<String> jComHoraInicioFuncion;
     private javax.swing.JComboBox<String> jComMinutoDuracion;
@@ -3079,15 +3098,15 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable jTable_CancelarFuncion;
+    private javax.swing.JTable jTable_Funciones;
+    private javax.swing.JTable jTable_VentaBoletos;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTxtNombreFuncion_Funciones;
+    private javax.swing.JTextField jTxtNombreFuncion_VentaBoletos;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 

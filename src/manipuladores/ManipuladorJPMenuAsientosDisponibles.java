@@ -22,16 +22,28 @@ import vista.vistaMenuPrincipal;
  */
 public class ManipuladorJPMenuAsientosDisponibles implements ActionListener {
 
+    public static final String MENU_FUNCIONES = "funciones";
+    public static final String MENU_VENTA_BOLETOS = "ventaBoletos";
+
     private final vistaMenuPrincipal view;
-    private final int idFuncion;
+    private int idFuncion;
+    private boolean eventosActivados;
+    private final String ventanaEmergente;
     private JLabel jl;
 
-    public ManipuladorJPMenuAsientosDisponibles(vistaMenuPrincipal view, int idFuncion) throws SQLException {
-        this.idFuncion = idFuncion;
+    /**
+     * Constructor para poder manipular el panel jPAsientosDisponibles
+     *
+     * @param view
+     * @param ventanaEmergente
+     */
+    public ManipuladorJPMenuAsientosDisponibles(vistaMenuPrincipal view, String ventanaEmergente) {
         this.view = view;
+        this.ventanaEmergente = ventanaEmergente;
+        this.jl = null;
+        this.view.getjPAsientosDisponibles().setVisible(false);
+        this.view.getjPAsientosDisponibles().setEnabled(false);
         initButtons();
-        colocandoImagenes();
-        agregandoEventos();
     }
 
     @Override
@@ -42,19 +54,47 @@ public class ManipuladorJPMenuAsientosDisponibles implements ActionListener {
                 case "REGRESAR_ASIENTOS_DISPONIBLES":
                     new AdministrarAsientos(this.idFuncion).borrarAsientoBD("Comprado", false);
                     this.view.getjPAsientosDisponibles().setVisible(false);
-                    this.view.getjPFunciones().setVisible(true);
                     this.view.getjBRegresar().setVisible(true);
+                    verificarVentanaEmergente();
                     break;
                 case "COMPRAR_ASIENTO":
                     int reply = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea comprar estos asientos?", "Comprar Asiento", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (reply == JOptionPane.YES_OPTION) {
                         new AdministrarAsientos(this.idFuncion).actualizarAsientoBD("Comprado", true);
                         JOptionPane.showMessageDialog(null, "Se ha guardado correctamente", "", JOptionPane.INFORMATION_MESSAGE);
+                        this.view.getjPAsientosDisponibles().setVisible(false);
+                        this.view.getjBRegresar().setVisible(true);
+                        verificarVentanaEmergente();
                     }
                     break;
             }
         } catch (SQLException ex) {
             Logger.getLogger(ManipuladorJPMenuAsientosDisponibles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void execute(boolean eventosActivados) throws SQLException {
+        this.eventosActivados = eventosActivados;
+        colocandoImagenes();
+        if (this.eventosActivados) {
+            agregandoEventos();
+        }
+    }
+
+    public void setIdFuncion(int idFuncion) {
+        this.idFuncion = idFuncion;
+    }
+
+    private void verificarVentanaEmergente() {
+        switch (this.ventanaEmergente) {
+            case ManipuladorJPMenuAsientosDisponibles.MENU_FUNCIONES:
+                this.view.getjPFunciones().setVisible(true);
+                this.view.getjPVentaBoletos().setVisible(false);
+                break;
+            case ManipuladorJPMenuAsientosDisponibles.MENU_VENTA_BOLETOS:
+                this.view.getjPVentaBoletos().setVisible(true);
+                this.view.getjPFunciones().setVisible(false);
+                break;
         }
     }
 

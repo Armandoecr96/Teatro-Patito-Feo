@@ -19,21 +19,24 @@ import vista.vistaMenuPrincipal;
  */
 public class ManipuladorJPMenuFunciones implements ActionListener {
 
-    private vistaMenuPrincipal view;
-    private ManipuladorJPMenuAsientosDisponibles menuAsientosDisponibles;
+    private final vistaMenuPrincipal view;
+    private final ManipuladorJPMenuAsientosDisponibles menuAsientosDisponibles;
     private AdministrarTablas adminTab;
 
-    public ManipuladorJPMenuFunciones(vistaMenuPrincipal view) {
+    public ManipuladorJPMenuFunciones(vistaMenuPrincipal view, ManipuladorJPMenuAsientosDisponibles menuAsientosDisponibles) {
         this.view = view;
+        this.adminTab = null;
+        this.menuAsientosDisponibles = menuAsientosDisponibles;
         initComponents();
     }
 
     private void initComponents() {
-        this.view.getjBAsientos().addActionListener(this);
-        this.view.getjBAsientos().setActionCommand("ASIENTOS_DISPONIBLES");
+        this.view.getjBAsientos_Funciones().addActionListener(this);
+        this.view.getjBAsientos_Funciones().setActionCommand("ASIENTOS_DISPONIBLES");
 
-        this.adminTab = new AdministrarTablas(this.view.getjTable1(), this.view.getjBAsientos());
-        this.view.getjTable1().addMouseListener(this.adminTab);
+        this.adminTab = new AdministrarTablas(this.view.getjTable_Funciones(), this.view.getjBAsientos_Funciones());
+        this.adminTab.setjTextField(this.view.getjTxtNombreFuncion_Funciones());
+        this.view.getjTable_Funciones().addMouseListener(this.adminTab);
     }
 
     @Override
@@ -41,20 +44,20 @@ public class ManipuladorJPMenuFunciones implements ActionListener {
         String comando = e.getActionCommand();
         switch (comando) {
             case "ASIENTOS_DISPONIBLES":
-                this.menuAsientosDisponibles = null;
-                this.view.getjPAsientosDisponibles().setVisible(true);
-                this.view.getjPFunciones().setVisible(false);
-                this.view.getjBRegresar().setVisible(false);
-                this.view.getjBComprarAsiento().setVisible(false);
-                System.out.println(Integer.parseInt(this.adminTab.getValueObtained().toString()));
+                int idFuncion = Integer.parseInt(this.adminTab.getValueObtained().toString());
+                System.out.println(idFuncion);
                 try {
-                    this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view, Integer.parseInt(this.adminTab.getValueObtained().toString()));
+                    this.menuAsientosDisponibles.setIdFuncion(idFuncion);
+                    this.menuAsientosDisponibles.execute(false);
+                    this.view.getjPAsientosDisponibles().setVisible(true);
+                    this.view.getjPAsientosDisponibles().setEnabled(true);
+                    this.view.getjPFunciones().setVisible(false);
+                    this.view.getjBRegresar().setVisible(false);
+                    this.view.getjBComprarAsiento().setVisible(false);
                 } catch (SQLException ex) {
                     Logger.getLogger(ManipuladorJPMenuFunciones.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
                 break;
         }
     }
-
 }

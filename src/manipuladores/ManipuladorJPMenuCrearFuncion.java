@@ -58,7 +58,7 @@ public class ManipuladorJPMenuCrearFuncion implements ActionListener {
 
     private void crearFuncion() {
         this.funcion = new Funcion();
-        this.funcion.setNombre(this.view.getJTxtNombreFuncion().getText());
+        this.funcion.setNombre(this.view.getJTxtNombreFuncion_CrearFuncion().getText());
         this.funcion.setHoraInicio(Integer.parseInt((String) this.view.getjComHoraInicioFuncion().getSelectedItem()));
         this.funcion.setMinutoInicio(Integer.parseInt((String) this.view.getjComMinutoInicioFuncion().getSelectedItem()));
         this.funcion.setHoraDuracion(Integer.parseInt((String) this.view.getjComHoraDuracion().getSelectedItem()));
@@ -67,7 +67,7 @@ public class ManipuladorJPMenuCrearFuncion implements ActionListener {
     }
 
     private void resetFields() {
-        this.view.getJTxtNombreFuncion().setText("");
+        this.view.getJTxtNombreFuncion_CrearFuncion().setText("");
         this.view.getjComHoraInicioFuncion().setSelectedIndex(0);
         this.view.getjComMinutoInicioFuncion().setSelectedIndex(0);
         this.view.getjComHoraDuracion().setSelectedIndex(0);

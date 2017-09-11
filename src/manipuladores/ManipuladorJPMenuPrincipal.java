@@ -20,6 +20,7 @@ import vista.vistaMenuPrincipal;
  */
 public class ManipuladorJPMenuPrincipal implements ActionListener {
 
+    private final vistaMenuPrincipal viewDefault;
     private vistaMenuPrincipal view;
     private ManipuladorJPMenuFunciones menuFunciones;
     private ManipuladorJPMenuCrearFuncion menuCrearFuncion;
@@ -27,13 +28,23 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
     private ManipuladorJPMenuCancelarFuncion menuCancelarFuncion;
     private ManipuladorJPMenuCancelarBoleto menuCancelarBoleto;
     private ManipuladorJPMenuReporteVentas menuReporteVentas;
+    private ManipuladorJPMenuAsientosDisponibles menuAsientosDisponibles;
 
     public ManipuladorJPMenuPrincipal(vistaMenuPrincipal view) throws SQLException {
-        this.view = view;
-        initComponents();
+        this.viewDefault = view;
+        initComponents(view);
     }
 
-    private void initComponents() throws SQLException {
+    private void initComponents(vistaMenuPrincipal view) throws SQLException {
+        this.view = view;
+        this.menuFunciones = null;
+        this.menuCrearFuncion = null;
+        this.menuVenderBoleto = null;
+        this.menuCancelarFuncion = null;
+        this.menuCancelarBoleto = null;
+        this.menuReporteVentas = null;
+        this.menuAsientosDisponibles = new ManipuladorJPMenuAsientosDisponibles(this.view, ManipuladorJPMenuAsientosDisponibles.MENU_FUNCIONES);
+        
         this.view.getjBMenuCrearFuncion().addActionListener(this);
         this.view.getjBMenuCrearFuncion().setActionCommand("MENU_CREAR_FUNCION");
 
@@ -63,36 +74,42 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
         String comando = e.getActionCommand();
         switch (comando) {
             case "MENU_CREAR_FUNCION":
+                this.menuCrearFuncion = null;
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPCrearFuncion().setVisible(true);
                 this.menuCrearFuncion = new ManipuladorJPMenuCrearFuncion(this.view);
                 break;
             case "MENU_FUNCIONES":
+                this.menuFunciones = null;
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPFunciones().setVisible(true);
-                this.menuFunciones = new ManipuladorJPMenuFunciones(this.view);
+                this.menuFunciones = new ManipuladorJPMenuFunciones(this.view, this.menuAsientosDisponibles);
                 break;
             case "MENU_VENDER_BOLETO":
+                this.menuVenderBoleto = null;
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPVentaBoletos().setVisible(true);
-                this.menuVenderBoleto = new ManipuladorJPMenuVenderBoleto(this.view);
+                this.menuVenderBoleto = new ManipuladorJPMenuVenderBoleto(this.view, this.menuAsientosDisponibles);
                 break;
             case "MENU_CANCELAR_FUNCION":
+                this.menuCancelarFuncion = null;
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPCancelarFuncion().setVisible(true);
                 this.menuCancelarFuncion = new ManipuladorJPMenuCancelarFuncion(this.view);
                 break;
             case "MENU_CANCELAR_BOLETO":
+                this.menuCancelarBoleto = null;
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPCancelarBoletos().setVisible(true);
                 this.menuCancelarBoleto = new ManipuladorJPMenuCancelarBoleto(this.view);
                 break;
             case "MENU_REPORTE_VENTAS":
+                this.menuReporteVentas = null;
                 this.view.getjPMenuPrincipal().setVisible(false);
                 this.view.getjBRegresar().setVisible(true);
                 this.view.getjPReporteDeVentas().setVisible(true);
@@ -108,18 +125,11 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
                 this.view.getjPCancelarBoletos().setVisible(false);
                 this.view.getjPReporteDeVentas().setVisible(false);
                 this.view.getjPAsientosDisponibles().setVisible(false);
-                this.menuCrearFuncion = null;
-                this.menuFunciones = null;
-                this.menuVenderBoleto = null;
-                this.menuCancelarFuncion = null;
-                this.menuCancelarBoleto = null;
-                this.menuReporteVentas = null;
-                 {
-                    try {
-                        cargarTablaFunciones();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ManipuladorJPMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                try {
+                    cargarTablaFunciones();
+                    initComponents(this.viewDefault);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ManipuladorJPMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
         }
@@ -128,9 +138,9 @@ public class ManipuladorJPMenuPrincipal implements ActionListener {
     private void cargarTablaFunciones() throws SQLException {
         AdministrarTablas adminTab = new AdministrarTablas();
         DefaultTableModel modelo = adminTab.cargarTablaFunciones();
-        this.view.getjTable1().setModel(modelo);
-        this.view.getjTable2().setModel(modelo);
-        this.view.getjTable3().setModel(modelo);
+        this.view.getjTable_Funciones().setModel(modelo);
+        this.view.getjTable_CancelarFuncion().setModel(modelo);
+        this.view.getjTable_VentaBoletos().setModel(modelo);
     }
 
     public vistaMenuPrincipal getView() {
